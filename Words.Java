@@ -49,8 +49,39 @@
                                                   a5_pattern, a6_pattern, a7_pattern, a8_pattern, a9_pattern, 
                                                   v0_pattern, v1_pattern, v2_pattern, v3_pattern, 
                                                   n0_pattern, n1_pattern, n2_pattern, n3_pattern};
+  
+  
     public Words()
     {
 
     }
+  
+    protected static boolean randomWord()
+    {
+      return SUI.ValidateBollean(random_prompt);
+    }
+  
+    protected static int clusterLength()
+    {
+      return SUI.validateInt(cluster_range, cluster_prompt);
+    }
+ 
+    protected static int[] altPattern()
+    {
+      return Alt_Pattern[SUI.validateIndex(alt_range, alt_pattern_prompt)];
+    }
+  
+    protected static int[] nounPattern()
+    {
+      return Noun_Pattern[SUI.validateIndex(noun_range, noun_pattern_prompt)];
+    }
+  
+    protected static int[] verbPattern()
+    {
+      return Verb_Pattern[SUI.validateIndex(verb_range, verb_pattern_prompt)];
+    }
+  
+  
+ 
+
 }
