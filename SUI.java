@@ -115,6 +115,11 @@
          }
          return validatedB12;
      }
+  
+     public static boolean validateBoolean(String prompt)
+     {
+      //TODO: work up the logic~
+     }
  
      /**
       * 
