@@ -1,4 +1,12 @@
-public class Words
+/**
+ * .java
+ * Author: Keira Pendragon
+ * Author Date: 1/22/2023
+ * 
+ * 
+ */
+
+ public class Words
 {
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;
