@@ -16,9 +16,9 @@ public class Adhesive extends Words
     public static Word detailWord(int type)
     {
         int type = type;
-        boolean random = SUI.validateBool(random_prompt);
-        int length = SUI.validateInt(cluster_length_range, cluster_length_prompt);
-        int[] pattern = alt_pattern[SUI.validateIndex(pattern_range, pattern_prompt)];
+        boolean random = randomWord();
+        int length = clusterLength();
+        int[] pattern = altPattern();
         Word aWord = new Word(type, random, length, pattern);
     }
     
