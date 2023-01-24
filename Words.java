@@ -138,95 +138,98 @@
       return clusters[Dice.rand(0, clusters.length-1)];
     }
   
-    protected static int[] selectComplexGenus()
+    protected static int[] selectComplexGenus(boolean random)
     {
-       int primary = selectGenus();
-       int modifier = selectGenusMod(primary);
+       int primary = selectGenus(random);
+       int modifier = selectGenusMod(primary, random);
        int[] complex = {primary, modifier};
        return complex;
     }
 
-    protected static int selectGenusMod(int primary)
+    protected static int selectGenusMod(int primary, boolean random)
     {
-      return SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
+      return (random)? Dice.rRand(genus_mod_range) : SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
     }
   
   
-    protected static int selectGenus()
+    protected static int selectGenus(boolean random)
     {
-      return SUI.ValidateIndex(genus_primary_range, genus_primary_prompt);
+      return (random) ? Dice.rRand(genus_primary_range) : SUI.ValidateIndex(genus_primary_range, genus_primary_prompt);
     }
   
-    protected static int selectRole()
+    protected static int selectRole(boolean random)
     {
-      return SUI.ValidateIndex(role_range, role_prompt);
-    }
-  
-  
-    protected static int selectTense()
-    {
-      return SUI.ValidateIndex(tense_range, tense_prompt);
+      return (random) ? Dice.rRand(role_range) : SUI.ValidateIndex(role_range, role_prompt);
     }
   
   
-    protected static int selectMood()
+    protected static int selectTense(boolean random)
     {
-      return SUI.ValidateIndex(mood_range, mood_prompt);
+      return (random) ? Dice.rRand(tense_range) : SUI.ValidateIndex(tense_range, tense_prompt);
     }
   
   
-    protected static int selectClusterLength()
+    protected static int selectMood(boolean random)
     {
-      return SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
+      return (random) ? Dice.rRand(mood_range) : SUI.ValidateIndex(mood_range, mood_prompt);
     }
   
   
-    protected static int selectPossessiveness()
+    protected static int selectClusterLength(boolean random)
     {
-      return SUI.ValidateIndex(posessive_range, possessive_prompt);
+      return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
     }
   
   
-    protected static int selectNounCount()
+    protected static int selectPossessiveness(boolean random)
     {
-      return SUI.ValidateInt(noun_count_range, noun_count_prompt);
+      return (random) ? Dice.rRand(possessive_range) : SUI.ValidateIndex(posessive_range, possessive_prompt);
     }
   
-    protected static int selectDigitCount()
+  
+    protected static int selectNounCount(boolean random)
     {
-      return SUI.ValidateInt(digit_count_range, digit_count_prompt);
+      return (random) ? Dice.rRand(noun_count_range) : SUI.ValidateInt(noun_count_range, noun_count_prompt);
     }
   
-    protected static String requestB12ToTranslate()
+    protected static int selectDigitCount(boolean random)
     {
-      SUI.displayText(b12_prompt);
-      return SUI.ValidateB12();
+      return (random) ? Dice.rRand(digit_count_range) : SUI.ValidateInt(digit_count_range, digit_count_prompt);
+    }
+  
+    protected static String requestB12ToTranslate(boolean random, int digits)
+    {
+      if(!random)
+      {
+       SUI.displayText(b12_prompt);
+      }
+      return(random) ? CookedB12(digits) :  SUI.ValidateB12();
     }  
   
   
-    protected static boolean singularWord()
+    protected static boolean singularWord(boolean random)
     {
-      return SUI.ValidateAgreement(singular_prompt);
+      return (random) ? Dice.coinToss() : SUI.ValidateAgreement(singular_prompt);
     }
   
-    protected static int clusterLength()
+    protected static int clusterLength(boolean random)
     {
-      return SUI.ValidateInt(cluster_length_range, cluster_length_prompt);
+      return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateInt(cluster_length_range, cluster_length_prompt);
     }
  
-    protected static int[] altPattern()
+    protected static int[] altPattern(boolean random)
     {
-      return Alt_Pattern[SUI.ValidateIndex(alt_pattern_range, alt_pattern_prompt)];
+      return Alt_Pattern[(random) ? Dice.rRand(alt_pattern_range) : SUI.ValidateIndex(alt_pattern_range, alt_pattern_prompt)];
     }
   
-    protected static int[] nounPattern()
+    protected static int[] nounPattern(boolean random)
     {
-      return Noun_Pattern[SUI.ValidateIndex(noun_pattern_range, noun_pattern_prompt)];
+      return Noun_Pattern[(random) ? Dice.rRand(noun_pattern_range) : SUI.ValidateIndex(noun_pattern_range, noun_pattern_prompt)];
     }
   
-    protected static int[] verbPattern()
+    protected static int[] verbPattern(boolean random)
     {
-      return Verb_Pattern[SUI.ValidateIndex(verb_pattern_range, verb_pattern_prompt)];
+      return Verb_Pattern[(random) ? Dice.rRand(verb_pattern_range) : SUI.ValidateIndex(verb_pattern_range, verb_pattern_prompt)];
     }
 
 }
