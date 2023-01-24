@@ -6,7 +6,7 @@
  * 
  */
 
- public class Words
+ public class Words extends Cluster
 {
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;

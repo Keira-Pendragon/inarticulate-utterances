@@ -59,7 +59,7 @@ public class Cluster
     private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", "yo"};
     
     private static final String[] digit_class = {"y", "ia", "o"};
-    private static final String[] digit_magnitude = {{"p"}, {"s"}, tally_consonants};
+    private static final String[][] digit_magnitude = {{"p"}, {"s"}, tally_consonants};
     private static final String[] digit_delimiter = {"'", "-", ""};
     
     public Cluster()
@@ -67,7 +67,7 @@ public class Cluster
 
     }
     
-    protected static retrieveCluster(String[] cluster, int index)
+    protected static String retrieveCluster(String[] cluster, int index)
     {
         return cluster[index];
     }
