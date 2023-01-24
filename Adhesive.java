@@ -16,8 +16,8 @@ public class Adhesive extends Words
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        int length = clusterLength();
-        int[] pattern = altPattern();
+        int length = clusterLength(random);
+        int[] pattern = altPattern(random);
         Word aWord = new Word(type, random, length, pattern);
         return aWord;
     }

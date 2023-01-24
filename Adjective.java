@@ -15,8 +15,8 @@ public class Adjective extends Words
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        int length = clusterLength();
-        int[] pattern = nounPattern();
+        int length = clusterLength(random);
+        int[] pattern = nounPattern(random);
         Word aWord = new Word(type, random, length, pattern);
         return aWord;
     }

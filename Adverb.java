@@ -15,9 +15,9 @@ public class Adverb extends Words
     
     public static Word detailWord(int type)
     {
-        boolean random = randomWord();
-        int length = clusterLength();
-        int[] pattern = verbPattern();
+        boolean random = randomWord(random);
+        int length = clusterLength(random);
+        int[] pattern = verbPattern(random);
         Word aWord = new Word(type, random, length, pattern);
         return aWord;
     }

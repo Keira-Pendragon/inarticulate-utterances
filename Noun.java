@@ -14,13 +14,13 @@ public class Noun extends Words
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        int length = clusterLength();
-        int[] pattern = nounPattern();
-        boolean singular = singularWord();
-        int possessive = selectPossessiveness();
-        int genus = selectGenus();
-        int count = selectNounCount();
-        int role = selectRole();
+        int length = clusterLength(random);
+        int[] pattern = nounPattern(random);
+        boolean singular = singularWord(random);
+        int possessive = selectPossessiveness(random);
+        int genus = selectGenus(random);
+        int count = selectNounCount(random);
+        int role = selectRole(random);
         Word aWord = new Word(type, random, length, pattern, singular, possessive, genus, count, role);
         return aWord;
     }
