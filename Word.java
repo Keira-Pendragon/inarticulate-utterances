@@ -22,6 +22,7 @@ public class Word
     private int word_digits;
     private String word_base12Digits;
     private String siathael_word;
+    private String english_translation;
 
     /**
      * Word Constructor for Nouns, Adjectives and Pronouns
@@ -250,4 +251,13 @@ public class Word
     {
         return siathael_word;
     }
+    
+    private void setTranslation()
+    {
+    }
+    
+    private void getTranslation()
+    {
+    }
+    
 }
