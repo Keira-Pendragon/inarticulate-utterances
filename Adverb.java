@@ -12,4 +12,13 @@ public class Adverb extends Words
     {
 
     }
+    
+    public static Word detailWord(int type)
+    {
+        boolean random = randomWord();
+        int length = clusterLength();
+        int[] pattern = verbPattern();
+        Word aWord = new Word(type, random, length, pattern);
+        return aWord;
+    }
 }
