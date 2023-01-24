@@ -94,21 +94,37 @@
          String input = getUserInput();
          char c;
          String validatedB12 = "";
+         int whole = 0;
+         int spare = 0;
+         boolean foundDel = false;
          for(int i = 0; i < input.length(); i++)
          {
              c = input.charAt(i);
-             if(c >= '0' && c <= '9' || c == ',' || c == '/' || c == '.')
+             if(c >= '0' && c <= '9')
              {
                  validatedB12 += c;
+                 whole += (!foundDel && whole < 33) ? 1 : 0;
+                 spare += (foundDel && spare < 33) ? 1 : 0;
              }
              else if(c == 'A' || c == 'a')
              {
                  validatedB12 += 'A';
+                 whole += (!foundDel && whole < 33) ? 1 : 0;
+                 spare += (foundDel && spare < 33) ? 1 : 0;
              }
              else if(c == 'B' || c == 'b')
              {
                  validatedB12 += 'B';
+                 whole += (!foundDel && whole < 33) ? 1 : 0;
+                 spare += (foundDel && spare < 33) ? 1 : 0;
              }
+             else if(c == '/' || c == '.' && !foundDel && (i != (input.length() -1)))
+             {
+               foundDel = true;
+               validatedB12 += c;
+             }
+             else if(c == ',')
+             {}
              else
              {
                  errorMessage(base12_error_message, (c + ""), (c < 0) ? "0": "B");
