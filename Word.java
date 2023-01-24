@@ -21,6 +21,7 @@ public class Word
     private int word_tense;
     private int word_digits;
     private String word_base12Digits;
+    private String siathael_word;
 
     /**
      * Word Constructor for Nouns, Adjectives and Pronouns
@@ -239,5 +240,14 @@ public class Word
     public String Base12Value()
     {
         return word_base12Digits;
+    }
+    
+    public void commitWord(String word)
+    {
+        siathael_word = word;
+    }
+    public String SiathaelWord()
+    {
+        return siathael_word;
     }
 }
