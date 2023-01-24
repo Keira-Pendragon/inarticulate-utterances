@@ -12,4 +12,12 @@ public class Adjective extends Words
     {
 
     }
+    public static Word detailWord(int type)
+    {
+        boolean random = randomWord();
+        int length = clusterLength();
+        int[] pattern = nounPattern();
+        Word aWord = new Word(type, random, length, pattern);
+        return aWord;
+    }
 }
