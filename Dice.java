@@ -2,6 +2,7 @@
  * Because I don't like having to remember how random.nextInt works, and I'll need it everywhere \@__@/
  */
 
+ 
  import java.util.Random;
 
  public class Dice
