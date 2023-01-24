@@ -11,4 +11,17 @@ public class Noun extends Words
     {
         
     }
+    public static Word detailWord()
+    {
+        boolean random = randomWord();
+        int length = clusterLength();
+        int[] pattern = nounPattern();
+        boolean plural = pluralWord();
+        int possessive = selectPossessiveness();
+        int genus = selectGenus();
+        int count = selectNounCount();
+        int role = selectRole();
+        Word aWord = new Word(random, length, pattern, plural, possessive, genus, count, role);
+        return aWord;
+    }
 }
