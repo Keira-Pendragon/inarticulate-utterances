@@ -10,6 +10,11 @@
 {
     public static void main(String[] args) 
     {
-        WordHelper.helperLoop();
+        int loops = 0;
+        int loopLimit = 50;
+        while(loops < loopLimit)
+        {
+            WordHelper.helperLoop();
+        }
     }
 }

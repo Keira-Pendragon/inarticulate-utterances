@@ -20,7 +20,7 @@
     protected static final int VOWEL = 1;
     protected static final int MIDCONST = 2;
     protected static final int KEYMID = 3;
-    protected static final int CODA = 3;
+    protected static final int CODA = 4;
     protected static final int ENDKEY = 5;
 
     protected static final int[] a0_pattern = {ENDKEY};

@@ -16,26 +16,51 @@
     public static Word detailWord(int type)
     {
        boolean random = randomWord();
-       int length = clusterLength();
-       int [] pattern = verbPattern();
-       int mood = selectMood();
-       int tense = selectTense();
+       int length = clusterLength(random);
+       int [] pattern = verbPattern(random);
+       int mood = selectMood(random);
+       int tense = selectTense(random);
        Word aWord = new Word(type, random, length, pattern, mood, tense);
        return aWord;
     }
 
     public static String buildWord(Word aWord)
     {
-        String newWord = "";
-
-        return newWord;
+        String nWord = "";
+        int[] pattern = aWord.Pattern();
+        for(int i = 0; i < pattern.length; i++)
+        {
+            nWord += nextCluster(pattern[i], aWord);
+        }
+        return nWord;
     }
 
-    private static String nextCluster()
+    private static String nextCluster(int cluster, Word aWord)
     {
-        String aCluster = "";
-
-
-        return aCluster;
+        String nCluster = "";
+        int length = aWord.clusterLength();
+        switch (cluster) 
+        {
+            case ONSET:
+                nCluster = onsetCluster(length);
+                break;
+            case MIDCONST:
+                nCluster = midConstCluster(length);
+                break;
+            case CODA:
+                nCluster = codaCluster(length);
+                break;
+            case VOWEL:
+                nCluster = vowelCluster(length);
+                break;
+            case KEYMID:
+                nCluster = moodVowel(aWord.Mood());
+                break;
+            case ENDKEY:
+                nCluster = tenseVowel(aWord.Tense());
+            default:
+                break;
+        }
+        return nCluster;
     }
 }

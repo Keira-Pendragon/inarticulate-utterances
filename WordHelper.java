@@ -38,29 +38,31 @@
     private static String fetchWord(Word aWord)
     {
         int type = aWord.Type();
+        String nWord = "";
         switch (type) {
             case NUMBER:
-                aWord = Number.buildWord(aWord);
+                nWord = Number.buildWord(aWord);
                 break;
             case PRONOUN:
-                aWord = Pronoun.buildWord(aWord);
+                nWord = Pronoun.buildWord(aWord);
                 break;
             case NOUN:
-                aWord = Noun.buildWord(aWord);
+                nWord = Noun.buildWord(aWord);
                 break;
             case ADJECTIVE:
-                aWord = Adjective.buildWord(aWord);
+                nWord = Adjective.buildWord(aWord);
                 break;
             case VERB:
-                aWord = Verb.buildWord(aWord);                
+                nWord = Verb.buildWord(aWord);                
                 break;
             case ADVERB:
-                aWord = Adverb.buildWord(aWord); 
+                nWord = Adverb.buildWord(aWord); 
                 break;        
             default:
-                aWord = Adhesive.buildWord(aWord);
+                nWord = Adhesive.buildWord(aWord);
                 break;
         }
+        return nWord;
     }
 
     private static Word detailWord(int type)

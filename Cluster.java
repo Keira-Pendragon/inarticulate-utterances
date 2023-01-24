@@ -59,16 +59,99 @@ public class Cluster
     private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", "yo"};
     
     private static final String[] digit_class = {"y", "ia", "o"};
-    private static final String[][] digit_magnitude = {{"p"}, {"s"}, tally_consonants};
+    private static final String[][] digit_magnitude = {tally_consonants, {"p"}, {"s"}};
     private static final String[] digit_delimiter = {"'", "-", ""};
     
     public Cluster()
     {
 
     }
+    protected static String digitCoda(int ofThree, int magnitude)
+    {
+        return digit_magnitude[ofThree][magnitude];
+    }
+    
+    protected static String digitKey(int type)
+    {
+        return digit_class[type];
+    }
+
+    protected static String digitValue(int value)
+    {
+        return tally_consonants[value];
+    }
+
+    protected static String digitDelimiter(int loc)
+    {
+        return digit_delimiter[loc];
+    }
     
     protected static String retrieveCluster(String[] cluster, int index)
     {
         return cluster[index];
+    }
+
+    protected static String onsetCluster(int length)
+    {
+        return retrieveCluster(Onset_Cluster[length], Dice.rand(0, Onset_Cluster[length].length -1));
+    }
+
+    protected static String midConstCluster(int length)
+    {
+        return retrieveCluster(MidConst_Cluster[length], Dice.rand(0, Coda_Cluster[length].length -1));
+    }
+
+    protected static String codaCluster(int length)
+    {
+        return retrieveCluster(Coda_Cluster[length], Dice.rand(0, Coda_Cluster[length].length -1));
+    }
+
+    protected static String vowelCluster(int length)
+    {
+        return retrieveCluster(Vowel_Cluster[length], Dice.rand(0, Vowel_Cluster[length].length -1));
+    }
+
+    
+    protected static String genusCluster(Word aWord)
+    {
+        String cluster = genus_primary_vowels[aWord.Genus()];
+        int mod = Dice.rand(0, genus_mod_vowels.length -1);
+        cluster += (mod == aWord.Genus()) ? "" : genus_mod_vowels[mod];
+        return cluster;
+    }
+
+    protected static String tenseVowel(int tense)
+    {
+        return verb_tense[tense];
+    }
+
+    protected static String moodVowel(int mood)
+    {
+        return verb_mood[mood];
+    }
+
+    protected static String possessivePrefix(int mine)
+    {
+        return posession_vowels[mine];
+    }
+
+    protected static String pronounRole(int who)
+    {
+        return pronoun_role[who];
+    }
+
+    protected static String pluralSuffix()
+    {
+        return plural;
+    }
+
+    protected static String adVowel()
+    {
+        return ad_key[Dice.rand(0, ad_key.length -1)];
+    }
+    
+    protected static String spareVowel()
+    {
+        return spare_key[Dice.rand(0, spare_key.length -1)];
     }
 }
