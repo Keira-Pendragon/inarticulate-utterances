@@ -116,9 +116,11 @@
          return validatedB12;
      }
   
-     public static boolean validateBoolean(String prompt)
+     public static boolean validateAgreement(String prompt)
      {
-      //TODO: work up the logic~
+        displayText(prompt);
+        String input = getUserInput();
+        return (input == 1 || input == "yes");         
      }
  
      /**
