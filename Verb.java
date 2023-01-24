@@ -12,4 +12,15 @@
     {
         
     }
+    
+    public static Word detailWord(int type)
+    {
+       boolean random = randomWord();
+       int length = clusterLength();
+       int pattern = verbPattern();
+       int mood = selectMood();
+       int tense = selectTense();
+       Word aWord = new Word(type, random, length, pattern, mood, tense);
+       return aWord;
+    }
 }
