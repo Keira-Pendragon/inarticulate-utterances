@@ -1,13 +1,13 @@
-/**
- * .java
- * Author: Keira Pendragon
- * Author Date: 1/22/2023
- * 
- * 
- */
+    /**
+     * .java
+     * Author: Keira Pendragon
+     * Author Date: 1/22/2023
+     * 
+     * 
+     */
 
- public class Words extends Cluster
-{
+    public class Words extends Cluster
+    {
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;
     protected static final int NOUN = 2;
@@ -41,7 +41,7 @@
     protected static final int[] n1_pattern = {ONSET, KEYMID, CODA};
     protected static final int[] n2_pattern = {VOWEL, MIDCONST, KEYMID, CODA};
     protected static final int[] n3_pattern = {ONSET, VOWEL, MIDCONST, KEYMID, CODA};
-    
+
     protected static final String a0_name = "EndKey\n";
     protected static final String a1_name = "Onset + EndKey\n";
     protected static final String a2_name = "Vowel + MidConst + EndKey\n";
@@ -75,20 +75,20 @@
     protected static final int[] genus_primary_range = {0, 3};
     protected static final int[] genus_mod_range = {0, 4};
     protected static final int[] role_range = {0, 3};
-    protected static final int[] posessive_range = {0, 4};
+    protected static final int[] possessive_range = {0, 4};
     protected static final int[] noun_count_range = {1, 11};
     protected static final int[] mood_range = {0, 5};
     protected static final int[] tense_range = {0, 3};
     protected static final int[] cluster_length_range = {0, 2};
     protected static final int[] digit_count_range = {0, 66};
     protected static final int[] word_type_range = {0, 6};
-    
+
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
     protected static final String g0_prompt = "Should this concept relate to\n1) Standard Concept\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g1_prompt = "Should this Object relate to\n1) Concepts\n2) Standard Object\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g2_prompt = "Should this entity be denoted by \n1) Concepts\n2) Objects\n3) Standard Entity\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g3_prompt = "Should this place be associated with\n1) Concepts\n2) Objects\n3) Entities\n4) Standard Place\n5) Traits or Qualities\n6) Actions";
-    
+
     protected static final String random_prompt = "Would you like the word to be random?";
     protected static final String singular_prompt = "Is the word Singular?";
     protected static final String genus_primary_prompt = "What is the primary genus of the noun?\n1) Concept\n2) Thing\n3) Entity\n4) Place";
@@ -109,9 +109,9 @@
                                                                                                   
     protected static final String noun_pattern_prompt = "Which pattern should the word follow?\n1) " + n0_name + "2) " + n1_name + "3) " + n2_name + "4) " + n3_name;
     protected static final String verb_pattern_prompt = "Which pattern should the word follow?\n1) " + v0_name + "2) " + v1_name + "3) " + v2_name + "4) " + v3_name;
-    
-  
-  
+
+
+
     public Words()
     {
 
@@ -126,110 +126,106 @@
     {
       return word_type_range;
     }
-  
+
     protected static boolean randomWord()
     {
       return SUI.ValidateAgreement(random_prompt);
     }
-     
-  
+      
+
     protected static String randomCluster(String[] clusters)
     {
       return clusters[Dice.rand(0, clusters.length-1)];
     }
-  
+
     protected static int[] selectComplexGenus(boolean random)
     {
-       int primary = selectGenus(random);
-       int modifier = selectGenusMod(primary, random);
-       int[] complex = {primary, modifier};
-       return complex;
+        int primary = selectGenus(random);
+        int modifier = selectGenusMod(primary, random);
+        int[] complex = {primary, modifier};
+        return complex;
     }
 
     protected static int selectGenusMod(int primary, boolean random)
     {
       return (random)? Dice.rRand(genus_mod_range) : SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
     }
-  
-  
+
+
     protected static int selectGenus(boolean random)
     {
       return (random) ? Dice.rRand(genus_primary_range) : SUI.ValidateIndex(genus_primary_range, genus_primary_prompt);
     }
-  
+
     protected static int selectRole(boolean random)
     {
       return (random) ? Dice.rRand(role_range) : SUI.ValidateIndex(role_range, role_prompt);
     }
-  
-  
+
+
     protected static int selectTense(boolean random)
     {
       return (random) ? Dice.rRand(tense_range) : SUI.ValidateIndex(tense_range, tense_prompt);
     }
-  
-  
+
+
     protected static int selectMood(boolean random)
     {
       return (random) ? Dice.rRand(mood_range) : SUI.ValidateIndex(mood_range, mood_prompt);
     }
-  
-  
+
+
     protected static int selectClusterLength(boolean random)
     {
       return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
     }
-  
-  
+
+
     protected static int selectPossessiveness(boolean random)
     {
-      return (random) ? Dice.rRand(possessive_range) : SUI.ValidateIndex(posessive_range, possessive_prompt);
+      return (random) ? Dice.rRand(possessive_range) : SUI.ValidateIndex(possessive_range, possessive_prompt);
     }
-  
-  
+
+
     protected static int selectNounCount(boolean random)
     {
       return (random) ? Dice.rRand(noun_count_range) : SUI.ValidateInt(noun_count_range, noun_count_prompt);
     }
-  
+
     protected static int selectDigitCount(boolean random)
     {
       return (random) ? Dice.rRand(digit_count_range) : SUI.ValidateInt(digit_count_range, digit_count_prompt);
     }
-  
-    protected static String requestB12ToTranslate(boolean random, int digits)
+
+    protected static String requestB12ToTranslate(boolean random)
     {
-      if(!random)
-      {
-       SUI.displayText(b12_prompt);
-      }
-      return(random) ? CookedB12(digits) :  SUI.ValidateB12();
+      SUI.displayText(b12_prompt);
+      return SUI.ValidateB12();
     }  
-  
-  
+
     protected static boolean singularWord(boolean random)
     {
       return (random) ? Dice.coinToss() : SUI.ValidateAgreement(singular_prompt);
     }
-  
+
     protected static int clusterLength(boolean random)
     {
       return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateInt(cluster_length_range, cluster_length_prompt);
     }
- 
+
     protected static int[] altPattern(boolean random)
     {
       return Alt_Pattern[(random) ? Dice.rRand(alt_pattern_range) : SUI.ValidateIndex(alt_pattern_range, alt_pattern_prompt)];
     }
-  
+
     protected static int[] nounPattern(boolean random)
     {
       return Noun_Pattern[(random) ? Dice.rRand(noun_pattern_range) : SUI.ValidateIndex(noun_pattern_range, noun_pattern_prompt)];
     }
-  
+
     protected static int[] verbPattern(boolean random)
     {
       return Verb_Pattern[(random) ? Dice.rRand(verb_pattern_range) : SUI.ValidateIndex(verb_pattern_range, verb_pattern_prompt)];
     }
 
-}
+    }

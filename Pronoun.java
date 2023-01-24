@@ -27,12 +27,12 @@ public class Pronoun extends Words
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        int length = clusterLength();
-        boolean singular = singularWord(); 
-        int possessive = selectPossessiveness();
-        int genus = selectGenus();
-        int count = selectNounCount();
-        int role = selectRole();
+        int length = clusterLength(random);
+        boolean singular = singularWord(random); 
+        int possessive = selectPossessiveness(random);
+        int genus = selectGenus(random);
+        int count = selectNounCount(random);
+        int role = selectRole(random);
         int [] pattern = selectPronounPattern(random, singular, possessive);
         Word aWord = new Word(type, random, length, pattern, singular, possessive, genus, count, role);
         return aWord;
