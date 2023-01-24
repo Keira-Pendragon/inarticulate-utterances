@@ -56,7 +56,7 @@ public class Word
      * @param mood
      * @param tense
      */
-    public Word(int type, int random, int length, int[] pattern, int mood, int tense)
+    public Word(int type, boolean random, int length, int[] pattern, int mood, int tense)
     {
         setType(type);
         setRandom(random);
@@ -73,7 +73,7 @@ public class Word
      * @param length
      * @param pattern
      */
-    public Word(int type, int random, int length, int[] pattern)
+    public Word(int type, boolean random, int length, int[] pattern)
     {
         setType(type);
         setRandom(random);
@@ -88,7 +88,7 @@ public class Word
      * @param digits
      * @param word_base12Digits
      */
-    public Word(int type, int random, int digits, String word_base12Digits)
+    public Word(int type, boolean random, int digits, String word_base12Digits)
     {
         setType(type);
         setRandom(random);
@@ -102,7 +102,7 @@ public class Word
      * @param random
      * @param digits
      */
-    public Word(int type, int random, int digits)
+    public Word(int type, boolean random, int digits)
     {
         setType(type);
         setRandom(random);
@@ -146,7 +146,8 @@ public class Word
     {
         word_pattern = pattern;
     }
-    public int[][] Pattern()
+
+    public int[] Pattern()
     {
         return word_pattern;
     }

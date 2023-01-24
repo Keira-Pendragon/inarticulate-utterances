@@ -8,8 +8,8 @@
 
  public class  SiathaelAssistant
 {
-    public SiathaelAssistant()
+    public static void main(String[] args) 
     {
-        
+        WordHelper.helperLoop();
     }
 }

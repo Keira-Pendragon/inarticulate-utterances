@@ -6,7 +6,7 @@
  * 
  */
 
- public class Words extends Cluster
+ public class Words
 {
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;
@@ -14,7 +14,7 @@
     protected static final int ADJECTIVE = 3;
     protected static final int VERB = 4;
     protected static final int ADVERB = 5;
-    protected static final int UMBRELLA = 6;
+    protected static final int ADHESIVE = 6;
 
     protected static final int ONSET = 0;
     protected static final int VOWEL = 1;
@@ -69,19 +69,19 @@
                                                   v0_pattern, v1_pattern, v2_pattern, v3_pattern, 
                                                   n0_pattern, n1_pattern, n2_pattern, n3_pattern};
                                                   
-    protected static final int[][] alt_pattern_range = {0, 17};
-    protected static final int[][] noun_pattern_range = {0, 3};
-    protected static final int[][] verb_pattern_range = {0, 3};    
-    protected static final int[][] genus_primary_range = {0, 3};
-    protected static final int[][] genus_mod_range = {0, 4};
-    protected static final int[][] role_range = {0, 3};
-    protected static final int[][] posessive_range = {0, 4};
-    protected static final int[][] noun_count_range = {1, 11};
-    protected static final int[][] mood_range = {0, 5};
-    protected static final int[][] tense_range = {0, 3};
-    protected static final int[][] cluster_length_range = {0, 2};
-    protected static final int[][] digit_count_range = {0, 66};
-    protected static final int[][] word_type_range = {0, 6};
+    protected static final int[] alt_pattern_range = {0, 17};
+    protected static final int[] noun_pattern_range = {0, 3};
+    protected static final int[] verb_pattern_range = {0, 3};    
+    protected static final int[] genus_primary_range = {0, 3};
+    protected static final int[] genus_mod_range = {0, 4};
+    protected static final int[] role_range = {0, 3};
+    protected static final int[] posessive_range = {0, 4};
+    protected static final int[] noun_count_range = {1, 11};
+    protected static final int[] mood_range = {0, 5};
+    protected static final int[] tense_range = {0, 3};
+    protected static final int[] cluster_length_range = {0, 2};
+    protected static final int[] digit_count_range = {0, 66};
+    protected static final int[] word_type_range = {0, 6};
     
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
     protected static final String g0_prompt = "Should this concept relate to\n1) Standard Concept\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions";
@@ -101,8 +101,8 @@
     protected static final String digit_count_prompt = "How many digits should the random number have?\n(Limit 33 for whole, 66 for mixed)";
     protected static final String b12_prompt = "Enter the base 12 number to translate\n(Valid Values include 0-9, 'A', 'a', 'B', 'b', ',', '.', '/')\n(Max digits 66 if '.' or '/' divide them to a max of 33 on either side)";
     protected static final String cluster_length_prompt = "How long should the clusters be?\n1) Short\n2) Average\n3) Long";
-    
-    protected static final String alt_pattern_prompt = "Which pattern should the word follow?\n1) " + a0_name + "2) " a1_name + "3) " + a2_name + "4) " + a3_name + "5) " + a4_name + "6) " 
+    protected static final String word_type_prompt = "What type of word should be generated?\n1) Number\n2) Pronoun\n3) Noun\n4) Adjective\n5) Verb\n6) Adverb\n7) Adhesive";
+    protected static final String alt_pattern_prompt = "Which pattern should the word follow?\n1) " + a0_name + "2) " + a1_name + "3) " + a2_name + "4) " + a3_name + "5) " + a4_name + "6) " 
                                                                                                     + a5_name + "7) " + a6_name + "8) " + a7_name + "9) " + a8_name + "10) " + a9_name + "11) " 
                                                                                                     + v0_name + "12) " + v1_name + "13) " + v2_name + "14) " + v3_name + "\n15) " 
                                                                                                     + n0_name + "16) " + n1_name + "17) " + n2_name + "18) " + n3_name;
@@ -116,12 +116,22 @@
     {
 
     }
+
+    public static String TypePrompt()
+    {
+        return word_type_prompt;
+    }
+
+    public static int[] TypeRange()
+    {
+      return word_type_range;
+    }
   
     protected static boolean randomWord()
     {
       return SUI.ValidateAgreement(random_prompt);
     }
-  
+     
   
     protected static String randomCluster(String[] clusters)
     {
@@ -136,7 +146,7 @@
        return complex;
     }
 
-    protected static int selectGenusMod(primary)
+    protected static int selectGenusMod(int primary)
     {
       return SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
     }
@@ -144,7 +154,7 @@
   
     protected static int selectGenus()
     {
-      return SUI.ValidateIndex(genus_primary_range, genus_prompt);
+      return SUI.ValidateIndex(genus_primary_range, genus_primary_prompt);
     }
   
     protected static int selectRole()
@@ -171,9 +181,9 @@
     }
   
   
-    protected static int selectPosessiveness()
+    protected static int selectPossessiveness()
     {
-      return SUI.ValidateIndex(posessive_range, posessive_prompt);
+      return SUI.ValidateIndex(posessive_range, possessive_prompt);
     }
   
   
@@ -184,19 +194,19 @@
   
     protected static int selectDigitCount()
     {
-      return SUI.validateInt(digit_count_range, digit_count_prompt);
+      return SUI.ValidateInt(digit_count_range, digit_count_prompt);
     }
   
-    protected static int requestB12ToTranslate()
+    protected static String requestB12ToTranslate()
     {
       SUI.displayText(b12_prompt);
       return SUI.ValidateB12();
     }  
   
   
-    protected static boolean pluralWord()
+    protected static boolean singularWord()
     {
-      return SUI.ValidateAgreement(plural_prompt);
+      return SUI.ValidateAgreement(singular_prompt);
     }
   
     protected static int clusterLength()

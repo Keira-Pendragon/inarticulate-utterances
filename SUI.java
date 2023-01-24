@@ -11,6 +11,8 @@
  public class SUI 
  {
  
+    private static final int MIN = 0;
+    private static final int MAX = 1;
      /**
       * 
       */
@@ -68,20 +70,20 @@
      /**
       * 
       */
-     public static int ValidateInt(int min, int max, String request)
+     public static int ValidateInt(int [] range, String request)
      {
          displayText(request + selection_prompt);
          int input = getIntifiedUserInput();
-         return (input >= min && input <= max) ? input : (input > min) ? min : max;
+         return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
      }
     /**
      * 
      */
-    public static int ValidateIdex(int min, int max, String request)
+    public static int ValidateIndex(int [] range, String request)
     {
         displayText(request + selection_prompt);
         int input = getIntifiedUserInput();
-        return (input >= min && input <= max) ? input : (input > min) ? min : max;
+        return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
     }
  
      /**
@@ -116,11 +118,11 @@
          return validatedB12;
      }
   
-     public static boolean validateAgreement(String prompt)
+     public static boolean ValidateAgreement(String prompt)
      {
         displayText(prompt);
         String input = getUserInput();
-        return (input == 1 || input == "yes");         
+        return (input == "1" || input == "yes");         
      }
  
      /**

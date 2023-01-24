@@ -20,4 +20,19 @@ public class Adjective extends Words
         Word aWord = new Word(type, random, length, pattern);
         return aWord;
     }
+
+    public static String buildWord(Word aWord)
+    {
+        String newWord = "";
+
+        return newWord;
+    }
+
+    private static String nextCluster()
+    {
+        String aCluster = "";
+
+
+        return aCluster;
+    }
 }
