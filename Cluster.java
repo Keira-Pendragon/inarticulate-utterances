@@ -44,11 +44,11 @@ public class Cluster
     private static final String[] genus_primary_vowels = {"i", "e", "a", "u"};
     private static final String[] genus_mod_vowels = {"i", "e", "a", "u", "o", "y"};
     
-    private static final String[] posession_vowels = {"", "i", "e", "a", "u", "o"};
+    private static final String[] posession_vowels = {"", "i'", "e'", "a'", "u'", "o'"};
     
     private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "ɕ", "j", "k", "m", "b"};
     
-    private static final String[] pronoun_role = {"s", "n", "f", "ʑ"};
+    private static final String[] pronoun_role = {"s'", "n'", "f'", "ʑ'"};
     
     private static final String plural = "ei";
     
