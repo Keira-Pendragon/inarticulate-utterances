@@ -50,7 +50,7 @@ public class Cluster
     
     private static final String[] pronoun_role = {"s'", "n'", "f'", "ʑ'"};
     
-    private static final String plural = "ei";
+    private static final String plural_suffix = "ei";
     
     private static final String[] verb_mood = {"y", "i", "a", "e", "u"};
     private static final String[] verb_tense = {"e", "i", "a", "u"};
