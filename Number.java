@@ -12,6 +12,15 @@
     private static final int DIGITCLASS = 1;
     private static final int DIGITMAGNITUDE = 3;
     private static final int DIGITDELIMITER = 4;
+    
+    private static int MAXDIGITS = 36;
+    /**
+     * Max number of digits a mixed number can contain.
+     */
+    private static int MAXCOOKEDDIGITS = (MAXDIGITS * 2);
+    private static int WHOLENUMBER = 0;
+    private static int DECIMALNUMBER = 1;
+    private static int FRACTIONNUMBER = 2;
 
     private static final int[] digit_pattern = {DIGITVALUE, DIGITCLASS, DIGITMAGNITUDE, DIGITDELIMITER};
 
@@ -29,20 +38,93 @@
     Word aWord = new Word(type, random, digits, b12);
     return aWord;
     }
+    /**
+    DIGITVALUE = 0; // # of 12^# being represented
+    DIGITCLASS = 1; // whole, fraction or decimal
+    DIGITMAGNITUDE = 3; // biggest of three?, middle of three? smallest of three and which!? o.o
+    */
 
     public static String buildWord(Word aWord)
     {
         String nNumber = "";
-        
+        // Get any whole number value  translated
+        nNumber = (aWord.DelimiterLoc() > 0) ? standardMethod(aWord, true) : "" ;
+        // Get any denominator or decimal value (decimals are handled differently...)
+        nNumber += (aWord.Delimiter == '/') ? standardMethod(aWord, false) : decimalMethod(aWord);       
         return nNumber;
     }
-
-    private static String nextDigit()
+    
+    private static String standardMethod(Word aWord, boolean whole )
     {
-        String aDigit = "";
+        String translate = (whole)? aWord.WholeValue() : aWord.SpareValue();
+        String translation = "";
+        int spare = translate.length() % 3;
+        int trio = translate.length() / 3;
+        int digitLimit = translate.length -1;
+        int cDigit = 0;
+        char delim = (whole) ? '' : aWord.Delimiter();
+        
+        if(spare == 2)
+        {
+            translation += nextDigit(translate.charAt(cDigit), 1, trio + 1, delim);
+            cDigit++;
+            spare--;
+        }
+        if(spare == 1)
+        {        
+            translation += nextDigit(translate.charAt(cDigit), 0, trio + 1, delim);
+            cDigit++;
+        }            
+        int dX__val;
+        int d_Y_val;
+        int d__Zval;
+        for(trio; trio >= 0; trio--)
+        {
+            dX__val = translate.charAt(cDigit);
+            cDigit++;
+            d_Y_val = translate.charAt(cDigit);
+            cDigit++;
+            d__Zval = translate.charAt(cDigit);
+            cDigit++;
+            translation += (dX__val!= 0) ? nextDigit(dX__val, 2, trio, delim) + "'" : "";
+            translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, trio, delim) + "'"  : "";
+            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, trio, delim) + "-" : "";
+        }
+        if(translation.charAt(translation.length-1) == '-')
+        {
+            translation = SUI.trimString(translation, 0, translation.length-2);
+        }
+        return "";
+    }
+    
+    private static String decimalMethod(Word aWord)
+    {
+        String translate = aWord.SpareValue();
+        String translation = "";
+        int trio = translate.length / 3;
+        int cDigit = 0;
+        for(int i = 0; i <= trio; i++)
+        {
+            dX__val = translate.charAt(cDigit);
+            cDigit++;
+            d_Y_val = translate.charAt(cDigit);
+            cDigit++;
+            d__Zval = translate.charAt(cDigit);
+            cDigit++;
+            translation += (dX__val!= 0) ? nextDigit(dX__val, 2, i, delim) + "'" : "";
+            translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, i, delim) + "'"  : "";
+            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + "-" : "";
+        }
+        cDigit < translate.length() - 1;//TODO: finish
+            
+        return "";
+    }
 
-
-        return aDigit;
+    private static String nextDigit(int value, int place, int power, char delim)
+    {
+        int mag = (place == 0) ? power : 0;
+        int style = (delim == '') ? 0 : (delim == '/')? 1 : 2;
+        return tally_value[value] + digit_class[style] + digit_magnitude[place][mag];
     }
 
 
