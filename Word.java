@@ -21,6 +21,12 @@ public class Word
     private int word_tense;
     private int word_digits;
     private String word_base12Digits;
+    private char delimiter;
+    private int del_loc;
+    private String siathael_word;
+    private String english_translation;
+    private String whole_digits;
+    private String spare_digits;
 
     /**
      * Word Constructor for Nouns, Adjectives and Pronouns
@@ -235,9 +241,66 @@ public class Word
     private void setbase12Value(String value)
     {
         word_base12Digits = value;
+        
+        delimiter = '';
+        // default to the length of the value, or 37, whichever is shorter, in case there is no delimiter...
+        del_loc = (value.length < 36) ?  value.length : 37;
+        for(int i = 0; i < value.length(); i++)
+        {
+            if (value.charAt(i) == '/' || value.charAt(i) == '.')
+            {
+                delimiter = value.charAt(i);
+                del_loc = i;
+            }
+        }
+        if(delimiter != '')
+        {
+            whole_digits = SUI.trimString(value, 0, del_loc -1);
+            spare_digits = SUI.trimString(value, del_loc + 1, value.length() -1);
+        }
+        else
+        {
+            whole_digits = value;
+            spare_digits = "";
+        }        
     }
     public String Base12Value()
     {
         return word_base12Digits;
     }
+    
+    public char Delimiter()
+    {
+        return delimiter;
+    }
+    public int DelimiterLoc()
+    {
+        return del_loc;
+    }
+    public String WholeValue()
+    {
+        return whole_digits;
+    }
+    public String SpareValue()
+    {
+        return spare_digits;
+    }
+    
+    public void commitWord(String word)
+    {
+        siathael_word = word;
+    }
+    public String SiathaelWord()
+    {
+        return siathael_word;
+    }
+    
+    private void setTranslation()
+    {
+    }
+    
+    private void getTranslation()
+    {
+    }
+    
 }

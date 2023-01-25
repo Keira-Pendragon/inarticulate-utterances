@@ -13,6 +13,8 @@
  
     private static final int MIN = 0;
     private static final int MAX = 1;
+    private static final int MAXDIGITS = 36;
+    private static final int MAXMIXEDDIGITS = MAXDIGITS * 2;
      /**
       * 
       */
@@ -94,29 +96,86 @@
          String input = getUserInput();
          char c;
          String validatedB12 = "";
+         int whole = 0;
+         int spare = 0;
+         boolean foundDel = false;
+      int delLoc = -1;
          for(int i = 0; i < input.length(); i++)
          {
              c = input.charAt(i);
-             if(c >= '0' && c <= '9' || c == ',' || c == '/' || c == '.')
+             if(c >= '0' && c <= '9')
              {
                  validatedB12 += c;
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
              else if(c == 'A' || c == 'a')
              {
                  validatedB12 += 'A';
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
              else if(c == 'B' || c == 'b')
              {
                  validatedB12 += 'B';
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
+             else if(c == '/' || c == '.' && !foundDel && (i != (input.length() -1)))
+             {
+               foundDel = true;
+               delLoc = i;
+               validatedB12 += c;
+             }
+             else if(c == ',')
+             {}
              else
              {
                  errorMessage(base12_error_message, (c + ""), (c < 0) ? "0": "B");
                  validatedB12 += (c < 0) ? '0': 'B';
              }
+             validatedB12 = snipErrantZeros(validatedB12, delLoc);
          }
          return validatedB12;
      }
+  
+     private static String snipErrantZeros(String review, int delLoc)
+     {
+      int rMin = 0;
+      int rMax = review.length() -1;
+      int noMore = rMax;
+      
+       if(delLoc != -1)
+       {
+        int step = review.length();
+        boolean done = false;
+         while(step > delLoc && !done)
+         {
+           step--;
+           if(review.charAt(step) != 0)
+           {
+             done = true;
+           }
+         }
+        int shave = 0;
+        done = false;
+        while(shave < noMore && notDone)
+        {
+         if(review.charAt(shave) != 0)
+         {
+          done = true;
+         }
+         else
+         {
+          shave++;
+         }        
+       }
+        rMax = step;
+        rMin = shave;
+        return trimString(review, rMin, rMax);            
+     }
+      
+      
   
      public static boolean ValidateAgreement(String prompt)
      {

@@ -44,13 +44,13 @@ public class Cluster
     private static final String[] genus_primary_vowels = {"i", "e", "a", "u"};
     private static final String[] genus_mod_vowels = {"i", "e", "a", "u", "o", "y"};
     
-    private static final String[] posession_vowels = {"i", "e", "a", "u", "o"};
+    private static final String[] posession_vowels = {"", "i'", "e'", "a'", "u'", "o'"};
     
-    private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "sh", "j", "k", "m", "b"};
+    private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "ɕ", "j", "k", "m", "b"};
     
-    private static final String[] pronoun_role = {"s", "n", "f", "zh"};
+    private static final String[] pronoun_role = {"s'", "n'", "f'", "ʑ'"};
     
-    private static final String plural = "ei";
+    private static final String plural_suffix = "ei";
     
     private static final String[] verb_mood = {"y", "i", "a", "e", "u"};
     private static final String[] verb_tense = {"e", "i", "a", "u"};
@@ -59,7 +59,7 @@ public class Cluster
     private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", "yo"};
     
     private static final String[] digit_class = {"y", "ia", "o"};
-    private static final String[][] digit_magnitude = {tally_consonants, {"p"}, {"s"}};
+    private static final String[][] digit_magnitude = {tally_consonants, {"s"}, {"ʑ"}};
     private static final String[] digit_delimiter = {"'", "-", ""};
     
     public Cluster()
