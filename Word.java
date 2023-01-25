@@ -21,6 +21,8 @@ public class Word
     private int word_tense;
     private int word_digits;
     private String word_base12Digits;
+    private char delimiter;
+    private int del_loc;
     private String siathael_word;
     private String english_translation;
 
@@ -237,10 +239,33 @@ public class Word
     private void setbase12Value(String value)
     {
         word_base12Digits = value;
+        setDelimiter(value);
     }
     public String Base12Value()
     {
         return word_base12Digits;
+    }
+    
+    public char Delimiter()
+    {
+        return delimiter;
+    }
+    public int DelimiterLoc()
+    {
+        return del_loc;
+    }
+    private void setDelimiter(String value)
+    {
+        delimiter = '';
+        del_loc = 34;
+        for(int i = 0; i < value.length(); i++)
+        {
+            if (value.charAt(i) == '/' || value.charAt(i) == '.')
+            {
+                delimiter = value.charAt(i);
+                del_loc = i;
+            }
+        }
     }
     
     public void commitWord(String word)
