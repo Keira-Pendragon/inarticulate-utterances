@@ -80,7 +80,7 @@
     protected static final int[] mood_range = {0, 5};
     protected static final int[] tense_range = {0, 3};
     protected static final int[] cluster_length_range = {0, 2};
-    protected static final int[] digit_count_range = {0, 66};
+    protected static final int[] digit_count_range = {1, 66};
     protected static final int[] word_type_range = {0, 6};
 
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
@@ -192,9 +192,9 @@
       return (random) ? Dice.rRand(noun_count_range) : SUI.ValidateInt(noun_count_range, noun_count_prompt);
     }
 
-    protected static int selectDigitCount(boolean random)
+    protected static int selectDigitCount()
     {
-      return (random) ? Dice.rRand(digit_count_range) : SUI.ValidateInt(digit_count_range, digit_count_prompt);
+      return SUI.ValidateInt(digit_count_range, digit_count_prompt);
     }
 
     protected static String requestB12ToTranslate(boolean random)

@@ -59,7 +59,7 @@ public class Pronoun extends Words
 
     public static String buildWord(Word aWord)
     {        
-        return (possessiveCluster(aWord.Possessive()) + roleCluster(aWord.Role()) + genusCluster(aWord.Genus()) 
-                + countCluster(aWord.NounCount()) + (aWord.Singular()) "" : plural_suffix;
+        return possessivePrefix(aWord.Possessiveness()) + pronounRole(aWord.ConvoRole()) + genusCluster(aWord) 
+                + digitValue(aWord.mentionCount()) + ((aWord.isSingular()) ? "" : pluralSuffix());
     }
 }

@@ -6,10 +6,36 @@
  * 
  */
 
+import java.util.ArrayList;
+
+
 public class Sentence
 {
+    private ArrayList<Word> word_list;
+    private int word_count;
     public Sentence()
     {
-        
+        word_list = new ArrayList<Word>();
+        word_count = 0;
     }
+
+    public void addWord(Word aWord) 
+    {
+        word_list.add(aWord);
+        word_count++;
+    }
+
+    public Word fetchWord(int which)
+    {
+        if(word_count > which - 1)
+        {
+            return word_list.get(which);
+        }
+        else
+        {
+            return new Word(true);
+        }
+    }
+
+
 }

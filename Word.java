@@ -8,6 +8,11 @@
 
 public class Word
 {
+    private static final int DEF_LEN = 1;
+    private static final int DEF_TYPE = 6;
+    private static final int DEF_CLUS = 5;
+    private static final int[] Def_Pattern = {DEF_CLUS};
+
     private int word_type;
     private boolean word_random;
     private int word_length;
@@ -19,7 +24,8 @@ public class Word
     private int word_genus;
     private int word_mood;
     private int word_tense;
-    private int word_digits;
+    private int whole_digit_count;
+    private int spare_digit_count;
     private String word_base12Digits;
     private char delimiter;
     private int del_loc;
@@ -29,7 +35,7 @@ public class Word
     private String spare_digits;
 
     /**
-     * Word Constructor for Nouns, Adjectives and Pronouns
+     * Word Constructor for Nouns and Pronouns
      * @param type
      * @param random
      * @param length
@@ -54,7 +60,7 @@ public class Word
     }
 
     /**
-     * Word constructor for Verbs and Adverbs
+     * Word constructor for Verbs
      * @param type
      * @param random
      * @param length
@@ -73,7 +79,7 @@ public class Word
     }
 
     /**
-     * Word constructor for Clarifier words
+     * Word constructor for Adverbs, Adjectives, and Adhesive words
      * @param type
      * @param random
      * @param length
@@ -88,31 +94,25 @@ public class Word
     }
 
     /**
-     * Word constructor for specfic numbers
+     * Word constructor for numbers
      * @param type
      * @param random
      * @param digits
      * @param word_base12Digits
      */
-    public Word(int type, boolean random, int digits, String word_base12Digits)
+    public Word(int type, boolean random, String word_base12Digits)
     {
         setType(type);
         setRandom(random);
-        setdigits(digits);
         setbase12Value(word_base12Digits);        
     }
 
-    /**
-     * Word constructor for random numbers
-     * @param type
-     * @param random
-     * @param digits
-     */
-    public Word(int type, boolean random, int digits)
+    public Word(boolean random)
     {
-        setType(type);
         setRandom(random);
-        setdigits(digits);        
+        setType(DEF_TYPE);
+        setLength(DEF_LEN);
+        setPattern(Def_Pattern);
     }
     
     private void setType(int type)
@@ -193,7 +193,7 @@ public class Word
     {
         word_posessive = posessive;
     }
-    public int Posessiveness()
+    public int Possessiveness()
     {
         return word_posessive;
     }
@@ -229,22 +229,28 @@ public class Word
     }
 
 
-    private void setdigits(int digits)
+    private void setdigits(int wCount, int sCount)
     {
-        word_digits = digits;
+        whole_digit_count = wCount;
+        spare_digit_count = sCount;
     }
-    public int numDigits()
+    public int wholeDigitCount()
     {
-        return word_digits;
+        return whole_digit_count;
+    }
+
+    public int spareDigitCount()
+    {
+        return spare_digit_count;
     }
 
     private void setbase12Value(String value)
     {
         word_base12Digits = value;
         
-        delimiter = '';
+        delimiter = ' ';
         // default to the length of the value, or 37, whichever is shorter, in case there is no delimiter...
-        del_loc = (value.length < 36) ?  value.length : 37;
+        del_loc = (value.length() < 36) ?  value.length() : 37;
         for(int i = 0; i < value.length(); i++)
         {
             if (value.charAt(i) == '/' || value.charAt(i) == '.')
@@ -253,7 +259,7 @@ public class Word
                 del_loc = i;
             }
         }
-        if(delimiter != '')
+        if(delimiter != ' ')
         {
             whole_digits = SUI.trimString(value, 0, del_loc -1);
             spare_digits = SUI.trimString(value, del_loc + 1, value.length() -1);
@@ -262,7 +268,8 @@ public class Word
         {
             whole_digits = value;
             spare_digits = "";
-        }        
+        }
+        setdigits(whole_digits.length(), spare_digits.length());
     }
     public String Base12Value()
     {
@@ -295,12 +302,14 @@ public class Word
         return siathael_word;
     }
     
-    private void setTranslation()
+    protected void setTranslation(String eWord)
     {
+        english_translation = eWord;
     }
     
-    private void getTranslation()
+    protected String getTranslation()
     {
+        return english_translation;
     }
     
 }

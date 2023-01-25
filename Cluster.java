@@ -47,6 +47,7 @@ public class Cluster
     private static final String[] posession_vowels = {"", "i'", "e'", "a'", "u'", "o'"};
     
     private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "ɕ", "j", "k", "m", "b"};
+    private static final String[] lazy_digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B"};
     
     private static final String[] pronoun_role = {"s'", "n'", "f'", "ʑ'"};
     
@@ -79,6 +80,10 @@ public class Cluster
     protected static String digitValue(int value)
     {
         return tally_consonants[value];
+    }
+    protected static String lazyDigit(int index)
+    {
+        return lazy_digits[index];
     }
 
     protected static String digitDelimiter(int loc)
@@ -142,7 +147,7 @@ public class Cluster
 
     protected static String pluralSuffix()
     {
-        return plural;
+        return plural_suffix;
     }
 
     protected static String adVowel()
