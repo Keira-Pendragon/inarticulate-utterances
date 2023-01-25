@@ -28,7 +28,7 @@
               SentenceHelper.helperLoop();
             }
             SUI.displayTextLn("Finished loop " + loops);
-            moreTime = SUI.ValidateBoolean(more_time_prompt);
+            moreTime = SUI.ValidateAgreement(more_time_prompt);
         }
     }
 }
