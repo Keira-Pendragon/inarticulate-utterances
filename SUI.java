@@ -13,6 +13,8 @@
  
     private static final int MIN = 0;
     private static final int MAX = 1;
+    private static final int MAXDIGITS = 36;
+    private static final int MAXMIXEDDIGITS = MAXDIGITS * 2;
      /**
       * 
       */
@@ -103,20 +105,20 @@
              if(c >= '0' && c <= '9')
              {
                  validatedB12 += c;
-                 whole += (!foundDel && whole < 33) ? 1 : 0;
-                 spare += (foundDel && spare < 33) ? 1 : 0;
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
              else if(c == 'A' || c == 'a')
              {
                  validatedB12 += 'A';
-                 whole += (!foundDel && whole < 33) ? 1 : 0;
-                 spare += (foundDel && spare < 33) ? 1 : 0;
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
              else if(c == 'B' || c == 'b')
              {
                  validatedB12 += 'B';
-                 whole += (!foundDel && whole < 33) ? 1 : 0;
-                 spare += (foundDel && spare < 33) ? 1 : 0;
+                 whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                 spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
              }
              else if(c == '/' || c == '.' && !foundDel && (i != (input.length() -1)))
              {
