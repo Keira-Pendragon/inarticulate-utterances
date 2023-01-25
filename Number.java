@@ -66,13 +66,13 @@
         
         if(spare == 2)
         {
-            translation += nextDigit(translate.charAt(cDigit), 1, trio + 1, delim);
+            translation += nextDigit(intify(translate.charAt(cDigit)), 1, trio + 1, delim);
             cDigit++;
             spare--;
         }
         if(spare == 1)
         {        
-            translation += nextDigit(translate.charAt(cDigit), 0, trio + 1, delim);
+            translation += nextDigit(intify(translate.charAt(cDigit)), 0, trio + 1, delim);
             cDigit++;
         }            
         int dX__val;
@@ -80,11 +80,11 @@
         int d__Zval;
         for(trio; trio >= 0; trio--)
         {
-            dX__val = translate.charAt(cDigit);
+            dX__val = intify(translate.charAt(cDigit));
             cDigit++;
-            d_Y_val = translate.charAt(cDigit);
+            d_Y_val = intify(translate.charAt(cDigit));
             cDigit++;
-            d__Zval = translate.charAt(cDigit);
+            d__Zval = intify(translate.charAt(cDigit));
             cDigit++;
             translation += (dX__val!= 0) ? nextDigit(dX__val, 2, trio, delim) + "'" : "";
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, trio, delim) + "'"  : "";
@@ -105,19 +105,32 @@
         int cDigit = 0;
         for(int i = 0; i <= trio; i++)
         {
-            dX__val = translate.charAt(cDigit);
+            dX__val = intify(translate.charAt(cDigit));
             cDigit++;
-            d_Y_val = translate.charAt(cDigit);
+            d_Y_val = intify(translate.charAt(cDigit));
             cDigit++;
-            d__Zval = translate.charAt(cDigit);
+            d__Zval = intify(translate.charAt(cDigit));
             cDigit++;
             translation += (dX__val!= 0) ? nextDigit(dX__val, 2, i, delim) + "'" : "";
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, i, delim) + "'"  : "";
             translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + "-" : "";
         }
-        cDigit < translate.length() - 1;//TODO: finish
+        cDigit -= translate.length();
+        if(cDigit == 2)
+        {
+            translation+= nextDigit(intify(translate.charAt(translate.length() - cDigit)), 2, (trio + 1), delim) + "'";
+            cDigit--;
+        }
+        if(cDigit == 1)
+        {
+            translation+= nextDigit(intify(translate.charAt(translate.length() - cDigit)), 1, (trio + 1), delim);
+        }
+        if(translation.charAt(translation.length-1) == '-')
+        {
+            translation = SUI.trimString(translation, 0, translation.length-2);
+        }
             
-        return "";
+        return translation;
     }
 
     private static String nextDigit(int value, int place, int power, char delim)
