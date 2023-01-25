@@ -257,7 +257,8 @@ public class Word
     private void setDelimiter(String value)
     {
         delimiter = '';
-        del_loc = 34;
+        // default to the length of the value, or 37, whichever is shorter, in case there is no delimiter...
+        del_loc = (value.length < 36) ?  value.length : 37;
         for(int i = 0; i < value.length(); i++)
         {
             if (value.charAt(i) == '/' || value.charAt(i) == '.')
