@@ -58,17 +58,8 @@ public class Pronoun extends Words
     }
 
     public static String buildWord(Word aWord)
-    {
-        String newWord = "";
-
-        return newWord;
-    }
-
-    private static String nextCluster()
-    {
-        String aCluster = "";
-
-
-        return aCluster;
+    {        
+        return (possessiveCluster(aWord.Possessive()) + roleCluster(aWord.Role()) + genusCluster(aWord.Genus()) 
+                + countCluster(aWord.NounCount()) + (aWord.Singular()) "" : plural_suffix;
     }
 }
