@@ -15,7 +15,7 @@
         while(loops < loopLimit)
         {
             WordHelper.helperLoop();
-            SUI.displayText("Finished loop " + loops);
+            SUI.displayTextLn("Finished loop " + loops);
         }
     }
 }

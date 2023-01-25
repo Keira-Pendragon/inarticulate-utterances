@@ -89,15 +89,15 @@
     protected static final String g2_prompt = "Should this entity be denoted by \n1) Concepts\n2) Objects\n3) Standard Entity\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g3_prompt = "Should this place be associated with\n1) Concepts\n2) Objects\n3) Entities\n4) Standard Place\n5) Traits or Qualities\n6) Actions";
 
-    protected static final String random_prompt = "Would you like the word to be random?";
-    protected static final String singular_prompt = "Is the word Singular?";
+    protected static final String random_prompt = "Would you like the word to be random?\n1) yes\n2) no";
+    protected static final String singular_prompt = "Is the word Singular?\n1) yes\n2) no";
     protected static final String genus_primary_prompt = "What is the primary genus of the noun?\n1) Concept\n2) Thing\n3) Entity\n4) Place";
     protected static final String [] genus_mod_prompt = {g0_prompt, g1_prompt, g2_prompt, g3_prompt};
     protected static final String tense_prompt = "How does this action relate to time?\n1) Timeless\n2) Past\n3) Present\n4) Future";
     protected static final String mood_prompt = "Is this action a\n1) Request or Wish\n2) Directive\n3) Voluntary\n4) Passive\n5) Unwilling";
     protected static final String role_prompt = "Is this pronoun\n1) The speaker\n2) The Lisener\n3) Both\n4) Neither";
-    protected static final String possessive_prompt = "Is this noun posessive?";
-    protected static final String noun_count_prompt = "Is there more than one of this specific pronoun in the context?\n1) yes\n#) Which is this? (2 - 11)";
+    protected static final String possessive_prompt = "Is this noun posessive?\n1) no\n2) part of\n3) dear to\n4) owned by\n5) diminuiative to\n6) loosely associated";
+    protected static final String noun_count_prompt = "Is there more than one of this specific pronoun in the context?\n1) no\n#) Yes, this is the nth of the same (n: 2 to 11)";
     protected static final String digit_count_prompt = "How many digits should the random number have?\n(Limit 33 for whole, 66 for mixed)";
     protected static final String b12_prompt = "Enter the base 12 number to translate\n(Valid Values include 0-9, 'A', 'a', 'B', 'b', ',', '.', '/')\n(Max digits 66 if '.' or '/' divide them to a max of 33 on either side)";
     protected static final String cluster_length_prompt = "How long should the clusters be?\n1) Short\n2) Average\n3) Long";
@@ -199,7 +199,7 @@
 
     protected static String requestB12ToTranslate(boolean random)
     {
-      SUI.displayText(b12_prompt);
+      SUI.displayTextLn(b12_prompt);
       return SUI.ValidateB12();
     }  
 

@@ -27,7 +27,7 @@ public class Pronoun extends Words
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        int length = clusterLength(random);
+        int length = 0;
         boolean singular = singularWord(random); 
         int possessive = selectPossessiveness(random);
         int genus = selectGenus(random);

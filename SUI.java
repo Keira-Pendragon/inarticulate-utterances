@@ -75,7 +75,7 @@ public class SUI
     */
     public static int ValidateInt(int [] range, String request)
     {
-        displayText(request + selection_prompt);
+        selectionPrompt(request);
         int input = getIntifiedUserInput();
         return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
     }
@@ -84,7 +84,7 @@ public class SUI
      */
     public static int ValidateIndex(int [] range, String request)
     {
-        displayText(request + selection_prompt);
+        selectionPrompt(request);
         int input = getIntifiedUserInput() - 1;
         return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
     }
@@ -186,7 +186,7 @@ public class SUI
 
     public static boolean ValidateAgreement(String prompt)
     {
-        displayText(prompt);
+        selectionPrompt(prompt);
         String input = getUserInput();
         return userAgrees(input);         
     }
@@ -206,15 +206,23 @@ public class SUI
     */
     private static void errorMessage(String expected, String input, String resolution)
     {
-        displayText("Error expected " + expected + ". Received " + input + ". Resolving to " + resolution);
+        displayTextLn("Error expected " + expected + ". Received " + input + ". Resolving to " + resolution);
     }
 
 
     /**
      * 
     */
-    public static void displayText(String display)
+    public static void displayTextLn(String display)
     {
         System.out.println(display);
+    }
+    
+    /**
+     * 
+    */
+    public static void selectionPrompt(String display)
+    {
+        System.out.print("\n" + display + selection_prompt);
     }
 }
