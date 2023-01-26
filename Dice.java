@@ -25,7 +25,7 @@
      
  
      /**
-      * 
+      * rand(int, int) inclusive bound random numbers
       * @param min
       * @param max
       * @return
@@ -35,6 +35,10 @@
          return random.nextInt(max - min) + min;
      }
 
+     /**
+      * flip a coin~
+      * @return
+      */
      public static boolean coinToss()
      {
         return (rand(0, 10) % 2 == 0);
