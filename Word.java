@@ -105,7 +105,6 @@ public class Word
         setType(type);
         setRandom(random);
         setbase12Value(base12Dig);
-        SUI.displayTextLn("Word's new base12 number is " + base12Dig);   
     }
 
     public Word(boolean random)
@@ -230,10 +229,12 @@ public class Word
     }
 
 
-    private void setdigits(int wCount, int sCount)
+    private void setdigits(String wValue, String sValue)
     {
-        whole_digit_count = wCount;
-        spare_digit_count = sCount;
+        whole_digit_count = wValue.length();
+        spare_digit_count = wValue.length();
+        whole_digits = wValue;
+        spare_digits = sValue;
         SUI.displayTextLn("spare_digit_count set to " + spare_digit_count + " from sCount which is " + sCount);
     }
     public int wholeDigitCount()
@@ -254,13 +255,11 @@ public class Word
         String sDig = "";
         boolean done = false;
 
-        int step = -1;
+        int step = 0;
         char c;
         while(step < value.length() && !done)
         {
-            step++;
             c = value.charAt(step);
-            
             if(c == '/' || c == '.' )
             {
                 done = true;
@@ -268,23 +267,22 @@ public class Word
             else if(c != '0')
             {
                 wDig += c;
-            }            
+            }
+            step++;
         }
-        int spare = value.length();
-        while(step > spare)
+        int d = c;
+        while(step > value.length())
         {
-            spare--;
-            c = value.charAt(spare);
-            if(c != 0 )
+            c = value.charAt(step);
+            if(c != 0  && c!= '/' && c != '.')
             {
                 sDig += c;
             }
+            step++;
         }
-        whole_digits = wDig;
-        spare_digits = sDig;
-        
-        setdigits(whole_digits.length(), spare_digits.length());
+        setdigits(wDig, sDig));
     }
+    
     public String Base12Value()
     {
         return word_base12Digits;
