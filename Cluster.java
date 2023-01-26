@@ -10,8 +10,7 @@ public class Cluster
     private static final String[] om_cluster = {"sn", "dr", "tr", "h", "r", "l", "ŋ", "gr", "kr", "m", "br", "pr", "fr", "vl", "θr", "ʑr", "zr", "ɕr", "sr"};
     private static final String[] ol_cluster = {"n", "zdr", "str", "h", "r", "l", "ŋ", "zgr", "skr", "m", "zbr", "spr", "sfr", "zvl", "sθr", "ʑ", "z", "ɕ", "s"};
     private static final String[][] Onset_Cluster = {os_cluster, om_cluster, ol_cluster};
-    
-    
+        
     private static final String[] ms_cluster = {"n", "d", "t", "h", "r", "l", "ŋ", "g", "k", "m", "b", "p", "f", "v", "θ", "ʑ", "z", "ɕ", "s"};
     private static final String[] mm_cluster = {"nr", "db", "tk", "h", "rn", "lr", "ŋk", "gn", "kt", "mb", "bn", "pt", "fl", "vd", "θp", "ʑd", "zg", "ɕt", "sk"};
     private static final String[] ml_cluster = {"ntr", "dgr", "tkr", "h", "rtn", "lkr", "ŋkr", "gvr", "ktl", "mbd", "bdr", "ptr", "fkl", "vdn", "θtn", "ʑdr", "zgr", "ɕtn", "str"};
