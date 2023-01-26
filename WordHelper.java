@@ -26,14 +26,12 @@
 
     public static void helperLoop()
     {
-      int type;
       Word aWord;
       int wordCount;
       boolean onceMore = true;
       while(onceMore)
-      {
-        type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
-        aWord = detailWord(type);
+      {        
+        aWord = detailWord();
         wordCount = SUI.ValidateInt(word_count_range, word_count_prompt);
         for(int i = 0; i < wordCount; i++)
         {
@@ -74,8 +72,9 @@
         return nWord;
     }
 
-    private static Word detailWord(int type)
+    private static Word detailWord()
     {
+        int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
         Word aWord;
         switch (type) {
             case NUMBER:
