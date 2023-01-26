@@ -32,14 +32,19 @@
       while(onceMore)
       {        
         aWord = detailWord();
-        wordCount = SUI.ValidateInt(word_count_range, word_count_prompt);
+        wordCount = (!onlyOne(aWord.Type(), aWord.isRandom())) ? SUI.ValidateInt(word_count_range, word_count_prompt) : 1;
         for(int i = 0; i < wordCount; i++)
         {
             SUI.displayTextLn(fetchWord(aWord));
         }
-        SUI.displayTextLn("Word Batch complete.");
-        onceMore = SUI.ValidateAgreement("Would you like to generate more words?\n1) Yes\n2) No");
+        SUI.displayTextLn("\nWord Batch complete.");
+        onceMore = SUI.ValidateAgreement("\nWould you like to generate more words?\n1) Yes\n2) No");
       }
+    }
+
+    private static boolean onlyOne(int type, boolean random)
+    {
+        return ((type == NUMBER || type == PRONOUN) && random);
     }
 
     protected static String fetchWord(Word aWord)

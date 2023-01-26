@@ -104,7 +104,6 @@ public class SUI
         for(int i = 0; i < input.length(); i++)
         {
             c = input.charAt(i);
-            SUI.displayTextLn("c is " + c);
             if(c >= '0' && c <= '9')
             {
                 validatedB12 += c;
@@ -140,7 +139,6 @@ public class SUI
             }
         }
         validatedB12 = snipErrantZeros(validatedB12, delLoc);
-        SUI.displayTextLn("ValidatedB12 is " + validatedB12);
         return validatedB12;
     }
 

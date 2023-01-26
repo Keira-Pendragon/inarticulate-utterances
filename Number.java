@@ -41,9 +41,8 @@
     public static String buildWord(Word aWord)
     {
         String nNumber = "";
-        SUI.displayTextLn("preparing to translate: " + aWord.Base12Value() + "\nWhole value: " + aWord.WholeValue() + "\nSpare value: " + aWord.SpareValue());
         // Get any whole number value  translated
-        nNumber = (aWord.DelimiterLoc() > 0) ? standardMethod(aWord, true) : "" ;
+        nNumber = (aWord.DelimiterLoc() < 37) ? standardMethod(aWord, true) : "" ;
         // Get any denominator or decimal value (decimals are handled differently...)
         nNumber += (aWord.SpareValue().length() > 0)? (aWord.Delimiter() == '/') ? standardMethod(aWord, false) : decimalMethod(aWord) : "";       
         return nNumber;
@@ -64,13 +63,13 @@
         char delim = (whole) ? ' ' : aWord.Delimiter();
         if(spare == 2)
         {
-            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 1, trio + 1, delim);
+            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 1, trio + 1, delim) + "'";
             cDigit++;
             spare--;
         }
         if(spare == 1)
         {        
-            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 0, trio + 1, delim);
+            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 0, trio + 1, delim) + "-";
             cDigit++;
         }   
         int dX__val;
@@ -90,11 +89,6 @@
             translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, trio, delim) + "-" : "";
             trio--;
         }
-
-        if(translation.charAt(translation.length() -1) == '-')
-        {
-            translation = SUI.trimString(translation, 0, translation.length() -2);
-        }
         return translation;
     }
     
@@ -108,8 +102,7 @@
         int dX__val;
         int d_Y_val;
         int d__Zval;
-        SUI.displayTextLn("enter loop, translate is " + translate);
-        for(int i = 0; i <= trio; i++)
+        for(int i = 0; i < trio; i++)
         {
             dX__val = intifyB12Digit(translate.charAt(cDigit));
             cDigit++;
@@ -121,29 +114,21 @@
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, i, delim) + "'"  : "";
             translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + "-" : "";
         }
-        SUI.displayTextLn("left loop. Translation is " + translation);
-        cDigit -= translate.length();
-        if(cDigit == 2)
+        int lastIndex = translate.length() -1;
+        if(cDigit < lastIndex)
         {
-            translation+= nextDigit(intifyB12Digit(translate.charAt(translate.length() - cDigit)), 2, (trio + 1), delim) + "'";
-            cDigit--;
+            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 2, (trio + 1), delim) + "'";
+            cDigit++;
         }
-        if(cDigit == 1)
+        if(cDigit == lastIndex)
         {
-            translation+= nextDigit(intifyB12Digit(translate.charAt(translate.length() - cDigit)), 1, (trio + 1), delim);
-        }
-        SUI.displayTextLn(translation);
-        if(translation.charAt(translation.length() -1) == '-')
-        {
-            translation = SUI.trimString(translation, 0, translation.length() -2);
-        }
-            
+            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 1, (trio + 1), delim);
+        }        
         return translation;
     }
 
     private static String nextDigit(int value, int place, int power, char delim)
     {
-        SUI.displayTextLn("value is " + value);
         int mag = (place == 0) ? power : 0;
         int style = (delim == ' ') ? 0 : (delim == '/')? 1 : 2;
         return digitValue(value) + digitKey(style) + digitCoda(place, mag);
@@ -152,6 +137,10 @@
 
     private static String cookedB12(int digits)
     {
+        if(digits == 0)
+        {
+            digits = Dice.rand(1, 66);
+        }
         String baked = "";
         // If the number is bigger than the maximum any one part of a mixed number can be, it Has to have a delimiter.
         int numberType = (Dice.rand(((digits <= MAXDIGITS) ? WHOLENUMBER : DECIMALNUMBER), FRACTIONNUMBER));

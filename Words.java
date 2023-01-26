@@ -80,7 +80,7 @@
     protected static final int[] mood_range = {0, 5};
     protected static final int[] tense_range = {0, 3};
     protected static final int[] cluster_length_range = {0, 2};
-    protected static final int[] digit_count_range = {1, 66};
+    protected static final int[] digit_count_range = {0, 66};
     protected static final int[] word_type_range = {0, 6};
 
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
@@ -98,7 +98,7 @@
     protected static final String role_prompt = "Is this pronoun\n1) The speaker\n2) The Lisener\n3) Both\n4) Neither";
     protected static final String possessive_prompt = "Is this noun posessive?\n1) no\n2) part of\n3) dear to\n4) owned by\n5) diminuiative to\n6) loosely associated";
     protected static final String noun_count_prompt = "Is there more than one of this specific pronoun in the context?\n1) no\n#) Yes, this is the nth of the same (n: 2 to 11)";
-    protected static final String digit_count_prompt = "How many digits should the random number have?\n(Limit 33 for whole, 66 for mixed)";
+    protected static final String digit_count_prompt = "How many digits should the random number have?\n(Limit 33 for whole, 66 for mixed, 0 for random)";
     protected static final String b12_prompt = "Enter the base 12 number to translate\n(Valid Values include 0-9, 'A', 'a', 'B', 'b', ',', '.', '/')\n(Max digits 66 if '.' or '/' divide them to a max of 33 on either side)";
     protected static final String cluster_length_prompt = "How long should the clusters be?\n1) Short\n2) Average\n3) Long";
     protected static final String word_type_prompt = "What type of word should be generated?\n1) Number\n2) Pronoun\n3) Noun\n4) Adjective\n5) Verb\n6) Adverb\n7) Adhesive";
@@ -210,7 +210,7 @@
 
     protected static int clusterLength(boolean random)
     {
-      return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateInt(cluster_length_range, cluster_length_prompt);
+      return (random) ? Dice.rRand(cluster_length_range) : SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
     }
 
     protected static int[] altPattern(boolean random)

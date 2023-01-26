@@ -22,6 +22,7 @@ public class Word
     private int word_count;
     private int word_role;
     private int word_genus;
+    private int word_genus_mod;
     private int word_mood;
     private int word_tense;
     private int whole_digit_count;
@@ -35,10 +36,9 @@ public class Word
     private String spare_digits;
 
     /**
-     * Word Constructor for Nouns and Pronouns
+     * Word Constructor for Pronouns
      * @param type
      * @param random
-     * @param length
      * @param pattern
      * @param singular
      * @param posessive
@@ -46,17 +46,35 @@ public class Word
      * @param count
      * @param role
      */
-    public Word(int type, boolean random, int length, int[] pattern, boolean singular, int posessive, int genus, int count, int role)
+    public Word(int type, boolean random, boolean singular, int posessive, int genus, int gMod, int count, int role)
+    {
+        setType(type);
+        setRandom(random);
+        setSingular(singular);
+        setPossessive(posessive);
+        setGenus(genus, gMod);
+        setCount(count);
+        setRole(role);
+    }
+
+    /**
+     * Constructor for Nouns
+     * @param type
+     * @param random
+     * @param length
+     * @param pattern
+     * @param singular
+     * @param genus
+     * @param gMod
+     */
+    public Word(int type, boolean random, int length, int[] pattern, boolean singular, int genus, int gMod)
     {
         setType(type);
         setRandom(random);
         setLength(length);
         setPattern(pattern);
         setSingular(singular);
-        setPossessive(posessive);
-        setGenus(genus);
-        setCount(count);
-        setRole(role);
+        setGenus(genus, gMod);
     }
 
     /**
@@ -123,7 +141,6 @@ public class Word
     {
         return word_type;
     }
-
 
 
     private void setRandom(boolean random)
@@ -199,13 +216,19 @@ public class Word
     }
 
 
-    private void setGenus(int genus)
+    private void setGenus(int genus, int gMod)
     {
         word_genus = genus;
+        word_genus_mod = gMod;
     }
+
     public int Genus()
     {
         return word_genus;
+    }
+    public int GenusMod()
+    {
+        return word_genus_mod;
     }
 
 
@@ -235,7 +258,6 @@ public class Word
         spare_digit_count = wValue.length();
         whole_digits = wValue;
         spare_digits = sValue;
-        SUI.displayTextLn("spare_digit_count set to " + spare_digit_count + " from sCount which is " + sCount);
     }
     public int wholeDigitCount()
     {
@@ -250,7 +272,6 @@ public class Word
     private void setbase12Value(String value)
     {
         word_base12Digits = value;
-        SUI.displayTextLn("base12 value is " + value);
         String wDig = "";
         String sDig = "";
         boolean done = false;
@@ -270,8 +291,7 @@ public class Word
             }
             step++;
         }
-        int d = c;
-        while(step > value.length())
+        while(step < value.length())
         {
             c = value.charAt(step);
             if(c != 0  && c!= '/' && c != '.')
@@ -280,7 +300,7 @@ public class Word
             }
             step++;
         }
-        setdigits(wDig, sDig));
+        setdigits(wDig, sDig);
     }
     
     public String Base12Value()
