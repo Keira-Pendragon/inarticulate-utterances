@@ -26,87 +26,76 @@
 
     public static void helperLoop()
     {
-        int wordCount = SUI.ValidateInt(word_count_range, word_count_prompt);
-        int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
-        SUI.displayTextLn("picked type");
-        Word aWord = detailWord(type);
-        SUI.displayTextLn("detailing complete");
+      Word aWord;
+      int wordCount;
+      boolean onceMore = true;
+      while(onceMore)
+      {        
+        aWord = detailWord();
+        wordCount = SUI.ValidateInt(word_count_range, word_count_prompt);
         for(int i = 0; i < wordCount; i++)
         {
             SUI.displayTextLn(fetchWord(aWord));
         }
         SUI.displayTextLn("Word Batch complete.");
+        onceMore = SUI.ValidateAgreement("Would you like to generate more words?\n1) Yes\n2) No");
+      }
     }
 
     private static String fetchWord(Word aWord)
     {
         int type = aWord.Type();
         String nWord = "";
-        String display = "Fetching ";
         switch (type) {
             case NUMBER:
-                SUI.displayTextLn(display +  "a Number");
                 nWord = Number.buildWord(aWord);
                 break;
             case PRONOUN:
-                SUI.displayTextLn(display +  "a Pronoun");
                 nWord = Pronoun.buildWord(aWord);
                 break;
             case NOUN:
-                SUI.displayTextLn(display +  "a Noun");
                 nWord = Noun.buildWord(aWord);
                 break;
             case ADJECTIVE:
-                SUI.displayTextLn(display +  "an Adjective");
                 nWord = Adjective.buildWord(aWord);
                 break;
             case VERB:
-                SUI.displayTextLn(display +  "a Verb");
                 nWord = Verb.buildWord(aWord);                
                 break;
             case ADVERB:
-                SUI.displayTextLn(display +  "an Adverb");
                 nWord = Adverb.buildWord(aWord); 
                 break;        
             default:
-                SUI.displayTextLn(display +  "a Word...");
                 nWord = Adhesive.buildWord(aWord);
                 break;
         }
         return nWord;
     }
 
-    private static Word detailWord(int type)
+    private static Word detailWord()
     {
+        int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
         Word aWord;
-        String display = "Detailing a";
         switch (type) {
             case NUMBER:
-                SUI.displayTextLn(display +  "Number");
                 aWord = Number.detailWord(type);
                 break;
             case PRONOUN:
-                SUI.displayTextLn(display +  " Pronoun");
                 aWord = Pronoun.detailWord(type);
                 break;
             case NOUN:
-                SUI.displayTextLn(display +  " Noun");
                 aWord = Noun.detailWord(type);
                 break;
             case ADJECTIVE:
-                SUI.displayTextLn(display +  "n Adjective");
                 aWord = Adjective.detailWord(type);
                 break;
             case VERB:
-                SUI.displayTextLn(display +  " Verb");
                 aWord = Verb.detailWord(type);                
                 break;
             case ADVERB:
-                SUI.displayTextLn(display +  "n Adverb");
                 aWord = Adverb.detailWord(type); 
                 break;        
             default:
-                SUI.displayTextLn(display +  " Word...");
                 aWord = Adhesive.detailWord(type);
                 break;
         }

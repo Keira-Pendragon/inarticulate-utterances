@@ -8,14 +8,27 @@
 
  public class  SiathaelAssistant
 {
+    private static final String helper_prompt = "Do you want to\n1) Build words?\n2) Build Sentences?";
+    private static final int[] helper_range = {1, 2};
+    private static final String more_time_prompt = "Would you like to build more?\n1) Yes\n2) No";
+  
     public static void main(String[] args) 
     {
-        int loops = 0;
-        int loopLimit = 50;
-        while(loops < loopLimit)
+        int helperSelection;
+        boolean moreTime = true;
+        while(moreTime)
         {
-            WordHelper.helperLoop();
+            helperSelection = SUI.ValidateInt(helper_Range, helper_prompt);
+            if(helperSelection == 1)
+            {
+              WordHelper.helperLoop();
+            }
+            else
+            {
+              SentenceHelper.helperLoop();
+            }
             SUI.displayTextLn("Finished loop " + loops);
+            moreTime = SUI.ValidateAgreement(more_time_prompt);
         }
     }
 }
