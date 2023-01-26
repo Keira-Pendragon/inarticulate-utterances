@@ -37,5 +37,9 @@ public class Sentence
         }
     }
 
+    public int wordCount()
+    {
+        return word_count;
+    }
 
 }

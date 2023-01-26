@@ -22,14 +22,13 @@
       boolean onceMore = true;
       int sentenceCount;
       Sentence sayWhat;
-      int sentenceCount;
       while(onceMore)
       {
        sayWhat = detailSentence();
        sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
        for(int i = 0; i < sentenceCount; i++)
        {
-         SUI.displayTextLN(buildSentence(sayWhat));
+         SUI.displayTextLn(buildSentence(sayWhat));
        }
        SUI.displayTextLn("Sentence batch Complete.");
        onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
@@ -52,7 +51,8 @@
   String sayThis = "";
    for(int i = 0; i < sayWhat.wordCount(); i++)
    {
-    sayThis += fetchWord(sayWhat.fetchWord(i)) + (i + 1 == sayWhat.wordCount()) ? " " : ".";
+    sayThis+= fetchWord(sayWhat.fetchWord(i));
+    sayThis+= (i + 1 == sayWhat.wordCount()) ? " " : ".";
    }
    return sayThis;
   }

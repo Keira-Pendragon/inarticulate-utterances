@@ -42,7 +42,7 @@
       }
     }
 
-    private static String fetchWord(Word aWord)
+    protected static String fetchWord(Word aWord)
     {
         int type = aWord.Type();
         String nWord = "";
@@ -72,7 +72,7 @@
         return nWord;
     }
 
-    private static Word detailWord()
+    protected static Word detailWord()
     {
         int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
         Word aWord;

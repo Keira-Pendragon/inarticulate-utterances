@@ -98,13 +98,14 @@ public class Word
      * @param type
      * @param random
      * @param digits
-     * @param word_base12Digits
+     * @param base12Dig
      */
-    public Word(int type, boolean random, String word_base12Digits)
+    public Word(int type, boolean random, String base12Dig)
     {
         setType(type);
         setRandom(random);
-        setbase12Value(word_base12Digits);        
+        setbase12Value(base12Dig);
+        SUI.displayTextLn("Word's new base12 number is " + base12Dig);   
     }
 
     public Word(boolean random)
@@ -233,6 +234,7 @@ public class Word
     {
         whole_digit_count = wCount;
         spare_digit_count = sCount;
+        SUI.displayTextLn("spare_digit_count set to " + spare_digit_count + " from sCount which is " + sCount);
     }
     public int wholeDigitCount()
     {
@@ -247,28 +249,40 @@ public class Word
     private void setbase12Value(String value)
     {
         word_base12Digits = value;
-        
-        delimiter = ' ';
-        // default to the length of the value, or 37, whichever is shorter, in case there is no delimiter...
-        del_loc = (value.length() < 36) ?  value.length() : 37;
-        for(int i = 0; i < value.length(); i++)
+        SUI.displayTextLn("base12 value is " + value);
+        String wDig = "";
+        String sDig = "";
+        boolean done = false;
+
+        int step = -1;
+        char c;
+        while(step < value.length() && !done)
         {
-            if (value.charAt(i) == '/' || value.charAt(i) == '.')
+            step++;
+            c = value.charAt(step);
+            
+            if(c == '/' || c == '.' )
             {
-                delimiter = value.charAt(i);
-                del_loc = i;
+                done = true;
+            }
+            else if(c != '0')
+            {
+                wDig += c;
+            }            
+        }
+        int spare = value.length();
+        while(step > spare)
+        {
+            spare--;
+            c = value.charAt(spare);
+            if(c != 0 )
+            {
+                sDig += c;
             }
         }
-        if(delimiter != ' ')
-        {
-            whole_digits = SUI.trimString(value, 0, del_loc -1);
-            spare_digits = SUI.trimString(value, del_loc + 1, value.length() -1);
-        }
-        else
-        {
-            whole_digits = value;
-            spare_digits = "";
-        }
+        whole_digits = wDig;
+        spare_digits = sDig;
+        
         setdigits(whole_digits.length(), spare_digits.length());
     }
     public String Base12Value()

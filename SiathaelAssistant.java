@@ -18,7 +18,7 @@
         boolean moreTime = true;
         while(moreTime)
         {
-            helperSelection = SUI.ValidateInt(helper_Range, helper_prompt);
+            helperSelection = SUI.ValidateInt(helper_range, helper_prompt);
             if(helperSelection == 1)
             {
               WordHelper.helperLoop();
@@ -27,7 +27,6 @@
             {
               SentenceHelper.helperLoop();
             }
-            SUI.displayTextLn("Finished loop " + loops);
             moreTime = SUI.ValidateAgreement(more_time_prompt);
         }
     }

@@ -104,6 +104,7 @@ public class SUI
         for(int i = 0; i < input.length(); i++)
         {
             c = input.charAt(i);
+            SUI.displayTextLn("c is " + c);
             if(c >= '0' && c <= '9')
             {
                 validatedB12 += c;
@@ -126,7 +127,7 @@ public class SUI
             {
                 foundDel = true;
                 delLoc = i;
-                validatedB12 += c;
+                validatedB12 += c + "";
             }
             else if(c == ',')
             {
@@ -137,8 +138,9 @@ public class SUI
                 errorMessage(base12_error_message, (c + ""), (c < 0) ? "0": "B");
                 validatedB12 += (c < 0) ? '0': 'B';
             }
-            validatedB12 = snipErrantZeros(validatedB12, delLoc);
         }
+        validatedB12 = snipErrantZeros(validatedB12, delLoc);
+        SUI.displayTextLn("ValidatedB12 is " + validatedB12);
         return validatedB12;
     }
 
@@ -149,38 +151,40 @@ public class SUI
 
     private static String snipErrantZeros(String review, int delLoc)
     {
-        int rMin;
-        int rMax;
-        int noMore = review.length() -1;
+        String wholeVal = "";
+        String spareVal = "";
         boolean done = false;
-        int step = review.length();
-        if(delLoc != -1)
+
+        int step = -1;
+        char c;
+        boolean foundGood = false;
+        while(step < review.length() && !done)
         {
-            while(step > delLoc && !done)
+            step++;
+            c = review.charAt(step);
+            if(c != '0' || foundGood)
             {
-                step--;
-                if(review.charAt(step) != 0)
-                {
-                    done = true;
-                }
+                wholeVal += c;
+                foundGood = true;
+            }
+            if(c == '/' || c == '.' )
+            {
+                done = true;
+            }            
+        }
+        foundGood = false;
+        int spare = review.length();
+        while(spare > step)
+        {
+            spare--;
+            c = review.charAt(spare);
+            if(c != 0 || foundGood)
+            {
+                spareVal += c;
+                foundGood = true;
             }
         }
-        int shave = 0;
-        done = false;
-        while(shave < noMore && !done)
-        {
-            if(review.charAt(shave) != 0)
-            {
-            done = true;
-            }
-            else
-            {
-            shave++;
-            }        
-        }
-        rMax = step;
-        rMin = shave;
-        return trimString(review, rMin, rMax);        
+        return wholeVal + spareVal;
     }
 
 
