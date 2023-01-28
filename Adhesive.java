@@ -18,8 +18,7 @@ public class Adhesive extends Words
         boolean random = randomWord();
         int length = clusterLength(random);
         int[] pattern = altPattern(random);
-        Word aWord = new Word(type, random, length, pattern);
-        return aWord;
+        return new Word(type, random, length, pattern);
     }
 
     public static String buildWord(Word aWord)
