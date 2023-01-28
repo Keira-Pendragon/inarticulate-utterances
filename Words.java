@@ -197,10 +197,9 @@
       return SUI.ValidateInt(digit_count_range, digit_count_prompt);
     }
 
-    protected static String requestB12ToTranslate(boolean random)
+    protected static String requestB12ToTranslate()
     {
-      SUI.displayTextLn(b12_prompt);
-      return SUI.ValidateB12();
+      return SUI.ValidateB12(b12_prompt);
     }  
 
     protected static boolean singularWord(boolean random)
