@@ -20,8 +20,7 @@
        int [] pattern = verbPattern(random);
        int mood = selectMood(random);
        int tense = selectTense(random);
-       Word aWord = new Word(type, random, length, pattern, mood, tense);
-       return aWord;
+       return new Word(type, random, length, pattern, mood, tense);
     }
 
     public static String buildWord(Word aWord)
