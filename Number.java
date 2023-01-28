@@ -33,9 +33,9 @@
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        String b12 = (random) ? cookedB12(selectDigitCount()) : requestB12ToTranslate(random);
-        Word aWord = new Word(type, random, b12);
-        return aWord;
+        String b12 = (random) ? cookedB12(selectDigitCount()) : requestB12ToTranslate();
+       
+        return new Word(type, random, b12);;
     }
     
     public static String buildWord(Word aWord)
