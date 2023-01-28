@@ -92,8 +92,9 @@ public class SUI
     /**
      * 
     */
-    public static String ValidateB12()
+    public static String ValidateB12(String prompt)
     {
+        SUI.displayTextLn(prompt);
         String input = getUserInput();
         char c;
         String validatedB12 = "";
