@@ -171,7 +171,6 @@
             // If this is where the delimiter should go, drop it after.
             baked += (i == delimiterLoc)? delimiter : "";
         }
-        SUI.displayTextLn("baked is " + baked);
         return baked;
     }
 
