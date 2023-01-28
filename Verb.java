@@ -20,19 +20,18 @@
        int [] pattern = verbPattern(random);
        int mood = selectMood(random);
        int tense = selectTense(random);
-       Word aWord = new Word(type, random, length, pattern, mood, tense);
-       return aWord;
+       return new Word(type, random, length, pattern, mood, tense);
     }
 
     public static String buildWord(Word aWord)
     {
-        String nWord = "";
+        StringBuilder nWord = new StringBuilder();
         int[] pattern = aWord.Pattern();
-        for(int i = 0; i < pattern.length; i++)
+        for(int i: pattern)
         {
-            nWord += nextCluster(pattern[i], aWord);
+            nWord.append(nextCluster(i, aWord));
         }
-        return nWord;
+        return nWord.toString();
     }
 
     private static String nextCluster(int cluster, Word aWord)
