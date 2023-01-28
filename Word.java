@@ -125,12 +125,24 @@ public class Word
         setbase12Value(base12Dig);
     }
 
+    /**
+    * "Dummy" consructor to avoid spitting exceptions by accident.
+    */
     public Word(boolean random)
     {
         setRandom(random);
         setType(DEF_TYPE);
         setLength(DEF_LEN);
         setPattern(Def_Pattern);
+    }
+    
+    /**
+    * Constructor for completely random words of a set type
+    */
+    public Word(int type, boolean random)
+    {
+        setType(type);
+        setRandom(random);
     }
     
     private void setType(int type)

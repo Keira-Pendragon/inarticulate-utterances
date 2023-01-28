@@ -23,8 +23,7 @@ public class Pronoun extends Words
         int gMod = cGenus[1];
         int count = selectNounCount(random);
         int role = selectRole(random);
-        Word aWord = new Word(type, random, singular, possessive, genus, gMod, count, role);
-        return aWord;
+        return new Word(type, random, singular, possessive, genus, gMod, count, role);
     }
 
     public static String buildWord(Word aWord)
