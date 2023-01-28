@@ -33,8 +33,7 @@
     public static Word detailWord(int type)
     {
         boolean random = randomWord();
-        String b12 = (random) ? cookedB12(selectDigitCount()) : requestB12ToTranslate();
-       
+        String b12 = (random) ? cookedB12(selectDigitCount()) : requestB12ToTranslate();       
         return new Word(type, random, b12);;
     }
     
