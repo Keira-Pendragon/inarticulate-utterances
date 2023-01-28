@@ -18,8 +18,7 @@ public class Adverb extends Words
         boolean random = randomWord();
         int length = clusterLength(random);
         int[] pattern = verbPattern(random);
-        Word aWord = new Word(type, random, length, pattern);
-        return aWord;
+        return new Word(type, random, length, pattern);
     }
 
     public static String buildWord(Word aWord)
