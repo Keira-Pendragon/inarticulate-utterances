@@ -20,8 +20,7 @@ public class Noun extends Words
         int [] cGenus = selectComplexGenus(random);
         int genus = cGenus[0];
         int gMod = cGenus[1];
-        Word aWord = new Word(type, random, length, pattern, singular, genus, gMod);
-        return aWord;
+        return new Word(type, random, length, pattern, singular, genus, gMod);
     }
 
     public static Word detilWord(int type)
