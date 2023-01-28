@@ -34,7 +34,7 @@
     {
         boolean random = randomWord();
         String b12 = (random) ? cookedB12(selectDigitCount()) : requestB12ToTranslate();       
-        return new Word(type, random, b12);;
+        return new Word(type, random, b12);
     }
     
     public static String buildWord(Word aWord)
