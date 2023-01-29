@@ -34,136 +34,136 @@
     "mid_word": {
         "enabled": true,
         "follower": true,
-        "follows": ["k","ŋ","d","n","b","m","z","ʑ","v","ð","r","l"],
+        "follows": ["ŋ","d","n","b","m","z","ʑ","v","ð","r","l"],
         "leader": true,
-        "leads": ["ŋ","d","n","b","m","z","ʑ","v","ð","r","l","h"]
+        "leads": ["d","n","b","m","z","ʑ","v","ð","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["ŋ","m","z","ʑ","v","ð","r","l"],
+        "leader": true,
+        "leads": ["d","z","ʑ","ð"]
     }
 },
 {
     "id": "ŋ",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": false,
+        "follows": ["",""],
+        "leader": false,
+        "leads": ["",""]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
+        "enabled": true,
+        "follower": false,
+        "follows": ["",""],
+        "leader": true,
         "leads": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": false,
+        "follows": ["",""],
+        "leader": true,
+        "leads": ["k","g","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð"]
     }
 },
 {
     "id": "t",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["n","p","m","s","ɕ","f","θ"],
+        "leader": true,
+        "leads": ["k","s","ɕ","f","θ","r","l","h"]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","ŋ","n","p","m","s","ɕ","f","θ","r","l"],
+        "leader": true,
+        "leads": ["k","ŋ","n","p","m","s","ɕ","f","θ","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","ŋ","n","p","m","s","ɕ","f","θ","r","l"],
+        "leader": true,
+        "leads": ["s","ɕ","θ"]
     }
 },
 {
     "id": "d",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["z","ʑ"],
+        "leader": true,
+        "leads": ["v","ð","r","l","h"]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["g","ŋ","n","b","m","z","ʑ","v","ð","r","l"],
+        "leader": true,
+        "leads": ["g","n","b","m","z","ʑ","v","ð","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["g","ŋ","n","b","m","z","ʑ","v","ð","r","l"],
+        "leader": true,
+        "leads": ["g","b","z","ʑ","v","ð"]
     }
 },
 {
     "id": "n",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["s","ɕ","f","θ"],
+        "leader": false,
+        "leads": ["",""]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","g","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
+        "leader": true,
+        "leads": ["k","g","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["m","r","l"],
+        "leader": true,
+        "leads": ["k","g","t","d","p","b","s","ɕ","z","ʑ","f","v","θ","ð"]
     }
 },
 {
     "id": "p",
     "onset": {
-        "enabled": true/false,
+        "enabled": true,
         "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"],
+        "follows": ["s","ɕ","θ"],
         "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "leads": ["k","t","n","s","ɕ","f","θ","r","l","h"]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","t","n","m","s","ɕ","f","θ","r","l"],
+        "leader": true,
+        "leads": ["k","ŋ","t","n","m","s","ɕ","f","θ","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","l"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["n","m","s","ɕ","f","θ","r","l"],
+        "leader": true,
+        "leads": ["k","t","s","ɕ","θ"]
     }
 },
 {
