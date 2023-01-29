@@ -377,55 +377,55 @@
     "coda": {
         "enabled": true,
         "follower": true,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","ð","r","l"],
+        "follows": ["k","ŋ","t","n","p","m","s","ɕ","f","r","l"],
         "leader": true,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","ð","r","l"]
+        "leads": ["k","t","p","s","ɕ"]
     }
 },
 {
     "id": "ð",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l","h"],
+        "enabled": true,
+        "follower": true,
+        "follows": ["z","ʑ"],
         "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l","h"]
+        "leads": ["r","l"]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["g","ŋ","d","n","b","m","z","ʑ","v","r","l"],
+        "leader": true,
+        "leads": ["g","ŋ","d","n","b","m","z","ʑ","v","r","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","r","l"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["g","ŋ","d","n","b","m","z","ʑ","v","r","l"],
+        "leader": false,
+        "leads": ["",""]
     }
 },
 {
     "id": "r",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","g","t","d","p","b","s","ɕ","z","ʑ","f","v","θ","ð"],
+        "leader": false,
+        "leads": ["",""]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
+        "enabled": true,
+        "follower": true,
         "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l"],
+        "enabled": true,
+        "follower": false,
+        "follows": ["",""],
         "leader": true/false,
         "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l"]
     }
@@ -433,25 +433,25 @@
 {
     "id": "l",
     "onset": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","h"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","h"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["k","g","ŋ","p","b","s","ɕ","z","ʑ","f","v"],
+        "leader": false,
+        "leads": ["",""]
     },
     "mid_word": {
-        "enabled": true/false,
-        "follower": true/false,
+        "enabled": true,
+        "follower": true,
         "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r","h"]
     },
     "coda": {
-        "enabled": true/false,
-        "follower": true/false,
-        "follows": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r"],
-        "leader": true/false,
-        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","r"]
+        "enabled": true,
+        "follower": true,
+        "follows": ["r"],
+        "leader": true,
+        "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð"]
     }
 },
 {
