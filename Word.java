@@ -39,19 +39,18 @@ public class Word
      * Word Constructor for Pronouns
      * @param type
      * @param random
-     * @param pattern
      * @param singular
      * @param posessive
      * @param genus
      * @param count
      * @param role
      */
-    public Word(int type, boolean random, boolean singular, int posessive, int genus, int gMod, int count, int role)
+    public Word(int type, boolean random, boolean singular, int possessive, int genus, int gMod, int count, int role)
     {
         setType(type);
         setRandom(random);
         setSingular(singular);
-        setPossessive(posessive);
+        setPossessive(possessive);
         setGenus(genus, gMod);
         setCount(count);
         setRole(role);

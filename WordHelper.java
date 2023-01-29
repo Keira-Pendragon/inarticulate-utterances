@@ -32,6 +32,7 @@
       while(onceMore)
       {        
         aWord = detailWord();
+        //aWord = requestWords();
         wordCount = (!onlyOne(aWord.Type(), aWord.isRandom())) ? SUI.ValidateInt(word_count_range, word_count_prompt) : 1;
         for(int i = 0; i < wordCount; i++)
         {
@@ -106,5 +107,10 @@
         }
         return aWord;
     }
-        
+
+    private static Word requestWords()
+    {
+        int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());
+        return Wordz.requestWord(type);
+    }
 }

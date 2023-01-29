@@ -23,19 +23,6 @@ public class Noun extends Words
         return new Word(type, random, length, pattern, singular, genus, gMod);
     }
 
-    public static Word detilWord(int type)
-    {
-        boolean random = randomWord();
-        int length = clusterLength(random);
-        int[] pattern = nounPattern(random);
-        boolean singular = singularWord(random);
-        int [] cGenus = selectComplexGenus(random);
-        int genus = cGenus[0];
-        int gMod = cGenus[1];
-        Word aWord = new Word(type, random, length, pattern, singular, genus, gMod);
-        return aWord;
-    }
-
 
     public static String buildWord(Word aWord)
     {

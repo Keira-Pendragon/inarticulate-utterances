@@ -62,5 +62,4 @@ public class Adhesive extends Words
         return nCluster;
     }
     
-    
 }
