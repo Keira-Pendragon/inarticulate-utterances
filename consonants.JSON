@@ -148,7 +148,7 @@
         "enabled": true,
         "follower": true,
         "follows": ["s","ɕ","θ"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","t","n","s","ɕ","f","θ","r","l","h"]
     },
     "mid_word": {
@@ -218,9 +218,9 @@
     "id": "s",
     "onset": {
         "enabled": true,
-        "follower": true/false,
+        "follower": true,
         "follows": ["k","t","p","f","θ"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","ŋ","t","n","p","m","f","θ","r","l"]
     },
     "mid_word": {
@@ -268,7 +268,7 @@
         "enabled": true,
         "follower": true,
         "follows": ["g","d","n","b","v"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["g","d","n","b","m","v","ð","r","l"]
     },
     "mid_word": {
@@ -314,9 +314,9 @@
     "id": "f",
     "onset": {
         "enabled": true,
-        "follower": true/false,
+        "follower": true,
         "follows": ["k","t","s","ɕ","θ"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["r","l"]
     },
     "mid_word": {
@@ -354,7 +354,7 @@
         "enabled": true,
         "follower": true,
         "follows": ["g","d","n","b","m","ð","r","l"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["g","d","b","z","ʑ","ð"]
     }
 },
@@ -364,7 +364,7 @@
         "enabled": true,
         "follower": true,
         "follows": ["k","t","p","s","ɕ","f"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","ŋ","t","n","p","m","f","r","l"]
     },
     "mid_word": {
@@ -388,7 +388,7 @@
         "enabled": true,
         "follower": true,
         "follows": ["z","ʑ"],
-        "leader": true/false,
+        "leader": true,
         "leads": ["r","l"]
     },
     "mid_word": {
@@ -426,7 +426,7 @@
         "enabled": true,
         "follower": false,
         "follows": ["",""],
-        "leader": true/false,
+        "leader": true,
         "leads": ["k","g","ŋ","t","d","n","p","b","m","s","ɕ","z","ʑ","f","v","θ","ð","l"]
     }
 },
