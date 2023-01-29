@@ -1,0 +1,24 @@
+{
+    "id": "k",
+    "onset": {
+        "enabled": true,
+        "follower": true,
+        "follows": ["s","ɕ"],
+        "leader": true,
+        "leads": ["r","l"]
+    },
+    "mid_word": {
+        "enabled": true,
+        "can_follow": true,
+        "follows": ["s","ɕ"],
+        "can_lead": true,
+        "leads": ["consonant_id1","consonant_id2","consonant_id3"]
+    },
+    "coda": {
+        "enabled": true,
+        "can_follow": true,
+        "follows": ["consonant_id1","consonant_id2","consonant_id3"],
+        "can_lead": true,
+        "leads": ["consonant_id1","consonant_id2","consonant_id3"]
+    }
+}
