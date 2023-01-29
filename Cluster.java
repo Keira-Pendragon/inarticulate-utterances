@@ -13,6 +13,7 @@ public class Cluster
  
     private static final String[] all_consonant = {"n", "d", "t", "h", "r", "l", NGEA, "g", "k", "m", "b", "p", "f", "v", THEA, ZHEA, "z", SHEA, "s"};
     
+    // "k", "g", "ŋ", "t", "d", "n", "p", "b", "m", "s", "ɕ", "z", "ʑ", "f", "v", "θ", "ð", "r", "l", "h"
     private static final String[] os_cluster = {"n", "d", "t", "h", "r", "l", "ŋ", "g", "k", "m", "b", "p", "f", "v", "θ", "ʑ", "z", "ɕ", "s"};
     private static final String[] om_cluster = {"sn", "dr", "tr", "h", "r", "l", "ŋ", "gr", "kr", "m", "br", "pr", "fr", "vl", "θr", "ʑr", "zr", "ɕr", "sr"};
     private static final String[] ol_cluster = {"n", "zdr", "str", "h", "r", "l", "ŋ", "zgr", "skr", "m", "zbr", "spr", "sfr", "zvl", "sθr", "ʑ", "z", "ɕ", "s"};
