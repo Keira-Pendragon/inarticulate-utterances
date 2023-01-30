@@ -1,27 +1,25 @@
 public class Consonant 
-{
-    private final String THEA = "\u03B8";
-    private final String ZHEA = "\u02E2";
-    private final String SHEA = "\u02E9";
-    private final String NGEA = "\u014B";
-    private final String[] all_consonant = {"n", "d", "t", "h", "r", "l", NGEA, "g", "k", "m", "b", "p", "f", "v", THEA, ZHEA, "z", SHEA, "s"};
-    
+{   
     private final int ONSET = 0;
     private final int MIDWORD = 1;
     private final int CODA = 2;
     
-    private boolean[] cluster_position_enabled;
-    private boolean[] procedeable;
-    private boolean[] followable;
-    private String[][] consonants_preceeding;
-    private String[][] consonants_following;
+    private boolean[] position_enabled;
+    private boolean[] leader;
+    private boolean[] follower;
+    private String[][] leads;
+    private String[][] follows;
     
     
     private String id;
 
-    public Consonant()
+    public Consonant(String name, boolean[] locEnabled, boolean[] isLeader, boolean[] isFollower, String[][] leadsWhat, String[][] followsWhat)
     {
-
+        position_enabled = locEnabled;
+        leader = isLeader;
+        follower = isFollower;
+        leads = leadsWhat;
+        follows = followsWhat;         
     }
     
     public boolean ClusterEnabled(int which)
