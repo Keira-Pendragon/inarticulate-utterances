@@ -94,10 +94,13 @@ public class Cluster
     {
         "skr", "str", "spr", "skl", "spl", SHEA + "kr", SHEA + "tr", SHEA + "pr", SHEA + "kl", SHEA + "pl"
     };
+    private static final String[][] onset_voiceless = {ovl_s, ovl_m, ovl_l};
 
     private static final String[] on_s = {NGEA, "n", "m", "h", "l", "r"}; 
     private static final String[] on_m = {NGEA, NGEA + "r", NGEA + "l", "n", "m", "h", "l", "r"}; 
     private static final String[] on_l = {NGEA + "r", NGEA + "l"}; 
+
+    private static final String[][] onset_neutral = {on_s, on_m, on_l};
 
     private static final String[] ov_s = {"g", "d", "b", "z", ZHEA, "v", THAG};
     private static final String[] ov_m = 
@@ -111,7 +114,9 @@ public class Cluster
     { 
         "zgr", "zdr", "zbr", "zgl", "zbl", ZHEA + "gr", ZHEA + "dr", ZHEA + "br", ZHEA + "gl", ZHEA + "bl"
     }; 
+    private static final String[][] onset_voiced = {ov_s, ov_m, ov_l};
 
+    private static final String[][][] onset_clusters = {onset_voiceless, onset_neutral, onset_voiced};
 
     private static final String[] mvl_s = {"k", "t", "p", "s", SHEA, "f", THEA}; 
     private static final String[] mvl_m = 
@@ -126,7 +131,6 @@ public class Cluster
         "nt", "np", "ns", "n" + SHEA, "nf", "n" + THEA, "mk", "mt", "mp", "ms", "m" + SHEA, "mf", "m" + THEA, "lk", "lt", "lp", "ls", 
         "l" + SHEA, "lf", "l" + THEA, "rk", "rt", "rp", "rs", "r" + SHEA, "rf", "r" + THEA
     };
-
     private static final String[] mvl_l = 
     {
         "ktr", "kpr", "ksr", "kɕr", "kfr", "k " + THEA + "r", "tkr", "tpr", "tsr", "tɕr", "tfr", "t " + THEA + "r", "pkr", "ptr", "psr", 
@@ -135,6 +139,7 @@ public class Cluster
         THEA + "sr", THEA + "ɕr", "kpl", "ksl", "kɕl", "kfl", "tsl", "tfl", "pkl", "psl", "pɕl", "pfl", "skl", "stl", "spl", "sfl", 
         SHEA + "kl", SHEA + "tl", SHEA + "fl", "fkl", "ftl", "fsl", "fɕl", THEA + "kl", THEA + "sl"
     };
+    private static final String[][] midword_voiceless = {mvl_s, mvl_m, mvl_l};
 
     private static final String[] mn_s = {NGEA, "n", "m", "h", "l", "r"};
     private static final String[] mn_m = 
@@ -147,6 +152,7 @@ public class Cluster
         "r" + NGEA, "rn", "rm", "rh", "rl", "l" + NGEA, "ln", "lm", "lh", "lr", "n" + NGEA, "nm", "nh", "nl", "nr", "m" + NGEA, "mn", 
         "mh", "ml", "mr"
     };
+    private static final String[][] midword_neutral = {mn_s, mn_m, mn_l};
 
     private static final String[] mv_s = {"g", "d", "b", "z", ZHEA, "v", THAG};
     private static final String[] mv_m = 
@@ -170,6 +176,8 @@ public class Cluster
         "gbl", "gzl", "g " + ZHEA + "l", "gvl", "dzl", "dvl", "bgl", "bzl", "b " + ZHEA + "l", "bvl", "zgl", "zdl", "zbl", 
         "zvl", ZHEA + "gl", ZHEA + "dl", ZHEA + "vl", "vgl", "vdl", "vzl", "v " + ZHEA + "l", THAG + "gl", THAG + "zl" 
     };
+    private static final String[][] midword_voiced = {mv_s, mv_m, mv_l};
+    private static final String[][][] midowrd_clusters = {midword_voiceless, midword_neutral, midword_voiced};
 
     private static final String[] cvl_s = {"k", "t", "p", "s", SHEA, "f", THEA};
     private static final String[] cvl_m = 
@@ -188,14 +196,14 @@ public class Cluster
         NGEA + "f", NGEA + THEA, "nk", "nt", "np", "ns", "n" + SHEA, "nf", "n" + THEA, "mk", "mt", "mp", "ms", "m" + SHEA, "mf", 
         "m" + THEA, "lk", "lt", "lp", "ls", "l" + SHEA, "lf", "l" + THEA, "rk", "rt", "rp", "rs", "r" + SHEA, "rf", "r" + THEA 
     };
+    private static final String[][] coda_voiceless = {cvl_s, cvl_m, cvl_l};
 
 
 
     private static final String[] cn_s = {NGEA, "n", "m", "l", "r"};
     private static final String[] cn_m = {NGEA, "n", "m", "l", "ln", "lm", "r", "rn", "rm", "rl"};
     private static final String[] cn_l = {"ln", "lm", "rn", "rm", "rl"};
-
-
+    private static final String[][] coda_neutral = {cn_s, cn_m, cn_l};
 
     private static final String[] cv_s = {"g", "d", "b", "z", ZHEA, "v", THAG};
     private static final String[] cv_m = 
@@ -215,7 +223,9 @@ public class Cluster
         NGEA + THAG, "ng", "nd", "nb", "nz", "n" + ZHEA, "nv", "n" + THAG, "mg", "md", "mb", "mz", "m" + ZHEA, "mv", "m" + THAG, 
         "lg", "ld", "lb", "lz", "l" + ZHEA, "lv", "l" + THAG, "rg", "rd", "rb", "rz", "r" + ZHEA, "rv", "r" + THAG
     };
+    private static final String[][] coda_voiced = {cv_s, cv_m, cv_l};
 
+    private static final String[][][] coda_clusters = {coda_voiceless, coda_neutral, coda_voiced};
     
 
  
@@ -376,4 +386,4 @@ public class Cluster
         return spare_key[Dice.rand(0, spare_key.length -1)];
     }
     
-
+}
