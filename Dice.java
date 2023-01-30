@@ -15,7 +15,7 @@
  
      /**
       * returns a random within a range given by an array, inclusive.
-      * @param range
+      * @param range an int array containing the min then the max inclusive values.
       * @return
       */
      public static int rRand(int[] range)
