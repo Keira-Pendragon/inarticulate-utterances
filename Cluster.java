@@ -118,7 +118,7 @@ public class Cluster
         "zvl", ZHEA + "gl", ZHEA + "dl", ZHEA + "vl", "vgl", "vdl", "vzl", "v " + ZHEA + "l", THAG + "gl", THAG + "zl" 
     };
     private static final String[][] midword_voiced = {mv_s, mv_m, mv_l};
-    private static final String[][][] midowrd_clusters = {midword_voiceless, midword_neutral, midword_voiced};
+    private static final String[][][] midword_clusters = {midword_voiceless, midword_neutral, midword_voiced};
 
     private static final String[] cvl_s = {"k", "t", "p", "s", SHEA, "f", THEA};
     private static final String[] cvl_m = 
@@ -329,14 +329,14 @@ public class Cluster
     
     protected static String specializedOnsetCluster(int length, int style)
     {
-      return retrieveCluster(onset_clusters[style][length][Dice.rand(0, onset_clusters[style][length].length()-1)])
+      return onset_clusters[style][length][Dice.rand(0, onset_clusters[style][length].length-1)];
     }
     protected static String specializedMidWordCluster(int length, int style)
     {
-      return retrieveCluster(midword_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length()-1)])
+      return midword_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length-1)];
     }    
     protected static String specializedCodaCluster(int length, int style)
     {
-      return retrieveCluster(coda_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length()-1)])
+      return coda_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length-1)];
     }
 }

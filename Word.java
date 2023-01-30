@@ -34,6 +34,7 @@ public class Word
     private String english_translation;
     private String whole_digits;
     private String spare_digits;
+    private int consonant_style;
 
     /**
      * Word Constructor for Pronouns
@@ -54,6 +55,7 @@ public class Word
         setGenus(genus, gMod);
         setCount(count);
         setRole(role);
+        setConsonantStyle(Dice.rand(0, 2));
     }
 
     /**
@@ -74,6 +76,7 @@ public class Word
         setPattern(pattern);
         setSingular(singular);
         setGenus(genus, gMod);
+        setConsonantStyle(Dice.rand(0, 2));
     }
 
     /**
@@ -93,6 +96,7 @@ public class Word
         setPattern(pattern);
         setMood(mood);
         setTense(tense);
+        setConsonantStyle(Dice.rand(0, 2));
     }
 
     /**
@@ -108,6 +112,7 @@ public class Word
         setRandom(random);
         setLength(length);
         setPattern(pattern);
+        setConsonantStyle(Dice.rand(0, 2));
     }
 
     /**
@@ -122,6 +127,7 @@ public class Word
         setType(type);
         setRandom(random);
         setbase12Value(base12Dig);
+        setConsonantStyle(Dice.rand(0, 2));
     }
 
     /**
@@ -133,6 +139,7 @@ public class Word
         setType(DEF_TYPE);
         setLength(DEF_LEN);
         setPattern(Def_Pattern);
+        setConsonantStyle(Dice.rand(0, 2));
     }
     
     /**
@@ -142,8 +149,9 @@ public class Word
     {
         setType(type);
         setRandom(random);
+        setConsonantStyle(Dice.rand(0, 2));
     }
-    
+
     private void setType(int type)
     {
         word_type = type;
@@ -164,6 +172,15 @@ public class Word
     }
 
 
+    
+    private void setConsonantStyle(int style)
+    {
+        consonant_style = style;
+    }
+    public int ConsonantStyle()
+    {
+        return consonant_style;
+    }
 
     private void setLength(int length)
     {
