@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class SUI 
 {
 
-    private static final int MIN = 0;
-    private static final int MAX = 1;
+    private static final int MINDEX = 0;
+    private static final int MAXDEX = 1;
     private static final int MAXDIGITS = 36;
     //private static final int MAXMIXEDDIGITS = MAXDIGITS * 2;
     /**
@@ -77,7 +77,7 @@ public class SUI
     {
         selectionPrompt(request);
         int input = getIntifiedUserInput();
-        return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
+        return (input >= range[MINDEX] && input <= range[MAXDEX]) ? input : (input > range[MINDEX]) ? range[MINDEX] : range[MAXDEX];
     }
     /**
      * 
@@ -86,7 +86,7 @@ public class SUI
     {
         selectionPrompt(request);
         int input = getIntifiedUserInput() - 1;
-        return (input >= range[MIN] && input <= range[MAX]) ? input : (input > range[MIN]) ? range[MIN] : range[MAX];
+        return (input >= range[MINDEX] && input <= range[MAXDEX]) ? input : (input > range[MINDEX]) ? range[MINDEX] : range[MAXDEX];
     }
 
     /**

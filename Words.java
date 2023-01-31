@@ -8,21 +8,6 @@
 
 public class Words extends Cluster
 {
-  protected static final int NUMBER = 0;
-  protected static final int PRONOUN = 1;
-  protected static final int NOUN = 2;
-  protected static final int ADJECTIVE = 3;
-  protected static final int VERB = 4;
-  protected static final int ADVERB = 5;
-  protected static final int ADHESIVE = 6;
-
-  protected static final int ONSET = 0;
-  protected static final int VOWEL = 1;
-  protected static final int MIDCONST = 2;
-  protected static final int KEYMID = 3;
-  protected static final int CODA = 4;
-  protected static final int ENDKEY = 5;
-
   protected static final int[] a0_pattern = {ENDKEY};
   protected static final int[] a1_pattern = {ONSET, ENDKEY};
   protected static final int[] a2_pattern = {VOWEL, MIDCONST, ENDKEY};
