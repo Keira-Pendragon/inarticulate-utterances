@@ -8,17 +8,17 @@
 
 public class Word
 {
-    private static final int DEF_LEN = 1;
-    private static final int DEF_TYPE = 6;
-    private static final int DEF_CLUS = 5;
-    private static final int[] Def_Pattern = {DEF_CLUS};
+    private static final int DEFAULT_LENGTH = 1;
+    private static final int DEFAULT_TYPE = 6;
+    private static final int DEFAULT_CLUSTER = 5;
+    private static final int[] Default_Pattern = {DEFAULT_CLUSTER};
 
     private int word_type;
-    private boolean word_random;
+    private boolean word_is_random;
     private int word_length;
     private int consonant_style;
     private int [] word_pattern;
-    private boolean word_singular;
+    private boolean word_is_singular;
     private int word_posessive;
     private int word_count;
     private int word_role;
@@ -36,121 +36,12 @@ public class Word
     private String whole_digits;
     private String spare_digits;
 
-    /**
-     * Word Constructor for Pronouns
-     * @param type
-     * @param random
-     * @param singular
-     * @param posessive
-     * @param genus
-     * @param count
-     * @param role
-     */
-    public Word(int type, boolean random, boolean singular, int possessive, int genus, int gMod, int count, int role)
+
+    public Word()
     {
-        setType(type);
-        setRandom(random);
-        setSingular(singular);
-        setPossessive(possessive);
-        setGenus(genus, gMod);
-        setCount(count);
-        setRole(role);
-        setConsonantStyle(Dice.rand(0, 2));
+
     }
 
-    /**
-     * Constructor for Nouns
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
-     * @param singular
-     * @param genus
-     * @param gMod
-     */
-    public Word(int type, boolean random, int length, int[] pattern, boolean singular, int genus, int gMod)
-    {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
-        setSingular(singular);
-        setGenus(genus, gMod);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-
-    /**
-     * Word constructor for Verbs
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
-     * @param mood
-     * @param tense
-     */
-    public Word(int type, boolean random, int length, int[] pattern, int mood, int tense)
-    {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
-        setMood(mood);
-        setTense(tense);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-
-    /**
-     * Word constructor for Adverbs, Adjectives, and Adhesive words
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
-     */
-    public Word(int type, boolean random, int length, int[] pattern)
-    {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-
-    /**
-     * Word constructor for numbers
-     * @param type
-     * @param random
-     * @param digits
-     * @param base12Dig
-     */
-    public Word(int type, boolean random, String base12Dig)
-    {
-        setType(type);
-        setRandom(random);
-        setbase12Value(base12Dig);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-
-    /**
-    * "Dummy" consructor to avoid spitting exceptions by accident.
-    */
-    public Word(boolean random)
-    {
-        setRandom(random);
-        setType(DEF_TYPE);
-        setLength(DEF_LEN);
-        setPattern(Def_Pattern);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-    
-    /**
-    * Constructor for completely random words of a set type
-    */
-    public Word(int type, boolean random)
-    {
-        setType(type);
-        setRandom(random);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
 
     private void setType(int type)
     {
@@ -164,11 +55,11 @@ public class Word
 
     private void setRandom(boolean random)
     {
-        word_random = random;
+        word_is_random = random;
     }
     public boolean isRandom()
     {
-        return word_random;
+        return word_is_random;
     }
 
 
@@ -206,11 +97,11 @@ public class Word
 
     private void setSingular(boolean singular)
     {
-        word_singular = singular;
+        word_is_singular = singular;
     }
     public boolean isSingular()
     {
-        return word_singular;
+        return word_is_singular;
     }
 
 
