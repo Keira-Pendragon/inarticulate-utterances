@@ -16,6 +16,7 @@ public class Word
     private boolean style_is_random;
     
     private boolean value_is_random;
+    private boolean digit_count_is_random;
     
     private boolean tense_is_random;
     private boolean mood_is_random;
@@ -37,7 +38,7 @@ public class Word
     private int [] word_pattern;
     
     private boolean word_is_singular;
-    private int posessive_style;
+    private int possessive_style;
     private int mention_count;
     private int scope_role;
     private int[] word_genus;
@@ -45,7 +46,7 @@ public class Word
     private int verb_mood;
     private int verb_tense;
     
-    private int [] digit_count;
+    private int digit_count;
     private String word_base12Digits;
     private String[] digit_value;
     private char delimiter;
@@ -57,8 +58,7 @@ public class Word
      */
     public Word()
     {
-        all_is_random = true;
-        type_is_random = true;
+        setFullRandom(true);
         setType(true);
     }
 
@@ -106,7 +106,7 @@ public class Word
         setType(type);
         setPattern(pattern);
         setStyle(style);
-        setLength(length);
+        setClusterLength(length);
     }
 
     /**
@@ -125,10 +125,10 @@ public class Word
         setType(type);
         setPattern(pattern);
         setStyle(style);
-        setLength(length);
+        setClusterLength(length);
         setGenus(genus);
-        setSingularity(singularity);
-        setPossessive(possessive);
+        setIsSingular(singularity);
+        setPossessiveness(possessive);
     }
 
     /**
@@ -140,18 +140,18 @@ public class Word
      * @param singularity
      * @param genus
      */
-    public Word(int type, int role, int posessive, int mention, boolean[] singularity, int[] genus)
+    public Word(int type, int role, int possessive, int mention, boolean[] singularity, int[] genus)
     {
         setType(type);
-        setRole(role);
-        setMention(mention);
+        setScopeRole(role);
+        setMentionCount(mention);
         setGenus(genus);
-        setSingularity(singularity);
-        setPossessive(possessive);
+        setIsSingular(singularity);
+        setPossessiveness(possessive);
     }
 
     /**
-     * Constructor for Pronouns with possibly random components.
+     * Constructor for Verbs with possibly random components.
      * @param type
      * @param mood
      * @param tense
@@ -164,7 +164,7 @@ public class Word
         setType(type);
         setPattern(pattern);
         setStyle(style);
-        setLength(length);
+        setClusterLength(length);
         setMood(mood);
         setTense(tense);
     }
@@ -184,11 +184,11 @@ public class Word
             singularity_is_random = true;
             possession_is_random = true;
             mention_count_is_random = true;
-            role_is_random;
+            role_is_random = true;
         }
     }
     
-    private boolean FullRandom()
+    public boolean FullRandom()
     {
         return all_is_random;
     }
@@ -203,10 +203,10 @@ public class Word
         word_type = (type == RANDOM) ? setType(true) : type;
     }
 
-    private void setType(boolean random)
+    private int setType(boolean random)
     {
-        word_type = Dice.rand(0, 6);
         setTypeRandomness(true);
+        return Dice.rand(0, 6);
     }
         
     public int Type()
@@ -218,7 +218,7 @@ public class Word
     {
         type_is_random = random;
     }
-    private boolean TypeIsRandom()
+    public boolean TypeIsRandom()
     {
         return type_is_random;
     }
@@ -310,7 +310,7 @@ public class Word
     {
         mention_count_is_random = random;
     }
-    private boolean CountIsRandom()
+    private boolean MentionCountIsRandom()
     {
         return mention_count_is_random;
     }
@@ -322,6 +322,19 @@ public class Word
     private boolean RoleIsRandom()
     {
         return role_is_random;
+    }
+    public void DefineWord(String siathael, String translation)
+    {
+        setSiathaelWord(siathael);
+        setTranslation(translation);
+    }
+    public String TheWord()
+    {
+        return siathael_word;
+    }
+    public String Translation()
+    {
+        return english_translation;
     }
 
     private void setSiathaelWord(String word)
@@ -346,7 +359,7 @@ public class Word
     }
     
     
-    private void setConsonantStyle(int style)
+    private void setStyle(int style)
     {
         setStyleRandom(style == RANDOM);
         consonant_style = style;
@@ -366,6 +379,12 @@ public class Word
     {
         return (PatternIsRandom()) ? randomPattern() : word_pattern;
     }
+
+    private int[] randomPattern()
+    {
+        int[] p = {0,0};
+        return p;
+    }
     
     private void setIsSingular(boolean [] singular)
     {
@@ -379,23 +398,23 @@ public class Word
 
     private void setPossessiveness(int possessiveness)
     {
-        posessive_style = possessiveness;
-        setPossessiveRandom(possessiveness == RANDOM);
+        possessive_style = possessiveness;
+        setPossessionRandom(possessiveness == RANDOM);
     }
     public int PossessionStyle()
     {
-        return (PossessiveIsRandom())? Dice.Rand(0, 5) : possessive_style;
+        return (PossessivenessIsRandom())? Dice.rand(0, 5) : possessive_style;
     }
     
 
     private void setMentionCount(int count)
     {
         mention_count = count;
-        setMentionRandom(count == RANDOM);
+        setMentionCountRandom(count == RANDOM);
     }
     public int MentionCount()
     {
-        return(MentionCountIsRandom())? Dice.(1, 11): mention_count;
+        return(MentionCountIsRandom())? Dice.rand(1, 11): mention_count;
     }
     
     private void setScopeRole(int role)
@@ -421,6 +440,8 @@ public class Word
     
     private int[] randomGenus()
     {
+        int[] g = {0,0};
+        return g;
     }
     
     private void setMood(int mood)
@@ -449,9 +470,18 @@ public class Word
     {
         digit_count = count;
         setDigitCountRandom(count == RANDOM);
+        setValueRandom(true);
     }
-    
-    private void DigitCount()
+    private void setDigitCountRandom(boolean random)
+    {
+        digit_count_is_random = random;
+    }
+    private boolean DigitCountIsRandom()
+    {
+        return digit_count_is_random;
+    }
+
+    public int DigitCount()
     {
         return (DigitCountIsRandom()) ? Dice.rand(1, 66) : digit_count;
     }

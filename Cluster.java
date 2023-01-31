@@ -8,7 +8,6 @@
 
 public class Cluster
 {  
-
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;
     protected static final int NOUN = 2;
@@ -277,9 +276,9 @@ public class Cluster
     
     protected static String genusCluster(Word aWord)
     {
-        String cluster = genus_primary_vowels[aWord.Genus()];
+        String cluster = genus_primary_vowels[aWord.Genus()[0]];
         int mod = Dice.rand(0, genus_mod_vowels.length -1);
-        cluster += (mod == aWord.Genus()) ? "" : genus_mod_vowels[mod];
+        cluster += (mod == aWord.Genus()[1]) ? "" : genus_mod_vowels[mod];
         return cluster;
     }
 

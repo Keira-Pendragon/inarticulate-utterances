@@ -28,31 +28,41 @@ public class Wordz extends Words
         return whatWord(type, random, length, b12Value, pattern, possessive, role, count, singular, genus, mood, tense);
     }
 
+    /**
+     * TODO: Fix this better.
+     * @param type
+     * @param random
+     * @param length
+     * @param b12Value
+     * @param pattern
+     * @param possessive
+     * @param role
+     * @param count
+     * @param singular
+     * @param genus
+     * @param mood
+     * @param tense
+     * @return
+     */
     private static Word whatWord(int type, boolean random, int length, String b12Value, int[] pattern, int possessive, int role, int count, boolean singular, int[] genus, int mood, int tense)
     {
         Word aWord;
         switch (type) 
         {
             case NOUN:
-                aWord = new Word(type, random, length, pattern, singular, genus[0], genus[1]);
+                aWord = new Word(type, pattern, -1, length, genus, new boolean[] {false, singular}, possessive);
                 break;
             case PRONOUN:
-                aWord = new Word(type, random, singular, possessive, genus[0], genus[1], count, role);
-                break;
-            case ADJECTIVE:
-                aWord = new Word(type, random, length, pattern);
+                aWord = new Word(type, role, possessive, count, new boolean[] {false, singular}, genus);
                 break;
             case VERB:
-                aWord = new Word(type, random, length, pattern, mood, tense);
-                break;
-            case ADVERB:
-                aWord = new Word(type, random, length, pattern);
+                aWord = new Word(type, mood, tense, pattern, length, -1);
                 break;
             case NUMBER:
-                aWord = new Word(type, random, b12Value);
+                aWord = new Word(type, b12Value);
                 break;        
             default:
-                aWord = new Word(type, random, length, pattern);
+                aWord = new Word(type, pattern, -1, length);
                 break;
         }
         return aWord;
@@ -99,17 +109,18 @@ public class Wordz extends Words
     private static String nextCluster(int cluster, Word w)
     {
         String c = "";
-        int length = w.clusterLength();
+        int length = w.ClusterLength();
+        int style = w.ConsonantStyle();
         switch (cluster) 
         {
             case ONSET:
-                c = onsetCluster(length);
+                c = OnsetCluster(length, style);
                 break;
             case MIDCONST:
-                c = midConstCluster(length);
+                c = MidWordCluster(length, style);
                 break;
             case CODA:
-                c = codaCluster(length);
+                c = CodaCluster(length, style);
                 break;
             case VOWEL:
                 c = vowelCluster(length);
@@ -139,7 +150,7 @@ public class Wordz extends Words
                 c = spareVowel();
                 break;        
             default:
-                c = vowelCluster(w.clusterLength());
+                c = vowelCluster(w.ClusterLength());
                 break;
         }
         return c;
@@ -164,7 +175,7 @@ public class Wordz extends Words
                 c = spareVowel();
                 break;
             default:
-                c = vowelCluster(w.clusterLength());
+                c = vowelCluster(w.ClusterLength());
                 break;
         }
         return c;
@@ -173,8 +184,8 @@ public class Wordz extends Words
 
     public static String buildPronoun(Word aWord)
     {        
-        return possessivePrefix(aWord.Possessiveness()) + pronounRole(aWord.ConvoRole()) + genusCluster(aWord) 
-                + digitValue(aWord.mentionCount()) + ((aWord.isSingular()) ? "" : pluralSuffix());
+        return possessivePrefix(aWord.PossessionStyle()) + pronounRole(aWord.Role()) + genusCluster(aWord) 
+                + digitValue(aWord.MentionCount()) + ((aWord.isSingular()) ? "" : pluralSuffix());
     }
 
 /**
