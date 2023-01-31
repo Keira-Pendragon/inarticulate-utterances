@@ -8,6 +8,7 @@
 
 public class Word
 {  
+    private final int RANDOM = -1;
     private boolean type_is_random;
     private boolean all_is_random;
     private boolean pattern_is_random;
@@ -237,16 +238,21 @@ public class Word
     {
         english_translation = translation;
     }
+    
+    
     private void setClusterLength(int length)
     {
+        setLengthRandom(length == RANDOM);
         word_length = length;
     }
     private void setConsonantStyle(int style)
     {
+        setStyleRandom(style == RANDOM);
         consonant_style = style;
     }
     private void setPattern(int[] pattern)
     {
+        setPatternRandom(pattern[0] == RANDOM);
         word_pattern = pattern;
     }
     
@@ -273,7 +279,7 @@ public class Word
 
     private void setGenus(int[] genus)
     {
-
+        word_genus = genus;
     }
     
     private void setMood(int mood)
