@@ -107,9 +107,9 @@ public class Consonant
     public String getCluster(int length, int position)
     {
         boolean spareLeads = Dice.CoinToss();
-        String o = (Procedeable(position) && (length == 3 || (length == 2 && spareLeads))? consonants_proceding[position][Dice.rand(0, consonants_proceding[position].length() -1)] : "";
+        String o = (Procedeable(position) && (length == 3 || (length == 2 && spareLeads)))? consonants_proceding[position][Dice.rand(0, consonants_proceding[position].length() -1)] : "";
         String m = id;
-        String c = (Followable(position) && (length == 3 || (length == 2 && !spareLeads))? consonants_following[position][Dice.rand(0, consonants_following[position].length() -1)] : "";
+        String c = (Followable(position) && (length == 3 || (length == 2 && !spareLeads)))? consonants_following[position][Dice.rand(0, consonants_following[position].length() -1)] : "";
         return o + m + c;            
     }
            
