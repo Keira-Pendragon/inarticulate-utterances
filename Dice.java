@@ -26,7 +26,7 @@
  
      /**
       * rand(int, int) inclusive bound random numbers
-      * @param min
+      * @param min smallest inclusive value allowed
       * @param max
       * @return
       */
