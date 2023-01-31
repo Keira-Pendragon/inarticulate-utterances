@@ -65,6 +65,11 @@ public class Word
     
     private void setType(int type)
     {
+        
+    }
+    private void setType(boolean random)
+    {
+        word_type = Dice.rand(0, 6);
     }
         
     public int Type()
