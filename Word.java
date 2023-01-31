@@ -16,6 +16,7 @@ public class Word
     private int word_type;
     private boolean word_random;
     private int word_length;
+    private int consonant_style;
     private int [] word_pattern;
     private boolean word_singular;
     private int word_posessive;
@@ -34,7 +35,6 @@ public class Word
     private String english_translation;
     private String whole_digits;
     private String spare_digits;
-    private int consonant_style;
 
     /**
      * Word Constructor for Pronouns
