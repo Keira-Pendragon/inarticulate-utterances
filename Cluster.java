@@ -8,6 +8,10 @@
 
 public class Cluster
 {  
+    /**
+     * I'd prefer C++ enums, but this will work as a bandage for now...
+     */
+    // Types of words
     protected static final int NUMBER = 0;
     protected static final int PRONOUN = 1;
     protected static final int NOUN = 2;
@@ -17,16 +21,17 @@ public class Cluster
     protected static final int ADHESIVE = 6;
 
 
+    // types of consonants kinda
     protected static final int VOICED = 0;
     protected static final int NEUTRAL = 1;
     protected static final int VOICELESS = 2;
     
-    
+    // cluster length options
     protected static final int SHORT = 0;
     protected static final int MEDIUM = 1;
     protected static final int LONG = 2;
     
-    
+    // Cluster types
     protected static final int ONSET = 0;
     protected static final int MIDCONST = 1;
     protected static final int CODA = 2;
@@ -36,16 +41,18 @@ public class Cluster
     protected static final int SPAREKEY = 6;
     protected static final int ADKEY = 7;
 
-    
+    // reduce magic numbers, where is the min and max index stored in a range array~
     protected static final int MINDEX = 0;
     protected static final int MAXDEX = 1;
 
+    // work in codespaces for the symbols I want
     private static final String THEA = "\u03B8";
     private static final String ZHEA = "\u0291";
     private static final String SHEA = "\u0255";
     private static final String NGEA = "\u014B";
     private static final String THAG = "\u00F0";
 
+    // 
     private static final String[] ovl_s = {"k", "t", "p", "s", SHEA, "f", THEA}; 
     private static final String[] ovl_m = 
     {
@@ -238,47 +245,82 @@ public class Cluster
         
     }
 
-    public static String clusterDC()
-    {
-        return THEA + " " + ZHEA + " " + NGEA + " " + SHEA  + " " + THAG;
-    }
-
+    /**
+     * 
+     * @param ofThree
+     * @param magnitude
+     * @return
+     */
     protected static String digitCoda(int ofThree, int magnitude)
     {
         return digit_magnitude[ofThree][magnitude];
     }
-    
+    /**
+     * 
+     * @param type
+     * @return
+     */
     protected static String digitKey(int type)
     {
         return digit_class[type];
     }
 
+    /**
+     * 
+     * @param value
+     * @return
+     */
     protected static String digitValue(int value)
     {
         return tally_consonants[value];
     }
+    /**
+     * 
+     * @param index
+     * @return
+     */
     protected static String lazyDigit(int index)
     {
         return lazy_digits[index];
     }
 
+    /**
+     * 
+     * @param loc
+     * @return
+     */
     protected static String digitDelimiter(int loc)
     {
         return digit_delimiter[loc];
     }
     
+    /**
+     * 
+     * @param cluster
+     * @param index
+     * @return
+     */
     protected static String retrieveCluster(String[] cluster, int index)
     {
         return cluster[index];
     }
 
 
+    /**
+     * 
+     * @param length
+     * @return
+     */
     protected static String vowelCluster(int length)
     {
         return retrieveCluster(Vowel_Cluster[length], Dice.rand(0, Vowel_Cluster[length].length -1));
     }
 
-    
+    /**
+     * 
+     * @param aWord
+     * @return
+     */
     protected static String genusCluster(Word aWord)
     {
         String cluster = genus_primary_vowels[aWord.PrimaryGenus()];
@@ -291,49 +333,99 @@ public class Cluster
         return cluster;
     }
 
+    /**
+     * 
+     * @param tense
+     * @return
+     */
     protected static String tenseVowel(int tense)
     {
         return verb_tense[tense];
     }
 
+    /**
+     * 
+     * @param mood
+     * @return
+     */
     protected static String moodVowel(int mood)
     {
         return verb_mood[mood];
     }
 
+    /**
+     * 
+     * @param mine
+     * @return
+     */
     protected static String possessivePrefix(int mine)
     {
         return posession_vowels[mine];
     }
 
+    /**
+     * 
+     * @param who
+     * @return
+     */
     protected static String pronounRole(int who)
     {
         return pronoun_role[who];
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static String pluralSuffix()
     {
         return plural_suffix;
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static String adVowel()
     {
         return ad_key[Dice.rand(0, ad_key.length -1)];
     }
     
+    /**
+     * 
+     * @return
+     */
     protected static String spareVowel()
     {
         return spare_key[Dice.rand(0, spare_key.length -1)];
     }
     
+    /**
+     * 
+     * @param length
+     * @param style
+     * @return
+     */
     protected static String OnsetCluster(int length, int style)
     {
       return onset_clusters[style][length][Dice.rand(0, onset_clusters[style][length].length-1)];
     }
+    /**
+     * 
+     * @param length
+     * @param style
+     * @return
+     */
     protected static String MidWordCluster(int length, int style)
     {
       return midword_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length-1)];
     }    
+    /**
+     * 
+     * @param length
+     * @param style
+     * @return
+     */
     protected static String CodaCluster(int length, int style)
     {
       return coda_clusters[style][length][Dice.rand(0, coda_clusters[style][length].length-1)];

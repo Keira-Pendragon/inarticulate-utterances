@@ -17,6 +17,9 @@ public class SentenceHelper extends WordHelper
 
   }
 
+  /**
+   * 
+   */
   public static void helperLoop()
   {
     boolean onceMore = true;
@@ -35,6 +38,10 @@ public class SentenceHelper extends WordHelper
     }
   }
 
+  /**
+   * 
+   * @return
+   */
   private static Sentence detailSentence()
   {
     int wordCount = SUI.ValidateInt(word_count_range, word_count_prompt);
@@ -46,6 +53,11 @@ public class SentenceHelper extends WordHelper
     return sayWhat;
   }
 
+  /**
+   * 
+   * @param sayWhat
+   * @return
+   */
   private static String buildSentence(Sentence sayWhat)
   {
     String sayThis = "";

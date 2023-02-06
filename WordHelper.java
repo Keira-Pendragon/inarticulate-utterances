@@ -24,9 +24,11 @@ public class WordHelper
 
   }
 
+  /**
+   * 
+   */
   public static void helperLoop()
   {
-    SUI.displayTextLn("Damage Control : " + Cluster.clusterDC());
     Word aWord;
     int wordCount = 5;
     boolean onceMore = true;
@@ -44,11 +46,20 @@ public class WordHelper
     }
   }
 
+  /**
+   * 
+   * @param w
+   * @return
+   */
   public static String fetchWord(Word w)
   {
      return Words.buildAWord(w);
   }
 
+  /**
+   * 
+   * @return
+   */
   protected static Word detailWord()
   {
     int type = SUI.ValidateIndex(Words.TypeRange(), Words.TypePrompt());

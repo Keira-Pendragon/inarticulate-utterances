@@ -166,6 +166,11 @@ protected static final String adhesive_details =
 
     }
 
+    /**
+     * 
+     * @param type
+     * @return
+     */
     public static int[] RandomPattern(int type)
     {
         int[] p;
@@ -188,23 +193,43 @@ protected static final String adhesive_details =
         }
         return p;
     }
+    /**
+     * 
+     * @return
+     */
     public static int[] RandomNounPattern()
     {
         return noun_pattern[Dice.rRand(standard_pattern_range)];
     }
 
+    /**
+     * 
+     * @return
+     */
     public static int[] RandomAdjectivePattern()
     {
         return adjective_pattern[Dice.rRand(standard_pattern_range)];
     }
+    /**
+     * 
+     * @return
+     */
     public static int[] RandomVerbPattern()
     {
         return verb_pattern[Dice.rRand(standard_pattern_range)];
     }
+    /**
+     * 
+     * @return
+     */
     public static int[] RandomAdverbPattern()
     {
         return adverb_pattern[Dice.rRand(standard_pattern_range)];
     }
+    /**
+     * 
+     * @return
+     */
     public static int[] RandomAdhesivePattern()
     {
         return adhesive_pattern[Dice.rRand(adhesive_pattern_range)];
@@ -275,6 +300,12 @@ protected static final String adhesive_details =
         return aWord;
     }
 
+    /**
+     * 
+     * @param type
+     * @param random
+     * @return
+     */
     private static int[] getPattern(int type, boolean random)
     {
         int[] pattern;
@@ -303,11 +334,21 @@ protected static final String adhesive_details =
         return pattern;
     }
 
+    /**
+     * 
+     * @param w
+     * @return
+     */
     public static String buildAWord(Word w)
     {
         return (w.Type() == NUMBER) ? buildNumber(w) : (w.Type() == PRONOUN) ? buildPronoun(w) : buildWord(w);   
     }
 
+    /**
+     * 
+     * @param aWord
+     * @return
+     */
     public static String buildWord(Word aWord)
     {
         StringBuilder nWord = new StringBuilder();
@@ -319,6 +360,12 @@ protected static final String adhesive_details =
         return nWord.toString();
     }
 
+    /**
+     * 
+     * @param cluster
+     * @param w
+     * @return
+     */
     private static String nextCluster(int cluster, Word w)
     {
         String c = "";
@@ -356,7 +403,11 @@ protected static final String adhesive_details =
         return c;
     }
 
-
+    /**
+     * 
+     * @param aWord
+     * @return
+     */
     public static String buildPronoun(Word aWord)
     {        
         return possessivePrefix(aWord.Possessiveness()) + pronounRole(aWord.Role()) + genusCluster(aWord) 
@@ -364,9 +415,10 @@ protected static final String adhesive_details =
     }
 
     /**
-    * Number Stuff
-    */
-
+     * 
+     * @param aWord
+     * @return
+     */
     public static String buildNumber(Word aWord)
     {
         String nNumber = "";
@@ -400,12 +452,23 @@ protected static final String adhesive_details =
         return nNumber;
     }
 
-
+    /**
+     * 
+     * @param d
+     * @return
+     */
     private static int intifyB12Digit(char d)
     {
         return (d == 'A') ? 10 : (d == 'B') ? 11 : (d - '0');
     }
 
+    /**
+     * 
+     * @param translate
+     * @param isWhole
+     * @param delim
+     * @return
+     */
     private static String standardMethod(String translate, boolean isWhole, char delim)
     {        
         String translation = "";
@@ -443,6 +506,11 @@ protected static final String adhesive_details =
         return translation;
     }
 
+    /**
+     * 
+     * @param translate
+     * @return
+     */
     private static String decimalMethod(String translate)
     {
         String translation = "";
@@ -477,6 +545,14 @@ protected static final String adhesive_details =
         return translation;
     }
 
+    /**
+     * 
+     * @param value
+     * @param place
+     * @param power
+     * @param delim
+     * @return
+     */
     private static String nextDigit(int value, int place, int power, char delim)
     {
         int mag = (place == 0) ? power : 0;
@@ -528,33 +604,58 @@ protected static final String adhesive_details =
         return new String[] {whole, spare, delimiter};
     }
 
+    /**
+     * 
+     * @return
+     */
     public static String TypePrompt()
     {
        return word_type_prompt;
     }
 
+    /**
+     * 
+     * @return
+     */
     public static int[] TypeRange()
     {
         return word_type_range;
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static boolean randomWord()
     {
         return SUI.ValidateAgreement(random_prompt);
     }
 
-
+    /**
+     * 
+     * @param clusters
+     * @return
+     */
     protected static String randomCluster(String[] clusters)
     {
         return clusters[Dice.rand(0, clusters.length-1)];
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int[] selectComplexGenus()
     {
         int primary = selectGenus();
         return new int[] {primary, selectGenusMod(primary)};
     }
 
+    /**
+     * 
+     * @param primary
+     * @return
+     */
     protected static int selectGenusMod(int primary)
     {
         int mod;
@@ -569,94 +670,158 @@ protected static final String adhesive_details =
         return mod;
     }
 
-
+    /**
+     * 
+     * @return
+     */
     protected static int selectGenus()
     {
         return SUI.ValidateIndex(genus_primary_range, genus_primary_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int selectRole()
     {
         return SUI.ValidateIndex(role_range, role_prompt);
     }
 
-
+    /**
+     * 
+     * @return
+     */
     protected static int selectTense()
     {
         return SUI.ValidateIndex(tense_range, tense_prompt);
     }
 
-
+    /**
+     * 
+     * @return
+     */
     protected static int selectMood()
     {
         return SUI.ValidateIndex(mood_range, mood_prompt);
     }
 
-
+    /**
+     * 
+     * @return
+     */
     protected static int selectClusterLength()
     {
         return SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int selectConsonantStyle()
     {
         return SUI.ValidateIndex(style_range, style_details);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int selectPossessiveness()
     {
         return SUI.ValidateIndex(possessive_range, possessive_prompt);
     }
 
-
+    /**
+     * 
+     * @return
+     */
     protected static int selectNounCount()
     {
         return SUI.ValidateInt(noun_count_range, noun_count_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int selectDigitCount()
     {
         return SUI.ValidateInt(digit_count_range, digit_count_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static String requestB12ToTranslate()
     {
         return SUI.ValidateB12(b12_prompt);
     }  
 
+    /**
+     * 
+     * @return
+     */
     protected static int singularWord()
     {
         return SUI.ValidateIndex(singular_range, singular_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int clusterLength()
     {
         return SUI.ValidateIndex(cluster_length_range, cluster_length_prompt);
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int[] altPattern()
     {
         int index = SUI.ValidateIndex(adhesive_pattern_range_for_prompt, word_pattern_prompt + adhesive_details);
         return (index == RANDOM) ? RANDOMINTARRAY : adhesive_pattern[index];
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int[] nounPattern()
     {
         int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + noun_pattern_details);
         return (index == RANDOM) ? RANDOMINTARRAY : noun_pattern[index];
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int[] adjectivePattern()
     {
         int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + adjective_pattern_details);
         return (index == RANDOM) ? RANDOMINTARRAY : adjective_pattern[index];
     }
 
+    /**
+     * 
+     * @return
+     */
     protected static int[] verbPattern()
     {
         int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + verb_pattern_details);
         return (index == RANDOM) ? RANDOMINTARRAY : verb_pattern[index];
     }
+    
+    /**
+     * 
+     * @return
+     */
     protected static int[] adverbPattern()
     {
         int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + adverb_pattern_details);

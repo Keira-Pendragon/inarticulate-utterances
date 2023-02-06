@@ -135,6 +135,9 @@ public class Word
         word_type = Dice.rand(0, 6);
     }
 
+    /**
+     * 
+     */
     public void refreshWord()
     {
         if(RandomType())
@@ -155,11 +158,19 @@ public class Word
         setDigitCount(digits);
     }
 
+    /**
+     * 
+     * @return
+     */
     public int Type()
     {
         return word_type;
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean RandomType()
     {
         return random_type;
@@ -186,6 +197,10 @@ public class Word
 
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean OnlyOne()
     {
         boolean onlyOne = false;
@@ -196,11 +211,19 @@ public class Word
         return onlyOne;
     }
 
+    /**
+     * 
+     * @return
+     */
     private boolean RandomPronoun()
     {
         return (RandomGenus() || RandomMention() || RandomSingularity() || RandomRole() || RandomlyPossessive());
     }
 
+    /**
+     * 
+     * @param b12
+     */
     private void setB12Value(String b12)
     {
         random_b12_value = (b12.contains(RANDOM + ""));
@@ -211,11 +234,19 @@ public class Word
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean RandomB12()
     {
         return random_b12_value;
     }
 
+    /**
+     * 
+     * @param b12
+     */
     private void processB12(String b12)
     {
         String w = "";
@@ -251,182 +282,331 @@ public class Word
         whole_value = w;
         spare_value = s;
     }
+
+    /**
+     * 
+     * @return
+     */
     public char Delimiter()
     {
         return delimiter;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String WholeValue()
     {
         return whole_value;
     }
+    /**
+     * 
+     * @return
+     */
     public String SpareValue()
     {
         return spare_value;
     }
 
+    /**
+     * 
+     * @param digits
+     */
     private void setDigitCount(int digits)
     {
         digit_count = digits;
         random_digit_count = (digits == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomDigitCount()
     {
         return random_digit_count;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int DigitCount()
     {
         return digit_count;
     }
 
+    /**
+     * 
+     * @param nPattern
+     */
     private void setPattern(int[] nPattern)
     {
         pattern = nPattern;
         random_pattern = (pattern[0] == RANDOM);
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean RandomPattern()
     {
         return random_pattern;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int[] Pattern()
     {
         return (RandomPattern())? Words.RandomPattern(word_type) : pattern;
     }
 
+    /**
+     * 
+     * @param cLength
+     */
     private void setClusterLength(int cLength)
     {
         cluster_lenght = cLength;
         random_length = (cLength == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomClusterLength()
     {
         return random_length;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int ClusterLength()
     {
         return (RandomClusterLength())? Dice.rand(0, 2) : cluster_lenght;
     }
 
+    /**
+     * 
+     * @param style
+     */
     private void setStyle(int style)
     {
         consonant_style = style;
         random_consonant_style = (style == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomStyle()
     {
         return random_consonant_style;
     }
+    /**
+     * 
+     * @return
+     */
     public int ConsonantStyle()
     {
         return (RandomStyle())? Dice.rand(0, 2) : consonant_style;
     }
 
+    /**
+     * 
+     * @param mood
+     */
     private void setMood(int mood)
     {
         verb_mood = mood;
         random_mood = (mood == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomMood()
     {
         return random_mood;
     }
+    /**
+     * 
+     * @return
+     */
     public int Mood()
     {
         return (RandomMood()) ? Dice.rand(0, 5) : verb_mood;
     }
 
-
+    /**
+     * 
+     * @param tense
+     */
     private void setTense(int tense)
     {
         verb_tense = tense;
         random_tense = (tense == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomTense()
     {
         return random_tense;
     }
+    /**
+     * 
+     * @return
+     */
     public int Tense()
     {
         return (RandomTense())? Dice.rand(0, 3) : verb_tense;
     }
 
+    /**
+     * 
+     * @param primaryGenus
+     * @param genusMod
+     */
     private void setGenus(int primaryGenus, int genusMod)
     {
         primary_genus = primaryGenus;
         genus_mod = genusMod;
         random_genus = (primaryGenus == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomGenus()
     {
         return random_genus;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int PrimaryGenus()
     {
         return (RandomGenus())? Dice.rand(0, 4) : primary_genus;
     }
+    /**
+     * 
+     * @return
+     */
     public int GenusModifier()
     {
         return (RandomGenus())? Dice.rand(0, 4) : genus_mod;
     }
 
+    /**
+     * 
+     * @param nSingular
+     */
     private void setSingularity(int nSingular)
     {
         randomly_singular = (nSingular == RANDOM);
         singular = (nSingular == 1) ? true : false;
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean RandomSingularity()
     {
         return randomly_singular;
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean Singular()
     {
         return (RandomSingularity()) ? Dice.coinToss() : singular;
     }
 
+    /**
+     * 
+     * @param nPossessive
+     */
     private void setPossession(int nPossessive)
     {
         randomly_possessive = (nPossessive == RANDOM);
         possessive = nPossessive;
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomlyPossessive()
     {
         return randomly_possessive;
     }
+    /**
+     * 
+     * @return
+     */
     public int Possessiveness()
     {
         return (RandomlyPossessive()) ? Dice.rand(0, 6) : possessive;
     }
 
+    /**
+     * 
+     * @param mention
+     */
     private void setMentionOrder(int mention)
     {
         mention_order = mention;
         random_mention = (mention == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomMention()
     {
         return random_mention;
     }
+    /**
+     * 
+     * @return
+     */
     public int MentionOrder()
     {
         return (RandomMention())? Dice.rand(1, 11) : mention_order;
     }
 
+    /**
+     * 
+     * @param role
+     */
     private void setRole(int role)
     {
         scope_role = role;
         random_role = (role == RANDOM);
     }
+    /**
+     * 
+     * @return
+     */
     public boolean RandomRole()
     {
         return random_role;
     }
+    /**
+     * 
+     * @return
+     */
     public int Role()
     {
         return (RandomRole())? Dice.rand(0, 3) : scope_role;

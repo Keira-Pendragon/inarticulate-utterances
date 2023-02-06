@@ -36,19 +36,18 @@ public class SUI
 
     }
     /**
-     * getUserInput() Single method for extracting user input in a consistent way
-    * Sanitize elsewhere.
-    * @return the line of user input acquired.
-    */
+     * 
+     * @return
+     */
     public static String getUserInput()
     {
         return myScanner.nextLine();
     }
 
     /**
-     * Collect and convert user input to int.
-    * @return
-    */
+     * 
+     * @return
+     */
     public static int getIntifiedUserInput()
     {
         String intMe = getUserInput();
@@ -72,7 +71,10 @@ public class SUI
 
     /**
      * 
-    */
+     * @param range
+     * @param request
+     * @return
+     */
     public static int ValidateInt(int [] range, String request)
     {
         selectionPrompt(request);
@@ -81,6 +83,9 @@ public class SUI
     }
     /**
      * 
+     * @param range
+     * @param request
+     * @return
      */
     public static int ValidateIndex(int [] range, String request)
     {
@@ -91,7 +96,9 @@ public class SUI
 
     /**
      * 
-    */
+     * @param prompt
+     * @return
+     */
     public static String ValidateB12(String prompt)
     {
         SUI.displayTextLn(prompt);
@@ -143,11 +150,24 @@ public class SUI
         return validatedB12;
     }
 
+    /**
+     * 
+     * @param s
+     * @param min
+     * @param max
+     * @return
+     */
     public static String trimString(String s, int min, int max)
     {
         return s.substring(min, max);
     }
 
+    /**
+     * 
+     * @param review
+     * @param delLoc
+     * @return
+     */
     private static String snipErrantZeros(String review, int delLoc)
     {
         String wholeVal = "";
@@ -186,7 +206,11 @@ public class SUI
         return wholeVal + spareVal;
     }
 
-
+    /**
+     * 
+     * @param prompt
+     * @return
+     */
     public static boolean ValidateAgreement(String prompt)
     {
         selectionPrompt(prompt);
@@ -194,11 +218,22 @@ public class SUI
         return userAgrees(input);         
     }
 
+    /**
+     * 
+     * @param input
+     * @return
+     */
     private static boolean userAgrees(String input)
     {
         return (match(input, "yes") || match(input, "y") || match(input, "1"));
     }
 
+    /**
+     * 
+     * @param input
+     * @param check
+     * @return
+     */
     private static boolean match(String input, String check)
     {
         return input.compareToIgnoreCase(check) == 0;
@@ -206,16 +241,19 @@ public class SUI
 
     /**
      * 
-    */
+     * @param expected
+     * @param input
+     * @param resolution
+     */
     private static void errorMessage(String expected, String input, String resolution)
     {
         displayTextLn("Error expected " + expected + ". Received " + input + ". Resolving to " + resolution);
     }
 
-
     /**
      * 
-    */
+     * @param display
+     */
     public static void displayTextLn(String display)
     {
         System.out.println(display);
@@ -223,7 +261,8 @@ public class SUI
     
     /**
      * 
-    */
+     * @param display
+     */
     public static void selectionPrompt(String display)
     {
         System.out.print("\n" + display + selection_prompt);
