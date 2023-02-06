@@ -628,12 +628,7 @@ public class Word
         int weight = Dice.rand(0, 100);
         return (weight < 50)? 0 : (weight < 85)? 1 : 2;
     }
-    
-    private int WeightedRandomWordPattern()
-    {
-        return 0;
-    }
-    
+        
     private int WeightedRandomStyle()
     {        
         int weight = Dice.rand(0, 100);
