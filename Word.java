@@ -122,28 +122,19 @@ public class Word
         }
         else
         {
-            word_type = Dice.rand(0, 6);
+            word_type = Dice.rand(1, 6);
         }
     }
 
     /**
-     * Completely randomized words o.o
+     * For almost completely random words for the generic sentence pattern.
+     * @param type
      */
-    public Word()
+    public Word(int type)
     {
         setAllRandom();
-        word_type = Dice.rand(0, 6);
-    }
-
-    /**
-     * 
-     */
-    public void refreshWord()
-    {
-        if(RandomType())
-        {
-            word_type = Dice.rand(0, 6);
-        }
+        word_type = type;
+        random_type = false;
     }
 
     /**
@@ -156,6 +147,26 @@ public class Word
         word_type = NUMBER;
         setB12Value(b12);
         setDigitCount(digits);
+    }
+
+    /**
+     * Completely randomized words o.o
+     */
+    public Word()
+    {
+        setAllRandom();
+        word_type = Dice.rand(1, 6);
+    }
+
+    /**
+     * 
+     */
+    public void refreshWord()
+    {
+        if(RandomType())
+        {
+            word_type = Dice.rand(1, 6);
+        }
     }
 
     /**
@@ -440,7 +451,7 @@ public class Word
      */
     public int Mood()
     {
-        return (RandomMood()) ? Dice.rand(0, 5) : verb_mood;
+        return (RandomMood()) ? Dice.rand(0, 4) : verb_mood;
     }
 
     /**
@@ -495,7 +506,7 @@ public class Word
      */
     public int PrimaryGenus()
     {
-        return (RandomGenus())? Dice.rand(0, 4) : primary_genus;
+        return (RandomGenus())? Dice.rand(0, 3) : primary_genus;
     }
     /**
      * 
@@ -503,7 +514,7 @@ public class Word
      */
     public int GenusModifier()
     {
-        return (RandomGenus())? Dice.rand(0, 4) : genus_mod;
+        return (RandomGenus())? Dice.rand(0, 5) : genus_mod;
     }
 
     /**
@@ -557,7 +568,7 @@ public class Word
      */
     public int Possessiveness()
     {
-        return (RandomlyPossessive()) ? Dice.rand(0, 6) : possessive;
+        return (RandomlyPossessive()) ? Dice.rand(0, 5) : possessive;
     }
 
     /**

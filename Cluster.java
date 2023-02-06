@@ -136,7 +136,7 @@ public class Cluster
         THAG + ZHEA + "", THAG + NGEA + "", THAG + "n", THAG + "m", THAG + "h", THAG + "l", THAG + "r", NGEA + "g", NGEA + "d", 
         NGEA + "b", NGEA + "z", NGEA + ZHEA, NGEA + "v", NGEA + THAG, "ng", "nd", "nb", "nz", "n" + ZHEA, "nv", "n" + THAG, "mg", 
         "md", "mb", "mz", "m" + ZHEA, "mv", "m" + THAG, "lg", "ld", "lb", "lz", "l" + ZHEA, "lv", "l" + THAG, "rg", "rd", "rb", "rz", 
-        "r" + ZHEA, "rv", "r" + THAG,
+        "r" + ZHEA, "rv", "r" + THAG
     };
     private static final String[] mv_l = 
     {

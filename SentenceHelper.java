@@ -8,9 +8,9 @@
 
 public class SentenceHelper extends WordHelper
 {
-  private static final int[] sentence_count_range = {1, 20};
+  private static final int[] sentence_count_range = {1, 200};
   private static final int[] word_count_range = {1, 15};
-  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 20)";
+  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 200)";
   private static final String word_count_prompt = "How many words should be in the sentence?\n(limite 15)";
   public SentenceHelper()
   {
@@ -38,6 +38,24 @@ public class SentenceHelper extends WordHelper
     }
   }
 
+  public static void BatchBuild()
+  {
+    boolean onceMore = true;
+    int sentenceCount;
+    Sentence sayWhat;
+    while(onceMore)
+    {
+      sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
+      sayWhat = BatchSentence();
+      for(int i = 0; i < sentenceCount; i++)
+      {
+        SUI.displayTextLn(buildSentence(sayWhat));
+      }
+      SUI.displayTextLn("Sentence batch Complete.");
+      onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
+    }
+  }
+
   /**
    * 
    * @return
@@ -53,6 +71,22 @@ public class SentenceHelper extends WordHelper
     return sayWhat;
   }
 
+  private static Sentence BatchSentence()
+  {
+    Sentence sayWhat = new Sentence();
+    sayWhat.addWord(ADHESIVE);
+    sayWhat.addWord(ADJECTIVE);
+    sayWhat.addWord(PRONOUN);
+    sayWhat.addWord(ADHESIVE);
+    sayWhat.addWord(VERB);
+    sayWhat.addWord(ADVERB);
+    sayWhat.addWord(ADHESIVE);
+    sayWhat.addWord(ADJECTIVE);
+    sayWhat.addWord(NOUN);
+    return sayWhat;
+  }
+
+
   /**
    * 
    * @param sayWhat
@@ -64,6 +98,7 @@ public class SentenceHelper extends WordHelper
     for(int i = 0; i < sayWhat.wordCount(); i++)
     {
       sayThis+= fetchWord(sayWhat.fetchWord(i));
+      sayWhat.fetchWord(i).refreshWord();
       sayThis+= (i + 1 == sayWhat.wordCount()) ? "." : " ";
     }
     return sayThis;

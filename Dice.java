@@ -24,24 +24,24 @@
      }
      
  
-     /**
-      * rand(int, int) inclusive bound random numbers
-      * @param min smallest inclusive value
-      * @param max largest inclusive value
-      * @return
-      */
-     public static int rand(int min, int max)
-     {
-         return random.nextInt(max - min) + min;
-     }
+    /**
+     * rand(int, int) inclusive bound random numbers
+    * @param min smallest inclusive value
+    * @param max largest inclusive value
+    * @return
+    */
+    public static int rand(int min, int max)
+    {
+        return random.nextInt(max - min + 1) + min;
+    }
 
-     /**
-      * flip a coin~
-      * @return
-      */
-     public static boolean coinToss()
-     {
+    /**
+     * flip a coin~
+    * @return
+    */
+    public static boolean coinToss()
+    {
         return (rand(0, 10) % 2 == 0);
-     }
+    }
  
  }
