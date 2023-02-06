@@ -52,6 +52,7 @@ public class Word
      */
     public Word(int genus, int mod, int singularity, int possession, int mention, int role)
     {
+        setAllRandom();
         word_type = PRONOUN;
         setGenus(genus, mod);
         setSingularity(singularity);
@@ -71,6 +72,7 @@ public class Word
      */
     public Word(int mood, int tense, int[] vPattern, int cLength, int cStyle)
     {
+        setAllRandom();
         word_type = VERB;
         setMood(mood);
         setTense(tense);
@@ -91,6 +93,7 @@ public class Word
      */
     public Word(int primaryGenus, int genusMod, int[] nPattern, int cLength, int nSingular, int nPossessive, int style)
     {
+        setAllRandom();
         word_type = NOUN;
         setGenus(primaryGenus, genusMod);
         setPattern(nPattern);
@@ -108,6 +111,7 @@ public class Word
      */
     public Word(int type, int[] aPattern, int cLength, int style)
     {
+        setAllRandom();
         random_type = (type == RANDOM);
         if(type != RANDOM)
         {
@@ -119,8 +123,16 @@ public class Word
         else
         {
             word_type = Dice.rand(0, 6);
-            setAllRandom();
         }
+    }
+
+    /**
+     * Completely randomized words o.o
+     */
+    public Word()
+    {
+        setAllRandom();
+        word_type = Dice.rand(0, 6);
     }
 
     public void refreshWord()
@@ -153,6 +165,10 @@ public class Word
         return random_type;
     }
 
+    /**
+     * Defaults all randoms to true to prevent errors for different word types.
+     * They should be properly updated after the init for whatever type is being built.
+     */
     private void setAllRandom()
     {
         random_b12_value = true;
@@ -173,12 +189,9 @@ public class Word
     public boolean OnlyOne()
     {
         boolean onlyOne = false;
-        if(Type() == PRONOUN || Type() == NUMBER)
+        if((Type() == PRONOUN && !RandomPronoun()) || (Type() == NUMBER && !RandomB12()))
         {
-            if(RandomB12() || RandomPronoun())
-            {
-                onlyOne = true;
-            }
+            onlyOne = true;
         }
         return onlyOne;
     }
@@ -191,6 +204,7 @@ public class Word
     private void setB12Value(String b12)
     {
         random_b12_value = (b12.contains(RANDOM + ""));
+        SUI.displayTextLn("B12 randomness is " + RandomB12() + " B12 is " + b12);
         if(!RandomB12())
         {
             processB12(b12);

@@ -87,7 +87,10 @@ public class Words extends Cluster
     };
 
 protected static final int[] standard_pattern_range = {0, 3};
+protected static final int[] standard_pattern_range_for_prompt = {-1, 3};
+protected static final int[] adhesive_pattern_range_for_prompt = {-1, 18};
 protected static final int[] adhesive_pattern_range = {0, 18};
+
 protected static final String adhesive_details = 
                                       "\n1) Vowel"
                                     + "\n2) SpareKey, Coda"
@@ -113,37 +116,38 @@ protected static final String adhesive_details =
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
     protected static final String g0_prompt = "Should this concept relate to\n1) Standard Concept\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g1_prompt = "Should this Object relate to\n1) Concepts\n2) Standard Object\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions";
-    protected static final String g2_prompt = "Should this entity be denoted by \n1) Concepts\n2) Objects\n3) Standard Entity\n4) Places\n5) Traits or Qualities\n6) Actions";
+    protected static final String g2_prompt = "Should this entity be denoted by\n1) Concepts\n2) Objects\n3) Standard Entity\n4) Places\n5) Traits or Qualities\n6) Actions";
     protected static final String g3_prompt = "Should this place be associated with\n1) Concepts\n2) Objects\n3) Entities\n4) Standard Place\n5) Traits or Qualities\n6) Actions";
     protected static final int[] genus_mod_range = {0, 5};
 
     protected static final String random_prompt = "Would you like the word to be random?\n1) yes\n2) no";
     
-    protected static final String singular_prompt = "Is the word Singular?\n1) yes\n2) no";
+    protected static final String singular_prompt = "Is the word Singular?\n0) Surprise Me\n1) yes\n2) no";
+    protected static final int[] singular_range = {-1, 1};
 
-    protected static final String genus_primary_prompt = "What is the primary genus of the noun?\n1) Concept\n2) Thing\n3) Entity\n4) Place";
-    protected static final int[] genus_primary_range = {0, 5};
+    protected static final String genus_primary_prompt = "What is the primary genus of the noun?\n0) Surprise Me\n1) Concept\n2) Thing\n3) Entity\n4) Place";
+    protected static final int[] genus_primary_range = {-1, 5};
     protected static final String [] genus_mod_prompt = {g0_prompt, g1_prompt, g2_prompt, g3_prompt};
-    protected static final String tense_prompt = "How does this action relate to time?\n1) Timeless\n2) Past\n3) Present\n4) Future";
-    protected static final int[] tense_range = {0, 3};
-    protected static final String mood_prompt = "Is this action a\n1) Request or Wish\n2) Directive\n3) Voluntary\n4) Passive\n5) Unwilling";
-    protected static final int[] mood_range = {0, 4};
-    protected static final String role_prompt = "Is this pronoun\n1) The speaker\n2) The Lisener\n3) Both\n4) Neither";
-    protected static final int[] role_range = {0, 3};
-    protected static final String possessive_prompt = "Is this noun posessive?\n1) no\n2) part of\n3) dear to\n4) owned by\n5) diminuiative to\n6) loosely associated";
-    protected static final int[] possessive_range = {0, 5};
-    protected static final String noun_count_prompt = "Is there more than one of this specific pronoun in the context?\n1) no\n#) Yes, this is the nth of the same (n: 2 to 11)";
-    protected static final int[] noun_count_range = {1, 11};
+    protected static final String tense_prompt = "How does this action relate to time?\n0) Surprise Me\n1) Timeless\n2) Past\n3) Present\n4) Future";
+    protected static final int[] tense_range = {-1, 3};
+    protected static final String mood_prompt = "Is this action a\n0) Surprise Me\n1) Request or Wish\n2) Directive\n3) Voluntary\n4) Passive\n5) Unwilling";
+    protected static final int[] mood_range = {-1, 4};
+    protected static final String role_prompt = "Is this pronoun\n0) Surprise Me\n1) The speaker\n2) The Lisener\n3) Both\n4) Neither";
+    protected static final int[] role_range = {-1, 3};
+    protected static final String possessive_prompt = "Is this noun posessive?\n0) Surprise Me\n1) no\n2) part of\n3) dear to\n4) owned by\n5) diminuiative to\n6) loosely associated";
+    protected static final int[] possessive_range = {-1, 5};
+    protected static final String noun_count_prompt = "Is there more than one of this specific pronoun in the context?\n0) Surprise Me\n1) no\n#) Yes, this is the nth of the same (n: 2 to 11)";
+    protected static final int[] noun_count_range = {0, 11};
     protected static final String digit_count_prompt = "How many digits should the random number have?\n(Limit 33 for whole, 66 for mixed, 0 for random)";
     protected static final int[] digit_count_range = {1, 66};
     protected static final String b12_prompt = "Enter the base 12 number to translate\n(Valid Values include 0-9, 'A', 'a', 'B', 'b', ',', '.', '/')\n(Max digits 66 if '.' or '/' divide them to a max of 33 on either side)";
-    protected static final String cluster_length_prompt = "How long should the clusters be?\n1) Short\n2) Average\n3) Long";
-    protected static final int[] cluster_length_range = {0, 2};
+    protected static final String cluster_length_prompt = "How long should the clusters be?\n0) Surprise Me\n1) Short\n2) Average\n3) Long";
+    protected static final int[] cluster_length_range = {-1, 2};
     protected static final String word_type_prompt = "What type of word should be generated?\n0) Surprise Me\n1) Number\n2) Pronoun\n3) Noun\n4) Adjective\n5) Verb\n6) Adverb\n7) Adhesive";
     protected static final int[] word_type_range = {-1, 6};
-    protected static final String word_pattern_prompt = "Which pattern should the word follow?";
-    protected static final int[] style_range = {0, 2};
-    protected static final String style_details = "Should the word's consonants be\n1) voiced\n2) neutral\n3) voiceless";
+    protected static final String word_pattern_prompt = "Which pattern should the word follow?\n0) Surprise Me";
+    protected static final int[] style_range = {-1, 2};
+    protected static final String style_details = "Should the word's consonants be\n0) Surprise Me\n1) voiced\n2) neutral\n3) voiceless";
                                                   
 
 
@@ -155,7 +159,6 @@ protected static final String adhesive_details =
     private static final int WHOLENUMBER = 0;
     private static final int DECIMALNUMBER = 1;
     private static final int FRACTIONNUMBER = 2;
-    private static final int[] NONPATTERN = {0, 0};
     private static final int[] RANDOMINTARRAY  = {-1, -1};
 
     public Words()
@@ -215,18 +218,18 @@ protected static final String adhesive_details =
     public static Word requestWord(int type)
     {
         boolean random = (type == RANDOM) ? true : randomWord();
-        int length = (type == NUMBER || type == PRONOUN)? 0 : (random) ? -1 : clusterLength();
-        String b12Value = (type == NUMBER || random) ? "-1" : requestB12ToTranslate();
-        int digits = (type == NUMBER) ? (b12Value.contains("-1")? ((!random) ? selectDigitCount() : -1 ): b12Value.length()) : 0;
-        int [] pattern = getPattern(type);
-        int consonantStyle = (type == PRONOUN || type == NUMBER || random) ? -1 : selectConsonantStyle();
-        int possessive = (type == NOUN || type == PRONOUN) ? ((random) ? -1 : selectPossessiveness()) : 0;
-        int role = (type == PRONOUN)? (random)? -1 : selectRole() : 0;
-        int count = (type == PRONOUN)? ((random) ? -1 : selectNounCount()) : 0; 
-        int singular = (type == NOUN || type == PRONOUN) ? ((random) ? -1 : singularWord()) : 1;
-        int[] genus = (type == NOUN || type == PRONOUN) ? (random) ? RANDOMINTARRAY : selectComplexGenus() : NONPATTERN;
-        int mood = (type == VERB) ? (random)? -1 : selectMood() : 0;
-        int tense = (type == VERB) ? (random)? -1 : selectTense() : 0;
+        int length = (type == NUMBER || type == PRONOUN || random) ? RANDOM : clusterLength();
+        String b12Value = ((type == NUMBER && random) || (type != NUMBER)) ? RANDOM + "" : requestB12ToTranslate();
+        int digits = (type != NUMBER || random || b12Value.contains("" + RANDOM)) ? RANDOM : b12Value.length();
+        int [] pattern = getPattern(type, random);
+        int consonantStyle = (type == PRONOUN || type == NUMBER || random) ? RANDOM : selectConsonantStyle();
+        int possessive = (type == NOUN || type == PRONOUN) ? ((random) ? RANDOM : selectPossessiveness()) : 0;
+        int role = (type == PRONOUN && !random)? selectRole() : RANDOM;
+        int count = (type == PRONOUN && !random) ? selectNounCount() : RANDOM; 
+        int singular = ((type == NOUN || type == PRONOUN) && !random) ? singularWord() : RANDOM;
+        int[] genus = ((type == NOUN || type == PRONOUN) && !random) ? selectComplexGenus() : RANDOMINTARRAY;
+        int mood = (type == VERB && !random)? selectMood() : RANDOM;
+        int tense = (type == VERB && !random)?  selectTense() : RANDOM;
         return whatWord(type, random, length, b12Value, pattern, possessive, role, count, singular, genus, mood, tense, digits, consonantStyle);
     }
 
@@ -272,9 +275,10 @@ protected static final String adhesive_details =
         return aWord;
     }
 
-    private static int[] getPattern(int type)
+    private static int[] getPattern(int type, boolean random)
     {
         int[] pattern;
+        type = (random) ? -1 : type;
         switch (type) 
         {
             case NOUN:
@@ -553,7 +557,16 @@ protected static final String adhesive_details =
 
     protected static int selectGenusMod(int primary)
     {
-        return SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
+        int mod;
+        if(primary == RANDOM)
+        {
+            mod = RANDOM;
+        }
+        else
+        {
+            mod = SUI.ValidateIndex(genus_mod_range, genus_mod_prompt[primary]);
+        }
+        return mod;
     }
 
 
@@ -613,7 +626,7 @@ protected static final String adhesive_details =
 
     protected static int singularWord()
     {
-        return (SUI.ValidateAgreement(singular_prompt)) ? 1 : 0;
+        return SUI.ValidateIndex(singular_range, singular_prompt);
     }
 
     protected static int clusterLength()
@@ -623,27 +636,30 @@ protected static final String adhesive_details =
 
     protected static int[] altPattern()
     {
-        return adhesive_pattern[SUI.ValidateIndex(adhesive_pattern_range, word_pattern_prompt + adhesive_details)];
+        int index = SUI.ValidateIndex(adhesive_pattern_range_for_prompt, word_pattern_prompt + adhesive_details);
+        return (index == RANDOM) ? RANDOMINTARRAY : adhesive_pattern[index];
     }
 
     protected static int[] nounPattern()
     {
-        return noun_pattern[SUI.ValidateIndex(standard_pattern_range, word_pattern_prompt + noun_pattern_details)];
+        int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + noun_pattern_details);
+        return (index == RANDOM) ? RANDOMINTARRAY : noun_pattern[index];
     }
 
     protected static int[] adjectivePattern()
     {
-        return adjective_pattern[SUI.ValidateIndex(standard_pattern_range, word_pattern_prompt + adjective_pattern_details)];
+        int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + adjective_pattern_details);
+        return (index == RANDOM) ? RANDOMINTARRAY : adjective_pattern[index];
     }
 
     protected static int[] verbPattern()
     {
-        return verb_pattern[SUI.ValidateIndex(standard_pattern_range, word_pattern_prompt + verb_pattern_details)];
+        int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + verb_pattern_details);
+        return (index == RANDOM) ? RANDOMINTARRAY : verb_pattern[index];
     }
     protected static int[] adverbPattern()
     {
-        return adverb_pattern[SUI.ValidateIndex(standard_pattern_range, word_pattern_prompt + adverb_pattern_details)];
+        int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + adverb_pattern_details);
+        return (index == RANDOM) ? RANDOMINTARRAY : adverb_pattern[index];
     }
-
-
 }

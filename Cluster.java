@@ -41,8 +41,8 @@ public class Cluster
     protected static final int MAXDEX = 1;
 
     private static final String THEA = "\u03B8";
-    private static final String ZHEA = "\u02E2";
-    private static final String SHEA = "\u02E9";
+    private static final String ZHEA = "\u0291";
+    private static final String SHEA = "\u0255";
     private static final String NGEA = "\u014B";
     private static final String THAG = "\u00F0";
 
@@ -238,6 +238,11 @@ public class Cluster
         
     }
 
+    public static String clusterDC()
+    {
+        return THEA + " " + ZHEA + " " + NGEA + " " + SHEA  + " " + THAG;
+    }
+
     protected static String digitCoda(int ofThree, int magnitude)
     {
         return digit_magnitude[ofThree][magnitude];
@@ -277,8 +282,12 @@ public class Cluster
     protected static String genusCluster(Word aWord)
     {
         String cluster = genus_primary_vowels[aWord.PrimaryGenus()];
-        int mod = Dice.rand(0, genus_mod_vowels.length -1);
-        cluster += (mod == aWord.GenusModifier()) ? "" : genus_mod_vowels[mod];
+        int mod = (aWord.RandomGenus()) ? Dice.rand(0, genus_mod_vowels.length -1) : aWord.GenusModifier();
+        cluster += genus_mod_vowels[mod];
+        if(cluster.length() == 2 && (cluster.charAt(0) == cluster.charAt(1)))
+        {
+            cluster = cluster.charAt(0) + "";
+        }
         return cluster;
     }
 
@@ -327,6 +336,6 @@ public class Cluster
     }    
     protected static String CodaCluster(int length, int style)
     {
-      return coda_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length-1)];
+      return coda_clusters[style][length][Dice.rand(0, coda_clusters[style][length].length-1)];
     }
 }

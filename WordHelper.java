@@ -26,6 +26,7 @@ public class WordHelper
 
   public static void helperLoop()
   {
+    SUI.displayTextLn("Damage Control : " + Cluster.clusterDC());
     Word aWord;
     int wordCount = 5;
     boolean onceMore = true;
@@ -35,12 +36,17 @@ public class WordHelper
       wordCount = (aWord.OnlyOne())? 1 : SUI.ValidateInt(word_count_range, word_count_prompt);
       for(int i = 0; i < wordCount; i++)
       {
-        SUI.displayTextLn(Words.buildAWord(aWord));
+        SUI.displayTextLn(fetchWord(aWord));
         aWord.refreshWord();
       }
       SUI.displayTextLn("\nWord Batch complete.");
       onceMore = SUI.ValidateAgreement("\nWould you like to generate more words?\n1) Yes\n2) No");
     }
+  }
+
+  public static String fetchWord(Word w)
+  {
+     return Words.buildAWord(w);
   }
 
   protected static Word detailWord()
