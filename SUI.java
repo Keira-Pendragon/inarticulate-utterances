@@ -157,7 +157,7 @@ public class SUI
         int step = -1;
         char c;
         boolean foundGood = false;
-        while(step < review.length() && !done)
+        while(step < review.length() -1 && !done)
         {
             step++;
             c = review.charAt(step);

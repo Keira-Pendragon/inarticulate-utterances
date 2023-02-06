@@ -276,9 +276,9 @@ public class Cluster
     
     protected static String genusCluster(Word aWord)
     {
-        String cluster = genus_primary_vowels[aWord.Genus()[0]];
+        String cluster = genus_primary_vowels[aWord.PrimaryGenus()];
         int mod = Dice.rand(0, genus_mod_vowels.length -1);
-        cluster += (mod == aWord.Genus()[1]) ? "" : genus_mod_vowels[mod];
+        cluster += (mod == aWord.GenusModifier()) ? "" : genus_mod_vowels[mod];
         return cluster;
     }
 
