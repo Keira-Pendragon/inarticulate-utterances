@@ -181,6 +181,18 @@ protected static final String adhesive_details =
         }
         return p;
     }
+    
+    private static int WeightedRandomStandardPatternIndex()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight > 15) ? 0 : (weight >  
+    }
+    
+    private static int WeightedRandomAdhesivePatterIndex()
+    {
+    
+    }
+    
     /**
      * 
      * @return
