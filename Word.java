@@ -399,7 +399,7 @@ public class Word
      */
     public int ClusterLength()
     {
-        return (RandomClusterLength())? Dice.rand(0, 2) : cluster_lenght;
+        return (RandomClusterLength())? WeightedRandomLength() : cluster_lenght;
     }
 
     /**
@@ -425,7 +425,7 @@ public class Word
      */
     public int ConsonantStyle()
     {
-        return (RandomStyle())? Dice.rand(0, 2) : consonant_style;
+        return (RandomStyle())? WeightedRandomStyle() : consonant_style;
     }
 
     /**
@@ -623,4 +623,20 @@ public class Word
         return (RandomRole())? Dice.rand(0, 3) : scope_role;
     }
     
+    private int WeightedRandomLength()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight < 50)? 0 : (weight < 85)? 1 : 2;
+    }
+    
+    private int WeightedRandomWordPattern()
+    {
+        return 0;
+    }
+    
+    private int WeightedRandomStyle()
+    {        
+        int weight = Dice.rand(0, 100);
+        return (weight < 45)? 0 : (weight < 75)? 1 : 2;
+    }
 }
