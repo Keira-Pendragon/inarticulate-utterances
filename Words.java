@@ -188,7 +188,7 @@ protected static final String adhesive_details =
         return (weight > 15) ? 0 : (weight > 65)? 1 : (weight < 80)? 2 : 3;
     }
     
-    private static int WeightedRandomAdhesivePatterIndex()
+    private static int WeightedRandomAdhesivePatternIndex()
     {
         int weight = Dice.rand(0, 100);
         return (weight > 5)? 0 : (weight < 10)? 1: (weight < 15)? 2: (weight < 20)? 3: (weight < 25)? 4: (weight < 30)? 5:
@@ -201,7 +201,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomNounPattern()
     {
-        return noun_pattern[Dice.rRand(standard_pattern_range)];
+        return noun_pattern[WeightedRandomStandardPatternIndex];
     }
 
     /**
@@ -210,7 +210,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomAdjectivePattern()
     {
-        return adjective_pattern[Dice.rRand(standard_pattern_range)];
+        return adjective_pattern[WeightedRandomStandardPatternIndex];
     }
     /**
      * 
@@ -218,7 +218,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomVerbPattern()
     {
-        return verb_pattern[Dice.rRand(standard_pattern_range)];
+        return verb_pattern[WeightedRandomStandardPatternIndex];
     }
     /**
      * 
@@ -226,7 +226,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomAdverbPattern()
     {
-        return adverb_pattern[Dice.rRand(standard_pattern_range)];
+        return adverb_pattern[WeightedRandomStandardPatternIndex];
     }
     /**
      * 
@@ -234,7 +234,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomAdhesivePattern()
     {
-        return adhesive_pattern[Dice.rRand(adhesive_pattern_range)];
+        return adhesive_pattern[WeightedRandomAdhesivePatternIndex()];
     }
 
     /**
