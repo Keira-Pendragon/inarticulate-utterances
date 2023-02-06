@@ -65,31 +65,25 @@ public class Words extends Cluster
     protected static final int[] a3_pattern = {VOWEL, MIDCONST, SPAREKEY};
     protected static final int[] a4_pattern = {SPAREKEY, MIDCONST, VOWEL};
     protected static final int[] a5_pattern = {ONSET, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a6_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY};
+    protected static final int[] a6_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY};    
     protected static final int[] a7_pattern = {VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a8_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};
-    protected static final int[] a9_pattern = {SPAREKEY, MIDCONST, VOWEL, MIDCONST, VOWEL};
-    protected static final int[] a10_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a11_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};
-    protected static final int[] a12_pattern = {ONSET, SPAREKEY, MIDCONST, VOWEL, MIDCONST, VOWEL};
-    protected static final int[] a13_pattern = {VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL, CODA};
-    protected static final int[] a14_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
-    protected static final int[] a15_pattern = {SPAREKEY, MIDCONST, VOWEL, MIDCONST, VOWEL, CODA};
-    protected static final int[] a16_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL, CODA};
-    protected static final int[] a17_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
-    protected static final int[] a18_pattern = {ONSET, SPAREKEY, MIDCONST, VOWEL, MIDCONST, VOWEL, CODA};
+    protected static final int[] a8_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};    
+    protected static final int[] a9_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
+    protected static final int[] a10_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};
+    protected static final int[] a11_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
+    protected static final int[] a12_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
+
 
     protected static final int[][] adhesive_pattern = 
     {
         a0_pattern, a1_pattern, a2_pattern, a3_pattern, a4_pattern, a5_pattern, a6_pattern, 
-        a7_pattern, a8_pattern, a9_pattern, a10_pattern, a11_pattern, a12_pattern, a13_pattern, 
-        a14_pattern, a15_pattern, a16_pattern, a17_pattern, a18_pattern
+        a7_pattern, a8_pattern, a9_pattern, a10_pattern, a11_pattern, a12_pattern
     };
 
 protected static final int[] standard_pattern_range = {0, 3};
 protected static final int[] standard_pattern_range_for_prompt = {-1, 3};
-protected static final int[] adhesive_pattern_range_for_prompt = {-1, 18};
-protected static final int[] adhesive_pattern_range = {0, 18};
+protected static final int[] adhesive_pattern_range_for_prompt = {-1, 12};
+protected static final int[] adhesive_pattern_range = {0, 12};
 
 protected static final String adhesive_details = 
                                       "\n1) Vowel"
@@ -101,16 +95,10 @@ protected static final String adhesive_details =
                                     + "\n7) Onset, Vowel, MidConst, SpareKey"
                                     + "\n8) Vowel, MidConst, SpareKey, MidConst, Vowel"
                                     + "\n9) Vowel, MidConst, Vowel, MidConst, SpareKey"
-                                    + "\n10) SpareKey, MidConst, Vowel, MidConst, Vowel"
-                                    + "\n11) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel"
-                                    + "\n12) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey"
-                                    + "\n13) Onset, SpareKey, MidConst, Vowel, MidConst, Vowel"
-                                    + "\n14) Vowel, MidConst, SpareKey, MidConst, Vowel, Coda"
-                                    + "\n15) Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
-                                    + "\n16) SpareKey, MidConst, Vowel, MidConst, Vowel, Coda"
-                                    + "\n17) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel, Coda"
-                                    + "\n18) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
-                                    + "\n19) Onset, SpareKey, MidConst, Vowel, MidConst, Vowel, Coda";
+                                    + "\n10) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel"
+                                    + "\n11) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey"
+                                    + "\n12) Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
+                                    + "\n13) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
 
 
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
