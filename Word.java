@@ -1,375 +1,435 @@
-/**
- * .java
- * Author: Keira Pendragon
- * Author Date: 1/22/2023
- * 
- * 
- */
-
-public class Word
+public class Word 
 {
-    private static final int DEF_LEN = 1;
-    private static final int DEF_TYPE = 6;
-    private static final int DEF_CLUS = 5;
-    private static final int[] Def_Pattern = {DEF_CLUS};
+    protected static final int NUMBER = 0;
+    protected static final int PRONOUN = 1;
+    protected static final int NOUN = 2;
+    protected static final int ADJECTIVE = 3;
+    protected static final int VERB = 4;
+    protected static final int ADVERB = 5;
+    protected static final int ADHESIVE = 6;
+
+    private final int RANDOM = -1;
 
     private int word_type;
-    private boolean word_random;
-    private int word_length;
+    private int primary_genus;
+    private int genus_mod;
+    private boolean singular;
+    private int possessive;
+    private int mention_order;
+    private int scope_role;
+    private int verb_mood;
+    private int verb_tense;
+    private int[] pattern;
+    private int cluster_lenght;
     private int consonant_style;
-    private int [] word_pattern;
-    private boolean word_singular;
-    private int word_posessive;
-    private int word_count;
-    private int word_role;
-    private int word_genus;
-    private int word_genus_mod;
-    private int word_mood;
-    private int word_tense;
-    private int whole_digit_count;
-    private int spare_digit_count;
-    private String word_base12Digits;
+    private int digit_count;
+    private String whole_value;
+    private String spare_value;
     private char delimiter;
-    private int del_loc;
-    private String siathael_word;
-    private String english_translation;
-    private String whole_digits;
-    private String spare_digits;
+
+    private boolean random_type;
+    private boolean random_b12_value;
+    private boolean random_digit_count;
+    private boolean random_pattern;
+    private boolean random_length;
+    private boolean random_consonant_style;
+    private boolean random_mood;
+    private boolean random_tense;
+    private boolean random_genus;
+    private boolean randomly_singular;
+    private boolean randomly_possessive;
+    private boolean random_mention;
+    private boolean random_role;
 
     /**
-     * Word Constructor for Pronouns
-     * @param type
-     * @param random
-     * @param singular
-     * @param posessive
+     * Pronoun Constructor
      * @param genus
-     * @param count
+     * @param mod
+     * @param singularity
+     * @param possession
+     * @param mention
      * @param role
      */
-    public Word(int type, boolean random, boolean singular, int possessive, int genus, int gMod, int count, int role)
+    public Word(int genus, int mod, int singularity, int possession, int mention, int role)
     {
-        setType(type);
-        setRandom(random);
-        setSingular(singular);
-        setPossessive(possessive);
-        setGenus(genus, gMod);
-        setCount(count);
+        setAllRandom();
+        word_type = PRONOUN;
+        setGenus(genus, mod);
+        setSingularity(singularity);
+        setPossession(possession);
+        setMentionOrder(mention);
         setRole(role);
-        setConsonantStyle(Dice.rand(0, 2));
     }
 
-    /**
-     * Constructor for Nouns
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
-     * @param singular
-     * @param genus
-     * @param gMod
-     */
-    public Word(int type, boolean random, int length, int[] pattern, boolean singular, int genus, int gMod)
-    {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
-        setSingular(singular);
-        setGenus(genus, gMod);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
+
 
     /**
-     * Word constructor for Verbs
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
+     * Verb Constructor
      * @param mood
      * @param tense
+     * @param vPattern
+     * @param cLength
      */
-    public Word(int type, boolean random, int length, int[] pattern, int mood, int tense)
+    public Word(int mood, int tense, int[] vPattern, int cLength, int cStyle)
     {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
+        setAllRandom();
+        word_type = VERB;
         setMood(mood);
         setTense(tense);
-        setConsonantStyle(Dice.rand(0, 2));
+        setPattern(vPattern);
+        setClusterLength(cLength);
+        setStyle(cStyle);
+
     }
 
     /**
-     * Word constructor for Adverbs, Adjectives, and Adhesive words
-     * @param type
-     * @param random
-     * @param length
-     * @param pattern
+     * Noun Constructor
+     * @param primaryGenus
+     * @param genusMod
+     * @param nPattern
+     * @param cLength
+     * @param nSingular
+     * @param nPossessive
      */
-    public Word(int type, boolean random, int length, int[] pattern)
+    public Word(int primaryGenus, int genusMod, int[] nPattern, int cLength, int nSingular, int nPossessive, int style)
     {
-        setType(type);
-        setRandom(random);
-        setLength(length);
-        setPattern(pattern);
-        setConsonantStyle(Dice.rand(0, 2));
+        setAllRandom();
+        word_type = NOUN;
+        setGenus(primaryGenus, genusMod);
+        setPattern(nPattern);
+        setStyle(style);
+        setClusterLength(cLength);
+        setSingularity(nSingular);
+        setPossession(nPossessive);
     }
 
     /**
-     * Word constructor for numbers
+     * Constructor for Adjectives, Adverbs and Adhesives.
      * @param type
-     * @param random
+     * @param aPattern
+     * @param cLength
+     */
+    public Word(int type, int[] aPattern, int cLength, int style)
+    {
+        setAllRandom();
+        random_type = (type == RANDOM);
+        if(type != RANDOM)
+        {
+            word_type = type;
+            setPattern(aPattern);
+            setClusterLength(cLength);
+            setStyle(style);
+        }
+        else
+        {
+            word_type = Dice.rand(0, 6);
+        }
+    }
+
+    /**
+     * Completely randomized words o.o
+     */
+    public Word()
+    {
+        setAllRandom();
+        word_type = Dice.rand(0, 6);
+    }
+
+    public void refreshWord()
+    {
+        if(RandomType())
+        {
+            word_type = Dice.rand(0, 6);
+        }
+    }
+
+    /**
+     * Constructor for Numbers
+     * @param b12
      * @param digits
-     * @param base12Dig
      */
-    public Word(int type, boolean random, String base12Dig)
+    public Word(String b12, int digits)
     {
-        setType(type);
-        setRandom(random);
-        setbase12Value(base12Dig);
-        setConsonantStyle(Dice.rand(0, 2));
+        word_type = NUMBER;
+        setB12Value(b12);
+        setDigitCount(digits);
     }
 
-    /**
-    * "Dummy" consructor to avoid spitting exceptions by accident.
-    */
-    public Word(boolean random)
-    {
-        setRandom(random);
-        setType(DEF_TYPE);
-        setLength(DEF_LEN);
-        setPattern(Def_Pattern);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-    
-    /**
-    * Constructor for completely random words of a set type
-    */
-    public Word(int type, boolean random)
-    {
-        setType(type);
-        setRandom(random);
-        setConsonantStyle(Dice.rand(0, 2));
-    }
-
-    private void setType(int type)
-    {
-        word_type = type;
-    }
     public int Type()
     {
         return word_type;
     }
 
-
-    private void setRandom(boolean random)
+    public boolean RandomType()
     {
-        word_random = random;
-    }
-    public boolean isRandom()
-    {
-        return word_random;
+        return random_type;
     }
 
-
-    
-    private void setConsonantStyle(int style)
+    /**
+     * Defaults all randoms to true to prevent errors for different word types.
+     * They should be properly updated after the init for whatever type is being built.
+     */
+    private void setAllRandom()
     {
-        consonant_style = style;
+        random_b12_value = true;
+        random_digit_count = true;
+        random_pattern = true;
+        random_length = true;
+        random_consonant_style = true;
+        random_mood = true;
+        random_tense = true;
+        random_genus = true;
+        randomly_singular = true;
+        randomly_possessive = true;
+        random_mention = true;
+        random_role = true;
+
     }
-    public int ConsonantStyle()
+
+    public boolean OnlyOne()
     {
-        return consonant_style;
+        boolean onlyOne = false;
+        if((Type() == PRONOUN && !RandomPronoun()) || (Type() == NUMBER && !RandomB12()))
+        {
+            onlyOne = true;
+        }
+        return onlyOne;
     }
 
-    private void setLength(int length)
+    private boolean RandomPronoun()
     {
-        word_length = length;
-    }
-    public int clusterLength()
-    {
-        return word_length;
+        return (RandomGenus() || RandomMention() || RandomSingularity() || RandomRole() || RandomlyPossessive());
     }
 
-
-
-    private void setPattern(int[] pattern)
+    private void setB12Value(String b12)
     {
-        word_pattern = pattern;
+        random_b12_value = (b12.contains(RANDOM + ""));
+        SUI.displayTextLn("B12 randomness is " + RandomB12() + " B12 is " + b12);
+        if(!RandomB12())
+        {
+            processB12(b12);
+        }
+    }
+
+    public boolean RandomB12()
+    {
+        return random_b12_value;
+    }
+
+    private void processB12(String b12)
+    {
+        String w = "";
+        String s = "";
+        delimiter = '-';
+        char c;
+        int delLoc = b12.length();
+        for(int i = 0; i < b12.length(); i++)
+        {
+            c = b12.charAt(i);
+            if(c >= '0' && c <= '9' || c == 'A' || c == 'a' || c == 'b' || c == 'B')
+            {
+                w += c;
+            }
+            if(c == '.' || c == '/')
+            {
+                delLoc = i;
+                i = b12.length();
+                delimiter = c;
+            }
+        }
+        if(delLoc < b12.length())
+        {
+            for(int j = delLoc; j < b12.length(); j++)
+            {
+                c = b12.charAt(j);
+                if(c >= '0' && c <= '9' || c == 'A' || c == 'a' || c == 'b' || c == 'B')
+                {
+                    s += c;
+                }
+            }
+        }
+        whole_value = w;
+        spare_value = s;
+    }
+    public char Delimiter()
+    {
+        return delimiter;
+    }
+
+    public String WholeValue()
+    {
+        return whole_value;
+    }
+    public String SpareValue()
+    {
+        return spare_value;
+    }
+
+    private void setDigitCount(int digits)
+    {
+        digit_count = digits;
+        random_digit_count = (digits == RANDOM);
+    }
+    public boolean RandomDigitCount()
+    {
+        return random_digit_count;
+    }
+
+    public int DigitCount()
+    {
+        return digit_count;
+    }
+
+    private void setPattern(int[] nPattern)
+    {
+        pattern = nPattern;
+        random_pattern = (pattern[0] == RANDOM);
+    }
+
+    public boolean RandomPattern()
+    {
+        return random_pattern;
     }
 
     public int[] Pattern()
     {
-        return word_pattern;
+        return (RandomPattern())? Words.RandomPattern(word_type) : pattern;
     }
 
-
-    private void setSingular(boolean singular)
+    private void setClusterLength(int cLength)
     {
-        word_singular = singular;
+        cluster_lenght = cLength;
+        random_length = (cLength == RANDOM);
     }
-    public boolean isSingular()
+    public boolean RandomClusterLength()
     {
-        return word_singular;
-    }
-
-
-    private void setCount(int count)
-    {
-        word_count = count;
-    }
-    public int mentionCount()
-    {
-        return word_count;
+        return random_length;
     }
 
-
-    private void setRole(int role)
+    public int ClusterLength()
     {
-        word_role = role;
-    }
-    public int ConvoRole()
-    {
-        return word_role;
+        return (RandomClusterLength())? Dice.rand(0, 2) : cluster_lenght;
     }
 
-    
-    private void setPossessive(int posessive)
+    private void setStyle(int style)
     {
-        word_posessive = posessive;
+        consonant_style = style;
+        random_consonant_style = (style == RANDOM);
     }
-    public int Possessiveness()
+    public boolean RandomStyle()
     {
-        return word_posessive;
+        return random_consonant_style;
     }
-
-
-    private void setGenus(int genus, int gMod)
+    public int ConsonantStyle()
     {
-        word_genus = genus;
-        word_genus_mod = gMod;
+        return (RandomStyle())? Dice.rand(0, 2) : consonant_style;
     }
-
-    public int Genus()
-    {
-        return word_genus;
-    }
-    public int GenusMod()
-    {
-        return word_genus_mod;
-    }
-
 
     private void setMood(int mood)
     {
-        word_mood = mood;
+        verb_mood = mood;
+        random_mood = (mood == RANDOM);
+    }
+    public boolean RandomMood()
+    {
+        return random_mood;
     }
     public int Mood()
     {
-        return word_mood;
+        return (RandomMood()) ? Dice.rand(0, 5) : verb_mood;
     }
 
 
     private void setTense(int tense)
     {
-        word_tense = tense;
+        verb_tense = tense;
+        random_tense = (tense == RANDOM);
+    }
+    public boolean RandomTense()
+    {
+        return random_tense;
     }
     public int Tense()
     {
-        return word_tense;
+        return (RandomTense())? Dice.rand(0, 3) : verb_tense;
     }
 
-
-    private void setdigits(String wValue, String sValue)
+    private void setGenus(int primaryGenus, int genusMod)
     {
-        whole_digit_count = wValue.length();
-        spare_digit_count = wValue.length();
-        whole_digits = wValue;
-        spare_digits = sValue;
+        primary_genus = primaryGenus;
+        genus_mod = genusMod;
+        random_genus = (primaryGenus == RANDOM);
     }
-    public int wholeDigitCount()
+    public boolean RandomGenus()
     {
-        return whole_digit_count;
+        return random_genus;
     }
 
-    public int spareDigitCount()
+    public int PrimaryGenus()
     {
-        return spare_digit_count;
+        return (RandomGenus())? Dice.rand(0, 4) : primary_genus;
+    }
+    public int GenusModifier()
+    {
+        return (RandomGenus())? Dice.rand(0, 4) : genus_mod;
     }
 
-    private void setbase12Value(String value)
+    private void setSingularity(int nSingular)
     {
-        word_base12Digits = value;
-        String wDig = "";
-        String sDig = "";
-        boolean done = false;
+        randomly_singular = (nSingular == RANDOM);
+        singular = (nSingular == 1) ? true : false;
+    }
 
-        int step = 0;
-        char c;
-        while(step < value.length() && !done)
-        {
-            c = value.charAt(step);
-            if(c == '/' || c == '.' )
-            {
-                done = true;
-            }
-            else if(c != '0')
-            {
-                wDig += c;
-            }
-            step++;
-        }
-        while(step < value.length())
-        {
-            c = value.charAt(step);
-            if(c != 0  && c!= '/' && c != '.')
-            {
-                sDig += c;
-            }
-            step++;
-        }
-        setdigits(wDig, sDig);
-    }
-    
-    public String Base12Value()
+    public boolean RandomSingularity()
     {
-        return word_base12Digits;
+        return randomly_singular;
     }
-    
-    public char Delimiter()
+
+    public boolean Singular()
     {
-        return delimiter;
+        return (RandomSingularity()) ? Dice.coinToss() : singular;
     }
-    public int DelimiterLoc()
+
+    private void setPossession(int nPossessive)
     {
-        return del_loc;
+        randomly_possessive = (nPossessive == RANDOM);
+        possessive = nPossessive;
     }
-    public String WholeValue()
+    public boolean RandomlyPossessive()
     {
-        return whole_digits;
+        return randomly_possessive;
     }
-    public String SpareValue()
+    public int Possessiveness()
     {
-        return spare_digits;
+        return (RandomlyPossessive()) ? Dice.rand(0, 6) : possessive;
     }
-    
-    public void commitWord(String word)
+
+    private void setMentionOrder(int mention)
     {
-        siathael_word = word;
+        mention_order = mention;
+        random_mention = (mention == RANDOM);
     }
-    public String SiathaelWord()
+    public boolean RandomMention()
     {
-        return siathael_word;
+        return random_mention;
     }
-    
-    protected void setTranslation(String eWord)
+    public int MentionOrder()
     {
-        english_translation = eWord;
+        return (RandomMention())? Dice.rand(1, 11) : mention_order;
     }
-    
-    protected String getTranslation()
+
+    private void setRole(int role)
     {
-        return english_translation;
+        scope_role = role;
+        random_role = (role == RANDOM);
+    }
+    public boolean RandomRole()
+    {
+        return random_role;
+    }
+    public int Role()
+    {
+        return (RandomRole())? Dice.rand(0, 3) : scope_role;
     }
     
 }

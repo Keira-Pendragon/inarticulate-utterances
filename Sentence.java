@@ -33,7 +33,7 @@ public class Sentence
         }
         else
         {
-            return new Word(true);
+            return new Word();
         }
     }
 
