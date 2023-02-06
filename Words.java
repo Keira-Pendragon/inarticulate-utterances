@@ -415,7 +415,7 @@ protected static final String adhesive_details =
     }
 
     /**
-     * 
+     * TODO: Major corrections to number handling for spare values o__o; Why are they getting flipped ftw
      * @param aWord
      * @return
      */
@@ -446,9 +446,9 @@ protected static final String adhesive_details =
             delimiter = aWord.Delimiter();
         }
         // Get any whole number value  translated
-        nNumber = (wholeExists) ? standardMethod(wholeValue, true, delimiter) : "" ;
+        nNumber = (wholeExists) ? standardMethod(wholeValue, true, ' ') : "" ;
         // Get any denominator or decimal value (decimals are handled differently...)
-        nNumber += (spareExists)? (delimiter == '/') ? standardMethod(spareValue, false, delimiter) : decimalMethod(spareValue) : "";       
+        nNumber += (spareExists)? ((delimiter == '/') ? "|" + standardMethod(spareValue, false, delimiter) : ":" + decimalMethod(spareValue)) : "";       
         return nNumber;
     }
 
@@ -470,7 +470,8 @@ protected static final String adhesive_details =
      * @return
      */
     private static String standardMethod(String translate, boolean isWhole, char delim)
-    {        
+    {
+        SUI.displayTextLn("getting a whole number? " + isWhole);
         String translation = "";
         int spare = translate.length() % 3;
         int trio = translate.length() / 3 - 1;
@@ -500,9 +501,10 @@ protected static final String adhesive_details =
             cDigit++;
             translation += (dX__val!= 0) ? nextDigit(dX__val, 2, trio, delim) + "'" : "";
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, trio, delim) + "'"  : "";
-            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, trio, delim) + "-" : "";
+            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, trio, delim) + ((trio != 0)? "-" : "") : "";
             trio--;
         }
+        
         return translation;
     }
 
@@ -530,18 +532,19 @@ protected static final String adhesive_details =
             cDigit++;
             translation += (dX__val!= 0) ? nextDigit(dX__val, 2, i, delim) + "'" : "";
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, i, delim) + "'"  : "";
-            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + "-" : "";
+            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + ((i != trio) ? "-" : ""): "";
         }
         int lastIndex = translate.length() -1;
         if(cDigit < lastIndex)
         {
-            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 2, (trio + 1), delim) + "'";
+            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 2, (trio + 1), delim) + ((cDigit != lastIndex -1)? "'" : "");
             cDigit++;
         }
         if(cDigit == lastIndex)
         {
             translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 1, (trio + 1), delim);
-        }        
+        }
+
         return translation;
     }
 
@@ -570,7 +573,7 @@ protected static final String adhesive_details =
     {
         if(digits == 0)
         {
-            digits = Dice.rand(1, 66);
+            digits = Dice.rand(1, 9);
         }
         String whole = "";
         String spare = "";
@@ -817,7 +820,7 @@ protected static final String adhesive_details =
         int index = SUI.ValidateIndex(standard_pattern_range_for_prompt, word_pattern_prompt + verb_pattern_details);
         return (index == RANDOM) ? RANDOMINTARRAY : verb_pattern[index];
     }
-    
+
     /**
      * 
      * @return

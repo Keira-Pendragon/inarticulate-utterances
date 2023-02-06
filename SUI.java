@@ -101,7 +101,7 @@ public class SUI
      */
     public static String ValidateB12(String prompt)
     {
-        SUI.displayTextLn(prompt);
+        displayTextLn(prompt);
         String input = getUserInput();
         char c;
         String validatedB12 = "";
@@ -192,16 +192,16 @@ public class SUI
             }            
         }
         foundGood = false;
-        int spare = review.length();
+        int spare = review.length() -1;
         while(spare > step)
-        {
-            spare--;
+        {            
             c = review.charAt(spare);
             if(c != 0 || foundGood)
             {
                 spareVal += c;
                 foundGood = true;
             }
+            spare--;
         }
         return wholeVal + spareVal;
     }

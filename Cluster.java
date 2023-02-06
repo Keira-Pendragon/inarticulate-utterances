@@ -222,7 +222,7 @@ public class Cluster
     
     private static final String[] posession_vowels = {"", "i'", "e'", "a'", "u'", "o'"};
     
-    private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "ɕ", "j", "k", "m", "b"};
+    private static final String[] tally_consonants = {"p", "n", "f", "t", "d", "l", "r", "ɕ", "d" + ZHEA, "k", "m", "b"};
     private static final String[] lazy_digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B"};
     
     private static final String[] pronoun_role = {"s'", "n'", "f'", "ʑ'"};
