@@ -85,8 +85,7 @@ public class SentenceHelper extends WordHelper
     sayWhat.addWord(NOUN);
     return sayWhat;
   }
-
-
+  
   /**
    * 
    * @param sayWhat

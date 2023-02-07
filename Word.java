@@ -104,7 +104,7 @@ public class Word
     }
 
     /**
-     * Constructor for Adjectives, Adverbs and Adhesives.
+     * Constructor for Adjectives, Adverbs and Adhesives.     * 
      * @param type
      * @param aPattern
      * @param cLength
@@ -136,6 +136,7 @@ public class Word
         word_type = type;
         random_type = false;
     }
+    
 
     /**
      * Constructor for Numbers
