@@ -61,7 +61,7 @@ public class Words extends Cluster
 
     protected static final int[] a0_pattern = {VOWEL};
     protected static final int[] a1_pattern = {SPAREKEY, CODA};
-    protected static final int[] a2_pattern = {ONSET, SPAREKEY}
+    protected static final int[] a2_pattern = {ONSET, SPAREKEY};
     protected static final int[] a3_pattern = {ONSET, SPAREKEY, CODA};
     protected static final int[] a4_pattern = {SPAREKEY, MIDCONST, VOWEL};
     protected static final int[] a5_pattern = {VOWEL, MIDCONST, SPAREKEY};
@@ -100,7 +100,7 @@ protected static final String adhesive_details =
                                     + "\n11) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel"
                                     + "\n12) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey"
                                     + "\n13) Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
-                                    + "\n14) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
+                                    + "\n14) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda";
 
 
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
@@ -206,7 +206,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomNounPattern()
     {
-        return noun_pattern[WeightedRandomStandardPatternIndex];
+        return noun_pattern[WeightedRandomStandardPatternIndex()];
     }
 
     /**
@@ -215,7 +215,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomAdjectivePattern()
     {
-        return adjective_pattern[WeightedRandomStandardPatternIndex];
+        return adjective_pattern[WeightedRandomStandardPatternIndex()];
     }
     /**
      * 
@@ -223,7 +223,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomVerbPattern()
     {
-        return verb_pattern[WeightedRandomStandardPatternIndex];
+        return verb_pattern[WeightedRandomStandardPatternIndex()];
     }
     /**
      * 
@@ -231,7 +231,7 @@ protected static final String adhesive_details =
      */
     public static int[] RandomAdverbPattern()
     {
-        return adverb_pattern[WeightedRandomStandardPatternIndex];
+        return adverb_pattern[WeightedRandomStandardPatternIndex()];
     }
     /**
      * 
