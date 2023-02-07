@@ -569,9 +569,14 @@ public class Word
      */
     public int Possessiveness()
     {
-        return (RandomlyPossessive()) ? Dice.rand(0, 5) : possessive;
+        return (RandomlyPossessive()) ? WeightedRandomPossessiveness() : possessive;
     }
 
+    public int WeightedRandomPossessiveness()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight < 80) ? 0 : Dice.rand(0, 4);
+    }
     /**
      * 
      * @param mention
@@ -596,6 +601,14 @@ public class Word
     public int MentionOrder()
     {
         return (RandomMention())? Dice.rand(1, 11) : mention_order;
+    }
+    
+    private int WeightedRandomMentionOrder()
+    {
+        int[] breakpoints = {95, 105, 114, 122, 129, 135, 140, 144, 147, 149};
+        int weight = Dice.rand(0, 150);
+        return (weight < breakpoints[0])? 1 : (weight < breakpoints[1])? 2 : (weight < breakpoints[2])? 3 : (weight < breakpoints[3])? 4 : (weight < breakpoints[4])? 5 : 
+               (weight < breakpoints[5])? 6 : (weight < breakpoints[6])? 7 : (weight < breakpoints[7])? 8 : (weight < breakpoints[8])? 9 : (weight < breakpoints[9])? 10 : 11;
     }
 
     /**
