@@ -667,7 +667,7 @@ public class Word
     private int WeightedRandomLength()
     {
         int weight = Dice.rand(0, 100);
-        return (weight < 53)? 0 : (weight < 86)? 1 : 2;
+        return (weight < 60)? 0 : (weight < 92)? 1 : 2;
     }
         
     private int WeightedRandomStyle()
