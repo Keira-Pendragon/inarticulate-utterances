@@ -37,7 +37,7 @@
 
     /**
      * flip a coin~
-    * @return
+    * @return heads or tails 
     */
     public static boolean coinToss()
     {
