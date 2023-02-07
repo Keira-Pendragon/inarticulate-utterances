@@ -41,12 +41,11 @@ public class SentenceHelper extends WordHelper
   public static void BatchBuild()
   {
     boolean onceMore = true;
-    int sentenceCount;
+    int sentenceCount = 1000;
     Sentence sayWhat;
     while(onceMore)
     {
-      sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
-      sayWhat = BatchSentence();
+      sayWhat = BatchWords(VERB);
       for(int i = 0; i < sentenceCount; i++)
       {
         SUI.displayTextLn(buildSentence(sayWhat));
@@ -83,6 +82,16 @@ public class SentenceHelper extends WordHelper
     sayWhat.addWord(ADHESIVE);
     sayWhat.addWord(ADJECTIVE);
     sayWhat.addWord(NOUN);
+    return sayWhat;
+  }
+
+  private static Sentence BatchWords(int type)
+  {
+    Sentence sayWhat = new Sentence();
+    for(int i = 0; i < 9; i++)
+    {
+      sayWhat.addWord(type);
+    }
     return sayWhat;
   }
   

@@ -98,7 +98,7 @@ public class Cluster
         SHEA + "p", SHEA + "f", SHEA + THEA + "", SHEA + NGEA + "", SHEA + "n", SHEA + "m", SHEA + "h", SHEA + "l", SHEA + "r", "fk", 
         "ft", "fp", "fs", "f" + SHEA, "f" + THEA, "f" + NGEA, "fn", "fm", "fh", "fl", "fr", THEA + "k", THEA + "t", THEA + "p", 
         THEA + "s", THEA + SHEA, THEA + NGEA + "", THEA + "n", THEA + "m", THEA + "h", THEA + "l", THEA + "r", NGEA + "k", NGEA + "t", 
-        NGEA + "p", NGEA + "s", NGEA + SHEA, NGEA + "f", NGEA + THEA, NGEA + "n", NGEA + "m", NGEA + "h", NGEA + "l", NGEA + "r", "nk", 
+        NGEA + "p", NGEA + "s", NGEA + SHEA, NGEA + "f", NGEA + THEA, NGEA + "h", NGEA + "l", NGEA + "r", "nk", 
         "nt", "np", "ns", "n" + SHEA, "nf", "n" + THEA, "mk", "mt", "mp", "ms", "m" + SHEA, "mf", "m" + THEA, "lk", "lt", "lp", "ls", 
         "l" + SHEA, "lf", "l" + THEA, "rk", "rt", "rp", "rs", "r" + SHEA, "rf", "r" + THEA
     };
@@ -115,12 +115,12 @@ public class Cluster
     private static final String[] mn_s = {NGEA, "n", "m", "h", "l", "r"};
     private static final String[] mn_m = 
     {
-        NGEA, "r" + NGEA, "rn", "rm", "rh", "rl", "l" + NGEA, "ln", "lm", "lh", "lr", "n" + NGEA, "nm", "nh", "nl", "nr", "m", 
+        NGEA, "r" + NGEA, "rn", "rm", "rh", "rl", "l" + NGEA, "ln", "lm", "lh", "lr", "nm", "nh", "nl", "nr", "m", 
         "m" + NGEA, "mn", "mh", "ml", "mr", "h", "n", "r", "l"
     };
     private static final String[] mn_l = 
     {
-        "r" + NGEA, "rn", "rm", "rh", "rl", "l" + NGEA, "ln", "lm", "lh", "lr", "n" + NGEA, "nm", "nh", "nl", "nr", "m" + NGEA, "mn", 
+        "r" + NGEA, "rn", "rm", "rh", "rl", "l" + NGEA, "ln", "lm", "lh", "lr", "nm", "nh", "nl", "nr", "m" + NGEA, "mn", 
         "mh", "ml", "mr"
     };
     private static final String[][] midword_neutral = {mn_s, mn_m, mn_l};
