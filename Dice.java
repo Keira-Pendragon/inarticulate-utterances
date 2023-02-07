@@ -28,7 +28,7 @@
      * rand(int, int) inclusive bound random numbers
     * @param min smallest inclusive value
     * @param max largest inclusive value
-    * @return
+    * @return A NUMBER
     */
     public static int rand(int min, int max)
     {
