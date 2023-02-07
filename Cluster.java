@@ -323,9 +323,10 @@ public class Cluster
      */
     protected static String genusCluster(Word aWord)
     {
-        String cluster = genus_primary_vowels[aWord.PrimaryGenus()];
         int mod = (aWord.RandomGenus()) ? Dice.rand(0, genus_mod_vowels.length -1) : aWord.GenusModifier();
-        cluster += genus_mod_vowels[mod];
+        String cluster = genus_mod_vowels[mod];
+        
+        cluster += genus_primary_vowels[aWord.PrimaryGenus()];
         if(cluster.length() == 2 && (cluster.charAt(0) == cluster.charAt(1)))
         {
             cluster = cluster.charAt(0) + "";
