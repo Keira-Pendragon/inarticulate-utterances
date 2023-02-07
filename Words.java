@@ -61,44 +61,46 @@ public class Words extends Cluster
 
     protected static final int[] a0_pattern = {VOWEL};
     protected static final int[] a1_pattern = {SPAREKEY, CODA};
-    protected static final int[] a2_pattern = {ONSET, SPAREKEY, CODA};
-    protected static final int[] a3_pattern = {VOWEL, MIDCONST, SPAREKEY};
+    protected static final int[] a2_pattern = {ONSET, SPAREKEY}
+    protected static final int[] a3_pattern = {ONSET, SPAREKEY, CODA};
     protected static final int[] a4_pattern = {SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a5_pattern = {ONSET, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a6_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY};    
-    protected static final int[] a7_pattern = {VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a8_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};    
-    protected static final int[] a9_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
-    protected static final int[] a10_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};
-    protected static final int[] a11_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
-    protected static final int[] a12_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
+    protected static final int[] a5_pattern = {VOWEL, MIDCONST, SPAREKEY};
+    protected static final int[] a6_pattern = {ONSET, SPAREKEY, MIDCONST, VOWEL};
+    protected static final int[] a7_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY};    
+    protected static final int[] a8_pattern = {VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
+    protected static final int[] a9_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};    
+    protected static final int[] a10_pattern = {ONSET, VOWEL, MIDCONST, SPAREKEY, MIDCONST, VOWEL};
+    protected static final int[] a11_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY};
+    protected static final int[] a12_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
+    protected static final int[] a13_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
 
 
     protected static final int[][] adhesive_pattern = 
     {
         a0_pattern, a1_pattern, a2_pattern, a3_pattern, a4_pattern, a5_pattern, a6_pattern, 
-        a7_pattern, a8_pattern, a9_pattern, a10_pattern, a11_pattern, a12_pattern
+        a7_pattern, a8_pattern, a9_pattern, a10_pattern, a11_pattern, a12_pattern, a13_pattern
     };
 
 protected static final int[] standard_pattern_range = {0, 3};
 protected static final int[] standard_pattern_range_for_prompt = {-1, 3};
-protected static final int[] adhesive_pattern_range_for_prompt = {-1, 12};
-protected static final int[] adhesive_pattern_range = {0, 12};
+protected static final int[] adhesive_pattern_range_for_prompt = {-1, 13};
+protected static final int[] adhesive_pattern_range = {0, 13};
 
 protected static final String adhesive_details = 
                                       "\n1) Vowel"
                                     + "\n2) SpareKey, Coda"
-                                    + "\n3) Onset, SpareKey, Coda"
-                                    + "\n4) Vowel, MidConst, SpareKey"
-                                    + "\n5) SpareKey, MidConst, Vowel"
-                                    + "\n6) Onset, SpareKey, MidConst, Vowel"
-                                    + "\n7) Onset, Vowel, MidConst, SpareKey"
-                                    + "\n8) Vowel, MidConst, SpareKey, MidConst, Vowel"
-                                    + "\n9) Vowel, MidConst, Vowel, MidConst, SpareKey"
-                                    + "\n10) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel"
-                                    + "\n11) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey"
-                                    + "\n12) Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
-                                    + "\n13) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
+                                    + "\n3) Onset, SpareKey"
+                                    + "\n4) Onset, SpareKey, Coda"
+                                    + "\n5) Vowel, MidConst, SpareKey"
+                                    + "\n6) SpareKey, MidConst, Vowel"
+                                    + "\n7) Onset, SpareKey, MidConst, Vowel"
+                                    + "\n8) Onset, Vowel, MidConst, SpareKey"
+                                    + "\n9) Vowel, MidConst, SpareKey, MidConst, Vowel"
+                                    + "\n10) Vowel, MidConst, Vowel, MidConst, SpareKey"
+                                    + "\n11) Onset, Vowel, MidConst, SpareKey, MidConst, Vowel"
+                                    + "\n12) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey"
+                                    + "\n13) Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
+                                    + "\n14) Onset, Vowel, MidConst, Vowel, MidConst, SpareKey, Coda"
 
 
     // \n1) Concepts\n2) Objects\n3) Entities\n4) Places\n5) Traits or Qualities\n6) Actions
@@ -191,8 +193,11 @@ protected static final String adhesive_details =
     private static int WeightedRandomAdhesivePatternIndex()
     {
         int weight = Dice.rand(0, 100);
-        return (weight > 5)? 0 : (weight < 10)? 1: (weight < 15)? 2: (weight < 20)? 3: (weight < 25)? 4: (weight < 30)? 5:
-               (weight < 35)? 6 : (weight < 40)? 7 : (weight < 45)? 8 : (weight < 50)? 9 : (weight < 55)? 10 : (weight < 60)? 11 : 12;    
+        int[] breakpoint = {4, 10, 27, 46, 54, 60, 67, 75, 81, 87, 91, 95, 97, 99};
+        
+        return (weight < breakpoint[0])? 0 : (weight < breakpoint[1])? 1: (weight < breakpoint[2])? 2: (weight < breakpoint[3])? 3: (weight < breakpoint[4])? 4: 
+               (weight < breakpoint[5])? 5: (weight < breakpoint[6])? 6 : (weight < breakpoint[7])? 7 : (weight < breakpoint[8])? 8 : (weight < breakpoint[9])? 9 : 
+               (weight < breakpoint[10])? 10 : (weight < breakpoint[11])? 11 : (weight < breakpoint[11])? 12 : 13;    
     }
     
     /**
