@@ -187,13 +187,13 @@ protected static final String adhesive_details =
     private static int WeightedRandomStandardPatternIndex()
     {
         int weight = Dice.rand(0, 100);
-        return (weight < 15) ? 0 : (weight < 75)? 1 : (weight < 90)? 2 : 3;
+        return (weight < 15) ? 0 : (weight < 75)? 1 : (weight < 93)? 2 : 3;
     }
     
     private static int WeightedRandomAdhesivePatternIndex()
     {
         int weight = Dice.rand(0, 100);
-        int[] breakpoint = {2, 4, 10, 28, 37, 46, 62, 78, 83, 88, 92, 96, 98};
+        int[] breakpoint = {2, 5, 11, 31, 41, 51, 67, 83, 88, 93, 95, 97, 98};
         
         return (weight < breakpoint[0])? 0 : (weight < breakpoint[1])? 1 : (weight < breakpoint[2])? 2 : 
                (weight < breakpoint[3])? 3 : (weight < breakpoint[4])? 4 : (weight < breakpoint[5])? 5 : 
