@@ -626,12 +626,12 @@ public class Word
     private int WeightedRandomLength()
     {
         int weight = Dice.rand(0, 100);
-        return (weight < 50)? 0 : (weight < 85)? 1 : 2;
+        return (weight < 60)? 0 : (weight < 90)? 1 : 2;
     }
         
     private int WeightedRandomStyle()
     {        
         int weight = Dice.rand(0, 100);
-        return (weight < 45)? 0 : (weight < 75)? 1 : 2;
+        return (weight < 50)? 0 : (weight < 80)? 1 : 2;
     }
 }
