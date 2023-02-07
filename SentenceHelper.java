@@ -8,9 +8,9 @@
 
 public class SentenceHelper extends WordHelper
 {
-  private static final int[] sentence_count_range = {1, 200};
+  private static final int[] sentence_count_range = {1, 1000};
   private static final int[] word_count_range = {1, 15};
-  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 200)";
+  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 1000)";
   private static final String word_count_prompt = "How many words should be in the sentence?\n(limite 15)";
   public SentenceHelper()
   {
