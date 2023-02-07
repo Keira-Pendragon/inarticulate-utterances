@@ -507,15 +507,30 @@ public class Word
      */
     public int PrimaryGenus()
     {
-        return (RandomGenus())? Dice.rand(0, 3) : primary_genus;
+        return (RandomGenus())? WeightedRandomPrimaryGenus() : primary_genus;
     }
+// idea thing person place
+    private int WeightedRandomPrimaryGenus()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight < 20) ? 0 : (weight < 50) ? 1 : (weight < 75)? 2 : 3;
+    }
+
+// idea thing person place o y
+
     /**
      * 
      * @return
      */
     public int GenusModifier()
     {
-        return (RandomGenus())? Dice.rand(0, 5) : genus_mod;
+        return (RandomGenus())? WeightedRandomGenusMod() : genus_mod;
+    }
+
+    private int WeightedRandomGenusMod()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight < 15) ? 0 : (weight < 40) ? 1 : (weight < 60)? 2 : (weight < 75)? 3 : (weight < 90)? 4 : 5;
     }
 
     /**
@@ -543,7 +558,13 @@ public class Word
      */
     public boolean Singular()
     {
-        return (RandomSingularity()) ? Dice.coinToss() : singular;
+        return (RandomSingularity()) ? RandomlySingular() : singular;
+    }
+
+    private boolean RandomlySingular()
+    {
+        int weight = Dice.rand(0, 10);
+        return weight < 8;
     }
 
     /**
@@ -600,7 +621,7 @@ public class Word
      */
     public int MentionOrder()
     {
-        return (RandomMention())? Dice.rand(1, 11) : mention_order;
+        return (RandomMention())? WeightedRandomMentionOrder() : mention_order;
     }
     
     private int WeightedRandomMentionOrder()
@@ -634,7 +655,13 @@ public class Word
      */
     public int Role()
     {
-        return (RandomRole())? Dice.rand(0, 3) : scope_role;
+        return (RandomRole())? WeightedRandomRole() : scope_role;
+    }
+
+    private int WeightedRandomRole()
+    {
+        int weight = Dice.rand(0, 100);
+        return (weight < 40) ? 0 : (weight < 55)? 1 : (weight < 75)? 2 : 3;
     }
     
     private int WeightedRandomLength()

@@ -187,7 +187,7 @@ protected static final String adhesive_details =
     private static int WeightedRandomStandardPatternIndex()
     {
         int weight = Dice.rand(0, 100);
-        return (weight > 20) ? 0 : (weight > 75)? 1 : (weight < 90)? 2 : 3;
+        return (weight < 15) ? 0 : (weight < 75)? 1 : (weight < 90)? 2 : 3;
     }
     
     private static int WeightedRandomAdhesivePatternIndex()
