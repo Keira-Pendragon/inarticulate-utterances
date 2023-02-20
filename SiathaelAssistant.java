@@ -13,6 +13,7 @@ public class  SiathaelAssistant
   private static final int[] helper_range = {1, 3};
   // To ask the user if they want to keep going with building things.
   private static final String more_time_prompt = "Would you like to build more?\n1) Yes\n2) No";
+  
 
   public static void main(String[] args) 
   {
@@ -31,7 +32,8 @@ public class  SiathaelAssistant
       }
       else
       {
-        SentenceHelper.BatchBuild();
+        int which = SentenceHelper.getBatchType();
+        SentenceHelper.BatchBuild(which);
       }
 
       moreTime = SUI.ValidateAgreement(more_time_prompt);

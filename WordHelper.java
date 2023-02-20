@@ -19,11 +19,17 @@ public class WordHelper
   private static final String word_count_prompt = "How many words of this type would you like?\n(Limit 50)";
   private static final int[] word_count_range = {1, 50};
 
+
+
   public WordHelper()
   {
 
   }
 
+  public static int getBatchType()
+  {
+    SUI.selectionPrompt();
+  }
   /**
    * 
    */
