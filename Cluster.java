@@ -51,6 +51,7 @@ public class Cluster
     private static final String SHEA = "\u0255";
     private static final String NGEA = "\u014B";
     private static final String THAG = "\u00F0";
+    private static final String ITHI = "\u026A";
 
     // onset voiceless short clusters
     private static final String[] ovl_s = {"k", "t", "p", "s", SHEA, "f", THEA}; 
@@ -244,24 +245,24 @@ public class Cluster
     private static final String[][][] coda_clusters = {coda_voiceless, coda_neutral, coda_voiced};
      
     // short vowel clusters
-    private static final String[] vs_cluster = {"i", "e", "a", "u", "o", "y"};
+    private static final String[] vs_cluster = {"i", "e", "a", "u", "o", ITHI};
     // mixed length vowel clusters
-    private static final String[] vm_cluster = {"i", "ei", "ai", "ui", "oi", "yi",
-                                                "i", "e", "a", "u", "o", "y",
-                                                "ie", "e", "ae", "ue", "oe", "ye",
-                                                "ia", "ea", "a", "ua", "oa", "ya",
-                                                "i", "e", "a", "u", "o", "y",
-                                                "iu", "eu", "au", "u", "ou", "yu",
-                                                "io", "eo", "ao", "uo", "o", "yo",
-                                                "i", "e", "a", "u", "o", "y",
-                                                "iy", "ey", "ay", "uy", "oy", "y"};
+    private static final String[] vm_cluster = {"i", "ei", "ai", "ui", "oi", ITHI + "i",
+                                                "i", "e", "a", "u", "o", ITHI,
+                                                "ie", "e", "ae", "ue", "oe", ITHI + "e",
+                                                "ia", "ea", "a", "ua", "oa", ITHI + "a",
+                                                "i", "e", "a", "u", "o", ITHI,
+                                                "iu", "eu", "au", "u", "ou", ITHI + "u",
+                                                "io", "eo", "ao", "uo", "o", ITHI + "o",
+                                                "i", "e", "a", "u", "o", ITHI,
+                                                "i" + ITHI, "e" + ITHI, "a" + ITHI, "u" + ITHI, "o" + ITHI, ITHI};
     // "long" vowel clusters
-    private static final String[] vl_cluster = {"ei", "ai", "ui", "oi", "yi", 
-                                                "ie", "ae", "ue", "oe", "ye",
-                                                "ia", "ea", "ua", "oa", "ya",
-                                                "iu", "eu", "au", "ou", "yu",
-                                                "io", "eo", "ao", "uo", "yo",
-                                                "iy", "ey", "ay", "uy", "oy"};
+    private static final String[] vl_cluster = {"ei", "ai", "ui", "oi", ITHI + "i", 
+                                                "ie", "ae", "ue", "oe", ITHI + "e",
+                                                "ia", "ea", "ua", "oa", ITHI + "a",
+                                                "iu", "eu", "au", "ou", ITHI + "u",
+                                                "io", "eo", "ao", "uo", ITHI + "o",
+                                                "i" + ITHI, "e" + ITHI, "a" + ITHI, "u" + ITHI, "o" + ITHI};
     // all misc use vowel clusters
     private static final String[][] Vowel_Cluster = {vs_cluster, vm_cluster, vl_cluster};
     
@@ -270,7 +271,7 @@ public class Cluster
     private static final String[] genus_primary_vowels = {"i", "e", "a", "u"};
     // modifier for the genus key of nouns.
     // o and y indicate traits or other less specific modifiers. i, e, a, and u indicate the noun is also somewhat related to an idea, thing, entity or place.
-    private static final String[] genus_mod_vowels = {"i", "e", "a", "u", "o", "y"};
+    private static final String[] genus_mod_vowels = {"i", "e", "a", "u", "o", ITHI};
     
     // indicates possession "" = not possessive; i' = part of the noun, "my eye!"; e' = something dear to, "my best friend"; 
     // a' = possession of, "my hat"; u' inverse of a', "my boss", "the dog's person" etc; o' = distant or unwanted association, "my estranged sibling", etc.
@@ -297,17 +298,17 @@ public class Cluster
     // a indicates intentional action - "I knocked on the door to get your attention."
     // e indicates passive actions - "my heart is still beating..."
     // u indicated involuntary actions - "I tripped over my cat. I swear they're an assassin!"
-    private static final String[] verb_mood = {"y", "i", "a", "e", "u"};
+    private static final String[] verb_mood = {ITHI, "i", "a", "e", "u"};
     // the time tense of the verb, timeless, past, present and future
     private static final String[] verb_tense = {"e", "i", "a", "u"};
 
     // key vowels for adjectives and adverbs.
-    private static final String[] ad_key = {"iy", "ey", "ay", "uy", "oy", "y"};
+    private static final String[] ad_key = {"i" + ITHI, "e" + ITHI, "a" + ITHI, "u" + ITHI, "o" + ITHI, ITHI};
     // key vowels for all other types of words
-    private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", "yo"};
+    private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", ITHI + "o"};
     // the vowel key indicating if a digit is in the whole portion of a number, a denominator, 
     // or a decimal (or whatever a value between 0 and 1 is called in a base 12 system....
-    private static final String[] digit_class = {"y", "ia", "o"};
+    private static final String[] digit_class = {ITHI, "ia", "o"};
     // marks the "tens" or "hundreds" place (as well as the 10 thousands, 100 thousands and so on.
     private static final String[][] digit_magnitude = {tally_consonants, {"s"}, {"ʑ"}};
     // delimiters to place between 144s, 12s and 1s, and between 1s and 144s, as it were....
