@@ -423,7 +423,6 @@ protected static final String adhesive_details =
     }
 
     /**
-     * TODO: Major corrections to number handling for spare values o__o; Why are they getting flipped ftw
      * @param aWord
      * @return
      */
@@ -479,7 +478,6 @@ protected static final String adhesive_details =
      */
     private static String standardMethod(String translate, boolean isWhole, char delim)
     {
-        SUI.displayTextLn("getting a whole number? " + isWhole);
         String translation = "";
         int spare = translate.length() % 3;
         int trio = translate.length() / 3 - 1;
@@ -492,7 +490,7 @@ protected static final String adhesive_details =
         }
         if(spare == 1)
         {        
-            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 0, trio + 1, delim) + "-";
+            translation += nextDigit(intifyB12Digit(translate.charAt(cDigit)), 0, trio + 1, delim) + ((trio >= 0) ? "-" : "");
             cDigit++;
         }   
         int dX__val;
@@ -525,6 +523,7 @@ protected static final String adhesive_details =
     {
         String translation = "";
         int trio = translate.length() / 3;
+        int s_dig = translate.length() % 3;
         char delim = '.';
         int cDigit = 0;
         int dX__val;
@@ -540,12 +539,12 @@ protected static final String adhesive_details =
             cDigit++;
             translation += (dX__val!= 0) ? nextDigit(dX__val, 2, i, delim) + "'" : "";
             translation += (d_Y_val!= 0) ? nextDigit(d_Y_val, 1, i, delim) + "'"  : "";
-            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + ((i != trio) ? "-" : ""): "";
+            translation += ((d__Zval + d_Y_val + dX__val) != 0) ? nextDigit(d__Zval, 0, i, delim) + ((s_dig == 0 && i+1 == trio) ? "" : "-"): "";
         }
         int lastIndex = translate.length() -1;
         if(cDigit < lastIndex)
         {
-            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 2, (trio + 1), delim) + ((cDigit != lastIndex -1)? "'" : "");
+            translation+= nextDigit(intifyB12Digit(translate.charAt(cDigit)), 2, (trio + 1), delim) + ((cDigit != lastIndex)? "'" : "");
             cDigit++;
         }
         if(cDigit == lastIndex)

@@ -239,7 +239,6 @@ public class Word
     private void setB12Value(String b12)
     {
         random_b12_value = (b12.contains(RANDOM + ""));
-        SUI.displayTextLn("B12 randomness is " + RandomB12() + " B12 is " + b12);
         if(!RandomB12())
         {
             processB12(b12);

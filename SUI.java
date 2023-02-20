@@ -138,7 +138,6 @@ public class SUI
             }
             else if(c == ',')
             {
-
             }
             else
             {
@@ -198,11 +197,12 @@ public class SUI
             c = review.charAt(spare);
             if(c != 0 || foundGood)
             {
-                spareVal += c;
+                spareVal = c + spareVal;
                 foundGood = true;
             }
             spare--;
         }
+
         return wholeVal + spareVal;
     }
 
