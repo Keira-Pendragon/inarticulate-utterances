@@ -45,7 +45,7 @@ public class SentenceHelper extends WordHelper
     Sentence sayWhat;
     while(onceMore)
     {
-      sayWhat = BatchWords(VERB);
+      sayWhat = BatchWords(ADHESIVE);
       for(int i = 0; i < sentenceCount; i++)
       {
         SUI.displayTextLn(buildSentence(sayWhat));
