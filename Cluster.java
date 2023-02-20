@@ -298,36 +298,43 @@ public class Cluster
     // e indicates passive actions - "my heart is still beating..."
     // u indicated involuntary actions - "I tripped over my cat. I swear they're an assassin!"
     private static final String[] verb_mood = {"y", "i", "a", "e", "u"};
-    //
+    // the time tense of the verb, timeless, past, present and future
     private static final String[] verb_tense = {"e", "i", "a", "u"};
 
+    // key vowels for adjectives and adverbs.
     private static final String[] ad_key = {"iy", "ey", "ay", "uy", "oy", "y"};
+    // key vowels for all other types of words
     private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", "yo"};
-    
+    // the vowel key indicating if a digit is in the whole portion of a number, a denominator, 
+    // or a decimal (or whatever a value between 0 and 1 is called in a base 12 system....
     private static final String[] digit_class = {"y", "ia", "o"};
+    // marks the "tens" or "hundreds" place (as well as the 10 thousands, 100 thousands and so on.
     private static final String[][] digit_magnitude = {tally_consonants, {"s"}, {"ʑ"}};
+    // delimiters to place between 144s, 12s and 1s, and between 1s and 144s, as it were....
     private static final String[] digit_delimiter = {"'", "-", ""};
     
-    
+    // is this actually necessary?
     public Cluster()
     {
         
     }
 
     /**
-     * 
-     * @param ofThree
-     * @param magnitude
+     * returns the appropriate digit indicator. 
+     * @param ofThree which of three digits in a trio  ie 2A4 2 is the 3rd of three, A is the second, and 4 is the first, all indexed for 0 of course.
+     * @param magnitude for 2 and A in our example the magnitude would be 0. As it would be for 4 in this case, but if the number were 2A4000, the magnitude 
+     *        would increase by one, accordingly to how many trios beyond the first the active trio was.
      * @return
      */
     protected static String digitCoda(int ofThree, int magnitude)
     {
         return digit_magnitude[ofThree][magnitude];
     }
+    
     /**
-     * 
-     * @param type
-     * @return
+     * returns the vowel cluster for the indicated style of number (whole/numerator, decimal, or denominator)
+     * @param type 0 for whole, 1 for denominator, 2 for decimal
+     * @return the correct vowel key.
      */
     protected static String digitKey(int type)
     {
@@ -335,18 +342,18 @@ public class Cluster
     }
 
     /**
-     * 
-     * @param value
-     * @return
+     * Retrieve the actual value representation for the digit, 0 through 11 (aka B)
+     * @param value what is the value of the digit?
+     * @return the consonant (or consonant cluster) representing that amount.
      */
     protected static String digitValue(int value)
     {
         return tally_consonants[value];
     }
     /**
-     * 
-     * @param index
-     * @return
+     * Very lazy way to get the base 12 representation of 0 to 11.
+     * @param index the base 10 value of the base 12 digit.
+     * @return the digit 0 to B
      */
     protected static String lazyDigit(int index)
     {
@@ -354,9 +361,10 @@ public class Cluster
     }
 
     /**
-     * 
-     * @param loc
-     * @return
+     * Grab the correct delimiter for the digit
+     * Do I even actually use this?
+     * @param loc which delim
+     * @return the delim
      */
     protected static String digitDelimiter(int loc)
     {
@@ -364,10 +372,10 @@ public class Cluster
     }
     
     /**
-     * 
-     * @param cluster
-     * @param index
-     * @return
+     * retrieve the value at an index for a given array
+     * @param cluster the cluster array to grab from
+     * @param index the index for grabbing
+     * @return the cluster grabbed
      */
     protected static String retrieveCluster(String[] cluster, int index)
     {
@@ -376,9 +384,9 @@ public class Cluster
 
 
     /**
-     * 
-     * @param length
-     * @return
+     * Select a random vowel cluster of an appropriate length.
+     * @param length 1, 1 to 2, or 2 letter vowel clusters?
+     * @return the selected cluster.
      */
     protected static String vowelCluster(int length)
     {
@@ -386,9 +394,9 @@ public class Cluster
     }
 
     /**
-     * 
-     * @param aWord
-     * @return
+     * Grab a random or specified genus cluster for a noun or pronoun based on the information in a given Word object
+     * @param aWord The word to get the details of.
+     * @return the genus key vowel cluster
      */
     protected static String genusCluster(Word aWord)
     {
@@ -404,9 +412,9 @@ public class Cluster
     }
 
     /**
-     * 
-     * @param tense
-     * @return
+     * Grab the vowel representing the tense case of a verb
+     * @param tense which tense
+     * @return the correct vowel
      */
     protected static String tenseVowel(int tense)
     {
@@ -414,9 +422,9 @@ public class Cluster
     }
 
     /**
-     * 
-     * @param mood
-     * @return
+     * Grab the vowel for the mood of a verb
+     * @param mood which mood
+     * @return the correct vowel
      */
     protected static String moodVowel(int mood)
     {
