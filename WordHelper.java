@@ -16,8 +16,8 @@ public class WordHelper
   protected static final int ADVERB = 5;
   protected static final int ADHESIVE = 6;
 
-  private static final String word_count_prompt = "How many words of this type would you like?\n(Limit 50)";
-  private static final int[] word_count_range = {1, 50};
+  private static final String word_count_prompt = "How many words of this type would you like?\n(Limit 1000)";
+  private static final int[] word_count_range = {1, 1000};
 
 
 
@@ -26,10 +26,6 @@ public class WordHelper
 
   }
 
-  public static int getBatchType()
-  {
-    SUI.selectionPrompt();
-  }
   /**
    * 
    */

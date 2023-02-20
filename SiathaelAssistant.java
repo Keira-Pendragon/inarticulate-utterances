@@ -32,8 +32,7 @@ public class  SiathaelAssistant
       }
       else
       {
-        int which = SentenceHelper.getBatchType();
-        SentenceHelper.BatchBuild(which);
+        SentenceHelper.BatchBuild();
       }
 
       moreTime = SUI.ValidateAgreement(more_time_prompt);

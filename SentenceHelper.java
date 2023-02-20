@@ -8,13 +8,13 @@
 
 public class SentenceHelper extends WordHelper
 {
-  private static final int[] sentence_count_range = {1, 1000};
+  private static final int[] sentence_count_range = {1, 500};
   private static final int[] word_count_range = {1, 15};
   private static final int[] batch_type_range = {1, 10};
-  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 1000)";
+  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 500)";
   private static final String word_count_prompt = "How many words should be in the sentence?\n(limite 15)";
-  private static final String batch_type_prompt = "Do you want\n0) Sentence A\n1) Sentence B\n2) Sentence C\n"
-                                                + "3) Just Nouns\n3) Just Verbs\n4) Just Adjectives\n"
+  private static final String batch_type_prompt = "Do you want\n0) Sentence A\n1) Sentence B\n"
+                                                + "2) Just Nouns\n3) Just Adjectives\n4) Just Verbs\n"
                                                 + "5) Just Adverbs\n6) Just Adhesives\n7 - 10) Some other sentence!?";
 
 
@@ -37,7 +37,7 @@ public class SentenceHelper extends WordHelper
       sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
       for(int i = 0; i < sentenceCount; i++)
       {
-        SUI.displayTextLn(buildSentence(sayWhat));
+        SUI.displayTextLn(buildSentence(sayWhat) + ".\n");
       }
       SUI.displayTextLn("Sentence batch Complete.");
       onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
@@ -50,19 +50,20 @@ public class SentenceHelper extends WordHelper
   }
 
 
-  public static void BatchBuild(int which)
+  public static void BatchBuild()
   {
+    int which;
     boolean onceMore = true;
-    int sentenceCount = 1000;
+    int sentenceCount = 500;
     Sentence sayWhat;
 
     while(onceMore)
     {
-      
+      which = SentenceHelper.getBatchType();
       sayWhat = (which >= NOUN && which <= ADHESIVE)? BatchWords(which) : BatchSentence(which);
       for(int i = 0; i < sentenceCount; i++)
       {
-        SUI.displayTextLn(buildSentence(sayWhat));
+        SUI.displayTextLn(buildSentence(sayWhat) + ((which >= NOUN || which <= ADHESIVE) ? "" : ".") + "\n");
       }
       SUI.displayTextLn("Sentence batch Complete.");
       onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
@@ -165,8 +166,8 @@ public class SentenceHelper extends WordHelper
     for(int i = 0; i < sayWhat.wordCount(); i++)
     {
       sayThis+= fetchWord(sayWhat.fetchWord(i));
-      sayWhat.fetchWord(i).refreshWord();
-      sayThis+= (i + 1 == sayWhat.wordCount()) ? "." : " ";
+      sayWhat.fetchWord(i).refreshWord();      
+      sayThis+= (i + 1 == sayWhat.wordCount()) ? "" : " ";
     }
     return sayThis;
   }
