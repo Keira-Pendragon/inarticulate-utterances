@@ -39,33 +39,33 @@ public class SentenceHelper extends WordHelper
   private static final int FUTURE = 3;
 
   private static final int SINGULAR = 0;
-  private static final int PLURAL = 1;
-  
-
-
-
+  private static final int PLURAL = 1;  
 
   private static final int[] sentence_count_range = {1, 500};
+  
   private static final int[] word_count_range = {1, 15};
-  private static final int[] batch_type_range = {1, 15};
-  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 500)";
-  private static final String word_count_prompt = "How many words should be in the sentence?\n(limite 15)";
-  private static final String batch_type_prompt = "Do you want\n0) Sentence A\n1) Sentence B\n"
-                                      + "2) Just Nouns\n3) Just Adjectives\n4) Just Verbs\n"
-                                      + "5) Just Adverbs\n6) Just Adhesives\n7 - 9) Random Sentences!?\n10+) Special Sentences?";
+  // Range for sentence options, extends past necessity so that I won't have to increment for awhile if I add more options!
+  private static final int[] batch_set_range = {1, 20};
 
-  private static final int FIRSTSPECIAL = 1;
-  private static final int SECONDSPECIAL = 2;
-  private static final int THIRDSPECIAL = 3;
-  private static final int FOURTHSPECIAL = 4;
-  private static final int FIFTHSPECIAL = 5;
-  //private static final int LASTSPECIAL = 6;
+  private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 500)";
+  private static final String word_count_prompt = "How many words should be in the sentence?\n(limit 15)";
+  private static final String batch_set_prompt = "Choose a Sentence to imitate\n" 
+                                      + "1) The cat ran quickly up the tree.\n"
+                                      + "2) I can hear you.\n" 
+                                      + "3) Did your sister(s) go to the store for groceries?\n"
+                                      + "4) Their cat's eyes will see our boss(es)' messy desk.\n"
+                                      + "5) Go sit over there.\n"
+                                      + "6) Did you want to go to the show later?\n"
+                                      + "7) Hunting down dinner.\n"
+                                      + "8) It is, perhaps, not as strange as you might think.\n"
+                                      + "#) Do you want to break your sister(s)' things?";
+
+
 
   private static final int[] RANDOMINTARRAY  = {-1, -1};
   private static final int RANDOM = -1;
 
-
-
+  
   public SentenceHelper()
   {
 
@@ -94,7 +94,7 @@ public class SentenceHelper extends WordHelper
 
   public static int getBatchType()
   {
-    return SUI.ValidateInt(batch_type_range, batch_type_prompt);
+    return SUI.ValidateInt(batch_set_range, batch_set_prompt);
   }
 
 
@@ -108,7 +108,7 @@ public class SentenceHelper extends WordHelper
     while(onceMore)
     {
       which = SentenceHelper.getBatchType();
-      sayWhat = (which >= NOUN && which <= ADHESIVE)? BatchWords(which) : BatchSentence(which);
+      sayWhat = BatchSentence(which);
       for(int i = 0; i < sentenceCount; i++)
       {
         SUI.displayTextLn(buildSentence(sayWhat) + ((which >= NOUN && which <= ADHESIVE) ? "" : ".") + "\n");
@@ -135,65 +135,9 @@ public class SentenceHelper extends WordHelper
 
   private static Sentence BatchSentence(int which)
   {
-
     Sentence sayWhat = new Sentence();
     switch (which) {
-      case 0:
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADJECTIVE);
-        sayWhat.addWord(PRONOUN);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(VERB);
-        sayWhat.addWord(ADVERB);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADJECTIVE);
-        sayWhat.addWord(NOUN);        
-        break;
-      case 1:
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(NOUN);
-        sayWhat.addWord(ADVERB);
-        sayWhat.addWord(VERB);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADJECTIVE);
-        sayWhat.addWord(NOUN);        
-        break;
-      case 7:
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(NOUN);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADJECTIVE);
-        sayWhat.addWord(NOUN);
-        sayWhat.addWord(ADVERB);
-        sayWhat.addWord(VERB);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(ADJECTIVE);
-        sayWhat.addWord(NOUN);
-        break;
-      case 8:
-        sayWhat.addWord(PRONOUN);
-        sayWhat.addWord(VERB);
-        sayWhat.addWord(PRONOUN);
-        break;
-      case 9:
-        sayWhat.addWord(PRONOUN);
-        sayWhat.addWord(VERB);
-        sayWhat.addWord(ADHESIVE);
-        sayWhat.addWord(NOUN);     
-        break;      
-      default:
-        sayWhat = SpecialBatchSentences(which - 9);          
-        break;
-    }
-    return sayWhat;
-  }
-
-  private static Sentence SpecialBatchSentences(int which)
-  {
-    Sentence sayWhat = new Sentence();
-    switch (which) {
-      case FIRSTSPECIAL:
+      case 1: // Cat clambered quickly up the tree.
         sayWhat.addWord(AddNoun(ENTITY, THING, SINGULAR, NONPOSS));
         sayWhat.addWord(AddVerb(INTENTIONAL, PAST));
         sayWhat.addWord(ADVERB);
@@ -201,7 +145,7 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(ADHESIVE);
         sayWhat.addWord(AddNoun(THING, PLACE, SINGULAR, NONPOSS));
         break;
-      case SECONDSPECIAL:
+      case 2: // I am able to hear you.
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSS, ITHIS, SINGULAR, 1));
         sayWhat.addWord(AddVerb(PASSIVE, PRESENT));
         sayWhat.addWord(ADJECTIVE);
@@ -209,7 +153,7 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(AddVerb(PASSIVE, TIMELESS));
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSS, YOU, RANDOM, 1));
         break; 
-      case THIRDSPECIAL:
+      case 3: // Did your sister(s) go to the store for groceries? // TODO Add question words o___o
         sayWhat.addWord(AddVerb(PASSIVE, PAST));
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, CLOSETO, YOU, RANDOM, 1));
         sayWhat.addWord(AddNoun(ENTITY, ENTITY, RANDOM, NONPOSS));
@@ -220,7 +164,7 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(ADHESIVE);
         sayWhat.addWord(AddNoun(THING, FILLER, PLURAL, NONPOSS));
         break;
-      case FOURTHSPECIAL:
+      case 4: // Their cat's eyes will see our boss(es)' messy desk.
         sayWhat.addWord(AddPronoun(ENTITY, IDEA, OWNS, THEYTHAT, RANDOM, 1));
         sayWhat.addWord(AddNoun(ENTITY, THING, SINGULAR, PARTOF));
         sayWhat.addWord(AddNoun(THING, ENTITY, RANDOM, NONPOSS));
@@ -230,12 +174,40 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(ADJECTIVE);
         sayWhat.addWord(AddNoun(THING, PLACE, RANDOM, RANDOM));
         break;
-      case FIFTHSPECIAL:
+      case 5: // Go sit over there.
         sayWhat.addWord(AddVerb(DIRECT, PRESENT));
         sayWhat.addWord(ADVERB);
         sayWhat.addWord(AddPronoun(PLACE, PLACE, NONPOSS, THEYTHAT, SINGULAR, 1));
         break;
-      default:
+      case 6: //Did you want to go to the show later?
+        sayWhat.addWord(AddVerb(PASSIVE, TIMELESS));
+        sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSS, YOU, RANDOM, 1));
+        sayWhat.addWord(AddVerb(PASSIVE, TIMELESS));
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(AddVerb(INTENTIONAL, TIMELESS));
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(AddNoun(PLACE, IDEA, SINGULAR, NONPOSS));
+        sayWhat.addWord(ADVERB);
+        break;
+      case 7: // Hunting down Dinner.
+        sayWhat.addWord(AddVerb(INTENTIONAL, PRESENT));
+        sayWhat.addWord(ADVERB);
+        sayWhat.addWord(AddNoun(THING, ENTITY, RANDOM, NONPOSS));
+        break;
+      case 8: // It is, perhaps, not as strange as you might think.
+        sayWhat.addWord(AddPronoun(IDEA, THING, NONPOSS, ITHIS, SINGULAR, 1));
+        sayWhat.addWord(AddVerb(PASSIVE, PRESENT));
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(ADVERB);
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(ADJECTIVE);
+        sayWhat.addWord(ADHESIVE);
+        sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSS, YOU, RANDOM, 1));
+        sayWhat.addWord(ADVERB);
+        sayWhat.addWord(AddVerb(PASSIVE, PRESENT));
+        break;
+      default: // Do you want to break your sister(s)' things?
         sayWhat.addWord(AddVerb(PASSIVE, FUTURE));
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSS, YOU, RANDOM, 1));
         sayWhat.addWord(AddVerb(WISH, TIMELESS));
@@ -262,17 +234,6 @@ public class SentenceHelper extends WordHelper
   private static Word AddPronoun(int genus, int mod, int possession, int role, int singularity, int mention)
   {
     return new Word(genus, mod, singularity, possession, mention, role);
-  }
-
-
-  private static Sentence BatchWords(int type)
-    {
-    Sentence sayWhat = new Sentence();
-    for(int i = 0; i < 9; i++)
-    {
-      sayWhat.addWord(type);
-    }
-    return sayWhat;
   }
 
   /**

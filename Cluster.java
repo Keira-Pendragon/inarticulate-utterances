@@ -123,8 +123,8 @@ public class Cluster
     private static final String[] mvl_l = 
     {
         "ktr", "kpr", "ksr", "kɕr", "kfr", "k " + THEA + "r", "tkr", "tpr", "tsr", "tɕr", "tfr", "t " + THEA + "r", "pkr", "ptr", "psr", 
-        "pɕr", "pfr", "p " + THEA + "r", "skr", "str", "spr", "sfr", "s " + THEA + "r", SHEA + "kr", SHEA + "tr", SHEA + "pr", 
-        SHEA + "fr", SHEA + THEA + "r", "fkr", "ftr", "fpr", "fsr", "fɕr", "f " + THEA + "r", THEA + "kr", THEA + "tr", THEA + "pr", 
+        "pɕr", "pfr", "p " + THEA + "r", "skr", "str", "spr", "sfr", "s" + THEA + "r", SHEA + "kr", SHEA + "tr", SHEA + "pr", 
+        SHEA + "fr", SHEA + THEA + "r", "fkr", "ftr", "fpr", "fsr", "fɕr", "f" + THEA + "r", THEA + "kr", THEA + "tr", THEA + "pr", 
         THEA + "sr", THEA + "ɕr", "kpl", "ksl", "kɕl", "kfl", "tsl", "tfl", "pkl", "psl", "pɕl", "pfl", "skl", "stl", "spl", "sfl", 
         SHEA + "kl", SHEA + "tl", SHEA + "fl", "fkl", "ftl", "fsl", "fɕl", THEA + "kl", THEA + "sl"
     };
@@ -170,7 +170,7 @@ public class Cluster
     {
         "gdr", "gbr", "gzr", "g " + ZHEA + "r", "gvr", "g " + THAG + "r", "dgr", "dbr", "dzr", "d " + ZHEA + "r", "dvr", 
         "d " + THAG + "r", "bgr", "bdr", "bzr", "b " + ZHEA + "r", "bvr", "b " + THAG + "r", "zgr", "zdr", "zbr", "zvr", 
-        "z " + THAG + "r", ZHEA + "gr", ZHEA + "dr", ZHEA + "br", ZHEA + "vr", ZHEA + " " + THAG + "r", "vgr", "vdr", "vbr", 
+        "z " + THAG + "r", ZHEA + "gr", ZHEA + "dr", ZHEA + "br", ZHEA + "vr", ZHEA + THAG + "r", "vgr", "vdr", "vbr", 
         "vzr", "v " + ZHEA + "r", "v " + THAG + "r", THAG + "gr", THAG + "dr", THAG + "br", THAG + "zr", THAG + ZHEA + "r", 
         "gbl", "gzl", "g " + ZHEA + "l", "gvl", "dzl", "dvl", "bgl", "bzl", "b " + ZHEA + "l", "bvl", "zgl", "zdl", "zbl", 
         "zvl", ZHEA + "gl", ZHEA + "dl", ZHEA + "vl", "vgl", "vdl", "vzl", "v " + ZHEA + "l", THAG + "gl", THAG + "zl" 
@@ -293,8 +293,8 @@ public class Cluster
     // f'anei would be we, plural, as in "you and I and our assembled friends should go now, if we want to get good seats."
     private static final String plural_suffix = "ei";
     
-    // Verb "mood". y = "I wish I could go" "I'd like to go" or "would you like to go?"
-    // i = "Go get that." "Could you get that for me?"
+    // Verb "mood". y = "I wish I could go", "I'd like to go" or "would you like to go?"
+    // i = "Go get that.", "Could you get that for me?"
     // a indicates intentional action - "I knocked on the door to get your attention."
     // e indicates passive actions - "my heart is still beating..."
     // u indicated involuntary actions - "I tripped over my cat. I swear they're an assassin!"

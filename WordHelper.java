@@ -48,6 +48,24 @@ public class WordHelper
     }
   }
 
+  public static void batchHelperLoop()
+  {
+    Word aWord;
+    int wordCount = 1000;
+    boolean onceMore = true;
+    while(onceMore)
+    {        
+      aWord = detailWord();
+      for(int i = 0; i < wordCount; i++)
+      {
+        SUI.displayTextLn(fetchWord(aWord));
+        aWord.refreshWord();
+      }
+      SUI.displayTextLn("\nWord Batch complete.");
+      onceMore = SUI.ValidateAgreement("\nWould you like to generate more words?\n1) Yes\n2) No");
+    }
+  }
+
   /**
    * 
    * @param w
