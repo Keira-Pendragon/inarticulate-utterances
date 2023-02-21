@@ -8,12 +8,8 @@
 
 import java.util.Scanner;
 
-public class SUI 
+public class SUI extends SDef
 {
-
-    private static final int MINDEX = 0;
-    private static final int MAXDEX = 1;
-    private static final int MAXDIGITS = 36;
     //private static final int MAXMIXEDDIGITS = MAXDIGITS * 2;
     /**
      * 

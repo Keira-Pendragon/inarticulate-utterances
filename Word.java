@@ -1,16 +1,9 @@
-public class Word 
+/**
+ * Container for whatever word patterns or rules for making up, or translating, a word.
+ */
+
+public class Word extends Cluster
 {
-    protected static final int NUMBER = 0;
-    protected static final int PRONOUN = 1;
-    protected static final int NOUN = 2;
-    protected static final int ADJECTIVE = 3;
-    protected static final int VERB = 4;
-    protected static final int ADVERB = 5;
-    protected static final int ADHESIVE = 6;
-    protected static final int SINGULAR = 0;
-
-    private final int RANDOM = -1;
-
     private int word_type;
     private int primary_genus;
     private int genus_mod;
@@ -41,6 +34,12 @@ public class Word
     private boolean randomly_possessive;
     private boolean random_mention;
     private boolean random_role;
+
+    private boolean express_doubt;
+    private boolean append_to_word;
+
+    private boolean negative_connotation;
+    private int value_degree;
 
     /**
      * Pronoun Constructor
@@ -160,6 +159,20 @@ public class Word
         word_type = Dice.rand(1, 6);
     }
 
+    public Word(boolean doubt, boolean wordPart)
+    {
+        express_doubt = doubt;
+        append_to_word = wordPart;
+        word_type = QUERY;
+    }
+
+    public Word(boolean negative, int degree)
+    {
+        word_type = NEGATION;
+        negative_connotation = negative;
+        value_degree = degree;
+    }
+
     /**
      * 
      */
@@ -169,6 +182,15 @@ public class Word
         {
             word_type = Dice.rand(1, 6);
         }
+    }
+
+    public boolean Negative()
+    {
+        return negative_connotation;
+    }
+    public int ValueDegree()
+    {
+        return value_degree;
     }
 
     /**
@@ -187,6 +209,15 @@ public class Word
     public boolean RandomType()
     {
         return random_type;
+    }
+
+    public boolean IsDoubt()
+    {
+        return express_doubt;
+    }
+    public boolean WordAppend()
+    {
+        return append_to_word;
     }
 
     /**

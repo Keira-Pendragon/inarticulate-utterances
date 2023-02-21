@@ -2,49 +2,14 @@
  * Cluster.java
  * Author: Keira Pendragon
  * Author Date: 1/22/2023
+ * 
+ * An assortment of clusters and related accessors. 
  * ʥ
  */
 
 
-public class Cluster
+public class Cluster extends SDef
 {  
-    /**
-     * I'd prefer C++ enums, but this will work as a bandage for now...
-     */
-    // Types of words
-    protected static final int NUMBER = 0;
-    protected static final int PRONOUN = 1;
-    protected static final int NOUN = 2;
-    protected static final int ADJECTIVE = 3;
-    protected static final int VERB = 4;
-    protected static final int ADVERB = 5;
-    protected static final int ADHESIVE = 6;
-
-
-    // types of consonants kinda
-    protected static final int VOICED = 0;
-    protected static final int NEUTRAL = 1;
-    protected static final int VOICELESS = 2;
-    
-    // cluster length options
-    protected static final int SHORT = 0;
-    protected static final int MEDIUM = 1;
-    protected static final int LONG = 2;
-    
-    // Cluster types
-    protected static final int ONSET = 0;
-    protected static final int MIDCONST = 1;
-    protected static final int CODA = 2;
-    protected static final int VOWEL = 3;
-    protected static final int KEYMID = 4;
-    protected static final int ENDKEY = 5;
-    protected static final int SPAREKEY = 6;
-    protected static final int ADKEY = 7;
-
-    // reduce magic numbers, where is the min and max index stored in a range array~
-    protected static final int MINDEX = 0;
-    protected static final int MAXDEX = 1;
-
     // work in codespaces for the symbols I want
     private static final String THEA = "\u03B8";
     private static final String ZHEA = "\u0291";

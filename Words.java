@@ -8,7 +8,6 @@
 
 public class Words extends Cluster
 {
-    private static final int RANDOM = -1;
     protected static final int[] v0_pattern = {KEYMID, MIDCONST, ENDKEY};
     protected static final int[] v1_pattern = {ONSET, KEYMID, MIDCONST, ENDKEY};
     protected static final int[] v2_pattern = {VOWEL, MIDCONST, KEYMID, MIDCONST, ENDKEY};
@@ -141,15 +140,6 @@ protected static final String adhesive_details =
                                                   
 
 
-    private static int MAXDIGITS = 36;
-    /**
-    * Max number of digits a mixed number can contain.
-    */
-    private static final int MAXCOOKEDDIGITS = (MAXDIGITS * 2);
-    private static final int WHOLENUMBER = 0;
-    private static final int DECIMALNUMBER = 1;
-    private static final int FRACTIONNUMBER = 2;
-    private static final int[] RANDOMINTARRAY  = {-1, -1};
 
     public Words()
     {
@@ -349,7 +339,7 @@ protected static final String adhesive_details =
      */
     public static String buildAWord(Word w)
     {
-        return (w.Type() == NUMBER) ? buildNumber(w) : (w.Type() == PRONOUN) ? buildPronoun(w) : buildWord(w);   
+        return (w.Type() == NUMBER) ? buildNumber(w) : (w.Type() == PRONOUN) ? buildPronoun(w) : (w.Type() == QUERY) ? buildQuery(w): (w.Type() == NEGATION)? buildNegation(w): buildWord(w);   
     }
 
     /**
@@ -366,6 +356,16 @@ protected static final String adhesive_details =
             nWord.append(nextCluster(i, aWord));
         }
         return nWord.toString();
+    }
+
+    private static String buildQuery(Word w)
+    {
+        return ((w.IsDoubt()) ? "ip" : "at") + ((w.WordAppend())? "-" : "");
+    }
+
+    private static String buildNegation(Word w)
+    {
+        return ((w.Negative())? "rei" : "moe") + digitValue(w.ValueDegree());
     }
 
     /**

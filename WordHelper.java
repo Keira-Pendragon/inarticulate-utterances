@@ -6,20 +6,10 @@
  * 
  */
 
-public class WordHelper
-{    
-  protected static final int NUMBER = 0;
-  protected static final int PRONOUN = 1;
-  protected static final int NOUN = 2;
-  protected static final int ADJECTIVE = 3;
-  protected static final int VERB = 4;
-  protected static final int ADVERB = 5;
-  protected static final int ADHESIVE = 6;
-
+public class WordHelper extends SDef
+{
   private static final String word_count_prompt = "How many words of this type would you like?\n(Limit 1000)";
   private static final int[] word_count_range = {1, 1000};
-
-
 
   public WordHelper()
   {
