@@ -31,11 +31,13 @@ public class Sentence
         word_list.add(aWord);
         word_count++;
     }
+
     public void addWord(int type)
     {
         word_list.add(new Word(type));
         word_count++;
     }
+
 
     /**
      * 
