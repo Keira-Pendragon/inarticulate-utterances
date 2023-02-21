@@ -7,6 +7,7 @@ public class Word
     protected static final int VERB = 4;
     protected static final int ADVERB = 5;
     protected static final int ADHESIVE = 6;
+    protected static final int SINGULAR = 0;
 
     private final int RANDOM = -1;
 
@@ -539,7 +540,7 @@ public class Word
     private void setSingularity(int nSingular)
     {
         randomly_singular = (nSingular == RANDOM);
-        singular = (nSingular == 1) ? true : false;
+        singular = (nSingular == SINGULAR) ? true : false;
     }
 
     /**
