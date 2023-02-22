@@ -75,7 +75,7 @@ public class SentenceHelper extends WordHelper
       sayWhat = BatchSentence(which);
       for(int i = 0; i < sentenceCount; i++)
       {
-        SUI.displayTextLn(buildSentence(sayWhat) + ".\n");
+        SUI.displayTextLn(buildSentence(sayWhat) + ".");
       }
       SUI.displayTextLn("Sentence batch Complete.");
       onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
@@ -190,7 +190,8 @@ public class SentenceHelper extends WordHelper
   private static Sentence weightedRandomSentence(Sentence sayWhat)
   {
     int w = Dice.weight();
-    int wordCount = (w < 50)? (Dice.rand(3, 6)) : (w < 90)? ((Dice.coinToss())? 2 : 7) : (Dice.coinToss())? 1 : Dice.rand(8, 11);
+    // weighted randomization for the number of words in the sentence.
+    int wordCount = (w < 60)? (Dice.rand(3, 7)) : (w < 97)? ((Dice.coinToss())? 2 : 8) : (w < 99)? Dice.rand(9, 12) : 1;
     for(int i = 0; i < wordCount; i++)
     {
       sayWhat.addWord(weightedRandomWord());
@@ -231,7 +232,7 @@ public class SentenceHelper extends WordHelper
         w = new Word(Dice.coinToss(), Dice.coinToss());
         break;
       case NEGATION:
-        w = new Word(Dice.coinToss(), weightedDegree());
+        w = new Word(Dice.coinToss(), RANDOM);
         break;
       default:
         w = weightedRandomWord();
@@ -240,11 +241,6 @@ public class SentenceHelper extends WordHelper
     return w;
   }
 
-  private static int weightedDegree()
-  {
-    int w = Dice.weight();
-    return (w < 95)? 1 : Dice.rand(1, 11);
-  }
 
 
   private static Word weightedDigitCount()
@@ -262,7 +258,7 @@ public class SentenceHelper extends WordHelper
     int s = weightedSingularity(Dice.weight());
     int p = weightedPossession(Dice.weight());
     int m = weightedMention(Dice.weight());
-    int r = weightedRole(Dice.weight());
+    int r = weightedRole(Dice.weight(), g);
     return new Word(g, gm, s, p, m, r);
   }
 
@@ -291,10 +287,19 @@ public class SentenceHelper extends WordHelper
     return (w < 90)? 1 : (w < 98)? 2 : Dice.rand(1, 11);
   }
 
-  private static int weightedRole(int w)
+  private static int weightedRole(int w, int genus)
   {
-    return (w < 25) ? ITHIS : (w < 50) ? YOU :
-           (w < 75) ? WEBOTH : THEYTHAT;
+    int role;
+    if(genus != ENTITY)
+    {
+      role = (Dice.coinToss())? ITHIS : THEYTHAT;
+    }
+    else
+    {
+      role = (w < 25) ? ITHIS : (w < 50) ? YOU : (w < 75) ? WEBOTH : THEYTHAT;
+    }
+
+    return role;
   }
 
   

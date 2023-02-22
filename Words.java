@@ -436,7 +436,7 @@ protected static final String adhesive_details =
         char delimiter;
         if(aWord.RandomB12())
         {
-            String[] b12 = cookedB12(aWord.RandomDigitCount() ? 0 : aWord.DigitCount());
+            String[] b12 = cookedB12(aWord.RandomDigitCount() ? RANDOM : aWord.DigitCount());
             wholeValue = b12[0];
             spareValue = b12[1];
             
@@ -575,10 +575,10 @@ protected static final String adhesive_details =
     * 
     * @param digits
     * @return
-    */
-    private static String[] cookedB12(int digits)
+    
+    private static String[] ocookedB12(int digits)
     {
-        if(digits == 0)
+        if(digits == RANDOM)
         {
             digits = Dice.rand(1, 9);
         }
@@ -612,6 +612,39 @@ protected static final String adhesive_details =
             spare += (i > delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
         }
         return new String[] {whole, spare, delimiter};
+    }*/
+
+    private static String[] cookedB12(int digits)
+    {
+        int wholeDigits;
+        int spareDigits;
+        String wholeValue = "";
+        String spareValue = "";
+        String delimiter;
+        int delimiterLoc;
+        
+        if(digits == RANDOM)
+        {            
+            int we = Dice.weight(144);
+            wholeDigits = (we < 90) ? 1 : (we < 135)? 2 : (we < 140)? 3 : (we < 143) ? Dice.rand(1, 12) : Dice.rand(1, 36);
+            spareDigits = (we < 90)? 0: (we < 120) ? 1 : (we < 135)? 2 : (we < 140)? 3 : (we < 143) ? Dice.rand(1, 12) : Dice.rand(1, 36);
+            digits = wholeDigits + spareDigits;
+            
+        }
+        else
+        {
+            wholeDigits = Dice.rand(((digits < MAXDIGITS)? 1 : (digits - MAXDIGITS)), ((digits < MAXDIGITS)? digits : MAXDIGITS));
+            spareDigits = digits - wholeDigits;
+        }
+        delimiterLoc = (spareDigits > 0)? wholeDigits : MAXDIGITS + 1;
+        delimiter = (spareDigits < 1)? " " : (Dice.coinToss())? "." : "/";
+        for(int i = 0; i < digits; i++)
+        {
+            // the lazy way :D No really, no need to convert, just grab a representative from index 0 to 11 >:D!
+            wholeValue += (i < delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
+            spareValue += (i > delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
+        }
+        return new String[] {wholeValue, spareValue, delimiter};
     }
 
     /**

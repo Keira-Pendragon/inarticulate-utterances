@@ -123,7 +123,7 @@ public class Word extends Cluster
         }
         else
         {
-            word_type = Dice.rand(1, 6);
+            word_type = Dice.rand(PRONOUN, ADHESIVE);
         }
     }
 
@@ -157,7 +157,7 @@ public class Word extends Cluster
     public Word()
     {
         setAllRandom();
-        word_type = Dice.rand(1, 6);
+        word_type = Dice.rand(PRONOUN, ADHESIVE);
     }
 
     public Word(boolean doubt, boolean wordPart)
@@ -191,8 +191,15 @@ public class Word extends Cluster
     }
     public int ValueDegree()
     {
-        return value_degree;
+        return (value_degree == RANDOM)? weightedDegree(): value_degree;
     }
+
+    private static int weightedDegree()
+    {
+      int w = Dice.weight();
+      return (w < 95)? 1 : Dice.rand(1, 11);
+    }
+  
 
     /**
      * 
@@ -484,7 +491,7 @@ public class Word extends Cluster
      */
     public int Mood()
     {
-        return (RandomMood()) ? Dice.rand(0, 4) : verb_mood;
+        return (RandomMood()) ? Dice.rand(WISH, INVOLUNTARILY) : verb_mood;
     }
 
     /**
@@ -510,7 +517,7 @@ public class Word extends Cluster
      */
     public int Tense()
     {
-        return (RandomTense())? Dice.rand(0, 3) : verb_tense;
+        return (RandomTense())? Dice.rand(TIMELESS, FUTURE) : verb_tense;
     }
 
     /**
@@ -545,7 +552,7 @@ public class Word extends Cluster
     private int WeightedRandomPrimaryGenus()
     {
         int weight = Dice.rand(0, 100);
-        return (weight < 20) ? 0 : (weight < 50) ? 1 : (weight < 75)? 2 : 3;
+        return (weight < 20) ? IDEA : (weight < 50) ? THING : (weight < 75)? ENTITY : PLACE;
     }
 
 // idea thing person place o y
@@ -562,7 +569,7 @@ public class Word extends Cluster
     private int WeightedRandomGenusMod()
     {
         int weight = Dice.rand(0, 100);
-        return (weight < 15) ? 0 : (weight < 40) ? 1 : (weight < 60)? 2 : (weight < 75)? 3 : (weight < 90)? 4 : 5;
+        return (weight < 15) ? IDEA : (weight < 40) ? THING : (weight < 60)? ENTITY : (weight < 75)? PLACE : (weight < 90)? TRAIT : FILLER;
     }
 
     /**
@@ -595,7 +602,7 @@ public class Word extends Cluster
 
     private boolean RandomlySingular()
     {
-        int weight = Dice.rand(0, 10);
+        int weight = Dice.weight(10);
         return weight < 8;
     }
 
@@ -628,7 +635,7 @@ public class Word extends Cluster
     public int WeightedRandomPossessiveness()
     {
         int weight = Dice.weight();
-        return (weight < 80) ? 0 : Dice.rand(0, 4);
+        return (weight < 80) ? NONPOSSESSIVE : Dice.rand(PARTOF, TENUOUSLYLINKED);
     }
     /**
      * 
@@ -693,18 +700,18 @@ public class Word extends Cluster
     private int WeightedRandomRole()
     {
         int weight = Dice.weight();
-        return (weight < 40) ? 0 : (weight < 55)? 1 : (weight < 75)? 2 : 3;
+        return (weight < 40) ? ITHIS : (weight < 55)? YOU : (weight < 75)? WEBOTH : THEYTHAT;
     }
     
     private int WeightedRandomLength()
     {
         int weight = Dice.weight();
-        return (weight < 69)? 0 : (weight < 97)? 1 : 2;
+        return (weight < 69)? SHORT : (weight < 97)? MEDIUM : LONG;
     }
         
     private int WeightedRandomStyle()
     {        
         int weight = Dice.weight();
-        return (weight < 45)? 0 : (weight < 70)? 1 : 2;
+        return (weight < 45)? VOICELESS : (weight < 70)? NEUTRAL : VOICED;
     }
 }

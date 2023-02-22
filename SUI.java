@@ -198,6 +198,10 @@ public class SUI extends SDef
             }
             spare--;
         }
+        if(wholeVal.isEmpty())
+        {
+            wholeVal+= "0";
+        }
 
         return wholeVal + spareVal;
     }
