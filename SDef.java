@@ -114,4 +114,8 @@ public class SDef
 
     protected static final int RANDOM = -1;
 
+    protected static final int VOICELESS = 0;
+    protected static final int NEUTRAL = 1;
+    protected static final int VOICED = 2;
+
 }
