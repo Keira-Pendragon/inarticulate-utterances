@@ -108,6 +108,7 @@ public class Word extends Cluster
      * @param type
      * @param aPattern
      * @param cLength
+     * @param style
      */
     public Word(int type, int[] aPattern, int cLength, int style)
     {
@@ -626,7 +627,7 @@ public class Word extends Cluster
 
     public int WeightedRandomPossessiveness()
     {
-        int weight = Dice.rand(0, 100);
+        int weight = Dice.weight();
         return (weight < 80) ? 0 : Dice.rand(0, 4);
     }
     /**
@@ -691,19 +692,19 @@ public class Word extends Cluster
 
     private int WeightedRandomRole()
     {
-        int weight = Dice.rand(0, 100);
+        int weight = Dice.weight();
         return (weight < 40) ? 0 : (weight < 55)? 1 : (weight < 75)? 2 : 3;
     }
     
     private int WeightedRandomLength()
     {
-        int weight = Dice.rand(0, 100);
+        int weight = Dice.weight();
         return (weight < 69)? 0 : (weight < 97)? 1 : 2;
     }
         
     private int WeightedRandomStyle()
     {        
-        int weight = Dice.rand(0, 100);
+        int weight = Dice.weight();
         return (weight < 45)? 0 : (weight < 70)? 1 : 2;
     }
 }
