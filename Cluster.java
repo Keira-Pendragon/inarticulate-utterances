@@ -25,8 +25,8 @@ public class Cluster extends SDef
     {
         "ks", "k" + SHEA, "kf", "k" + THEA, "kh", "kl", "kr", "ts", "t" + SHEA, "tr", "pt", "ps", "p" + SHEA, "pf", "p" + THEA, "pl", 
         "pr", "sk", "st", "sp", "sf", "s" + THEA, "s" + NGEA, "sn", "sm", "sl", "sr", SHEA + "k", SHEA + "t", SHEA + "p", SHEA + "f", 
-        SHEA + THEA + "", SHEA + NGEA + "", SHEA + "n", SHEA + "m", SHEA + "l", SHEA + "r", "fk", "ft", "fp", "fs", "f" + SHEA, "f" + 
-        THEA, "f" + NGEA, "fn", "fm", "fl", "fr", THEA + "k", THEA + "t", THEA + "p", THEA + NGEA + "", THEA + "n", THEA + "m", THEA + "r"
+        SHEA + THEA, SHEA + NGEA, SHEA + "n", SHEA + "m", SHEA + "l", SHEA + "r", "fk", "ft", "fp", "fs", "f" + SHEA, "f" + 
+        THEA, "f" + NGEA, "fn", "fm", "fl", "fr", THEA + "k", THEA + "t", THEA + "p", THEA + NGEA, THEA + "n", THEA + "m", THEA + "r"
     };
     // onset voiceless long clusters
     private static final String[] ovl_l = 
@@ -53,9 +53,10 @@ public class Cluster extends SDef
     {
         "gz", "g" + ZHEA, "gv", "g" + THAG, "gh", "gl", "gr", "dz", "d" + ZHEA, "dr", "bd", "bz", "b" + ZHEA, "bv", "b" + THAG, 
         "bl", "br", "zg", "zd", "zb", "zv", "z" + THAG, "z" + NGEA, "zn", "zm", "zl", "zr", ZHEA + "g", ZHEA + "d", ZHEA + "b", 
-        ZHEA + "v", ZHEA + THAG, ZHEA + NGEA + "", ZHEA + "n", ZHEA + "m", ZHEA + "l", ZHEA + "r", "vg", "vd", "vb", "vz", "v" + ZHEA, 
-        "v" + THAG, "v" + NGEA, "vn", "vm", "vl", "vr", THAG + "g", THAG + "d", THAG + "b", THAG + NGEA + "", THAG + "n", THAG + "m", 
-        THAG + "r" }; 
+        ZHEA + "v", ZHEA + THAG, ZHEA + NGEA, ZHEA + "n", ZHEA + "m", ZHEA + "l", ZHEA + "r", "vg", "vd", "vb", "vz", "v" + ZHEA, 
+        "v" + THAG, "v" + NGEA, "vn", "vm", "vl", "vr", THAG + "g", THAG + "d", THAG + "b", THAG + NGEA, THAG + "n", THAG + "m", 
+        THAG + "r" 
+    }; 
     //onset voiced long clusters
     private static final String[]ov_l = 
     { 
@@ -77,9 +78,9 @@ public class Cluster extends SDef
         "kt", "kp", "ks", "k" + SHEA, "kf", "k" + THEA, "k" + NGEA, "kn", "km", "kh", "kl", "kr", "tk", "tp", "ts", "t" + SHEA, "tf", 
         "t" + THEA, "t" + NGEA, "tn", "tm", "th", "tl", "tr", "pk", "pt", "ps", "p" + SHEA, "pf", "p" + THEA, "p" + NGEA, "pn", "pm", 
         "ph", "pl", "pr", "sk", "st", "sp", "sf", "s" + THEA, "s" + NGEA, "sn", "sm", "sh", "sl", "sr", SHEA + "k", SHEA + "t", 
-        SHEA + "p", SHEA + "f", SHEA + THEA + "", SHEA + NGEA + "", SHEA + "n", SHEA + "m", SHEA + "h", SHEA + "l", SHEA + "r", "fk", 
+        SHEA + "p", SHEA + "f", SHEA + THEA, SHEA + NGEA, SHEA + "n", SHEA + "m", SHEA + "h", SHEA + "l", SHEA + "r", "fk", 
         "ft", "fp", "fs", "f" + SHEA, "f" + THEA, "f" + NGEA, "fn", "fm", "fh", "fl", "fr", THEA + "k", THEA + "t", THEA + "p", 
-        THEA + "s", THEA + SHEA, THEA + NGEA + "", THEA + "n", THEA + "m", THEA + "h", THEA + "l", THEA + "r", NGEA + "k", NGEA + "t", 
+        THEA + "s", THEA + SHEA, THEA + NGEA, THEA + "n", THEA + "m", THEA + "h", THEA + "l", THEA + "r", NGEA + "k", NGEA + "t", 
         NGEA + "p", NGEA + "s", NGEA + SHEA, NGEA + "f", NGEA + THEA, NGEA + "h", NGEA + "l", NGEA + "r", "nk", 
         "nt", "np", "ns", "n" + SHEA, "nf", "n" + THEA, "mk", "mt", "mp", "ms", "m" + SHEA, "mf", "m" + THEA, "lk", "lt", "lp", "ls", 
         "l" + SHEA, "lf", "l" + THEA, "rk", "rt", "rp", "rs", "r" + SHEA, "rf", "r" + THEA
@@ -87,8 +88,8 @@ public class Cluster extends SDef
     // long
     private static final String[] mvl_l = 
     {
-        "ktr", "kpr", "ksr", "kɕr", "kfr", "k " + THEA + "r", "tkr", "tpr", "tsr", "tɕr", "tfr", "t " + THEA + "r", "pkr", "ptr", "psr", 
-        "pɕr", "pfr", "p " + THEA + "r", "skr", "str", "spr", "sfr", "s" + THEA + "r", SHEA + "kr", SHEA + "tr", SHEA + "pr", 
+        "ktr", "kpr", "ksr", "kɕr", "kfr", "k" + THEA + "r", "tkr", "tpr", "tsr", "tɕr", "tfr", "t" + THEA + "r", "pkr", "ptr", "psr", 
+        "pɕr", "pfr", "p" + THEA + "r", "skr", "str", "spr", "sfr", "s" + THEA + "r", SHEA + "kr", SHEA + "tr", SHEA + "pr", 
         SHEA + "fr", SHEA + THEA + "r", "fkr", "ftr", "fpr", "fsr", "fɕr", "f" + THEA + "r", THEA + "kr", THEA + "tr", THEA + "pr", 
         THEA + "sr", THEA + "ɕr", "kpl", "ksl", "kɕl", "kfl", "tsl", "tfl", "pkl", "psl", "pɕl", "pfl", "skl", "stl", "spl", "sfl", 
         SHEA + "kl", SHEA + "tl", SHEA + "fl", "fkl", "ftl", "fsl", "fɕl", THEA + "kl", THEA + "sl"
@@ -123,9 +124,9 @@ public class Cluster extends SDef
         "gd", "gb", "gz", "g" + ZHEA, "gv", "g" + THAG, "g" + NGEA, "gn", "gm", "gh", "gl", "gr", "dg", "db", "dz", "d" + ZHEA, "dv", 
         "d" + THAG, "d" + NGEA, "dn", "dm", "dh", "dl", "dr", "bg", "bd", "bz", "b" + ZHEA, "bv", "b" + THAG, "b" + NGEA, "bn", "bm", 
         "bh", "bl", "br", "zg", "zd", "zb", "zv", "z" + THAG, "z" + NGEA, "zn", "zm", "zh", "zl", "zr", ZHEA + "g", ZHEA + "d", 
-        ZHEA + "b", ZHEA + "v", ZHEA + THAG, ZHEA + NGEA + "", ZHEA + "n", ZHEA + "m", ZHEA + "h", ZHEA + "l", ZHEA + "r", "vg", "vd", 
+        ZHEA + "b", ZHEA + "v", ZHEA + THAG, ZHEA + NGEA, ZHEA + "n", ZHEA + "m", ZHEA + "h", ZHEA + "l", ZHEA + "r", "vg", "vd", 
         "vb", "vz", "v" + ZHEA, "v" + THAG, "v" + NGEA, "vn", "vm", "vh", "vl", "vr", THAG + "g", THAG + "d", THAG + "b", THAG + "z", 
-        THAG + ZHEA + "", THAG + NGEA + "", THAG + "n", THAG + "m", THAG + "h", THAG + "l", THAG + "r", NGEA + "g", NGEA + "d", 
+        THAG + ZHEA, THAG + NGEA, THAG + "n", THAG + "m", THAG + "h", THAG + "l", THAG + "r", NGEA + "g", NGEA + "d", 
         NGEA + "b", NGEA + "z", NGEA + ZHEA, NGEA + "v", NGEA + THAG, "ng", "nd", "nb", "nz", "n" + ZHEA, "nv", "n" + THAG, "mg", 
         "md", "mb", "mz", "m" + ZHEA, "mv", "m" + THAG, "lg", "ld", "lb", "lz", "l" + ZHEA, "lv", "l" + THAG, "rg", "rd", "rb", "rz", 
         "r" + ZHEA, "rv", "r" + THAG
@@ -133,12 +134,12 @@ public class Cluster extends SDef
     // long
     private static final String[] mv_l = 
     {
-        "gdr", "gbr", "gzr", "g " + ZHEA + "r", "gvr", "g " + THAG + "r", "dgr", "dbr", "dzr", "d " + ZHEA + "r", "dvr", 
-        "d " + THAG + "r", "bgr", "bdr", "bzr", "b " + ZHEA + "r", "bvr", "b " + THAG + "r", "zgr", "zdr", "zbr", "zvr", 
-        "z " + THAG + "r", ZHEA + "gr", ZHEA + "dr", ZHEA + "br", ZHEA + "vr", ZHEA + THAG + "r", "vgr", "vdr", "vbr", 
-        "vzr", "v " + ZHEA + "r", "v " + THAG + "r", THAG + "gr", THAG + "dr", THAG + "br", THAG + "zr", THAG + ZHEA + "r", 
-        "gbl", "gzl", "g " + ZHEA + "l", "gvl", "dzl", "dvl", "bgl", "bzl", "b " + ZHEA + "l", "bvl", "zgl", "zdl", "zbl", 
-        "zvl", ZHEA + "gl", ZHEA + "dl", ZHEA + "vl", "vgl", "vdl", "vzl", "v " + ZHEA + "l", THAG + "gl", THAG + "zl" 
+        "gdr", "gbr", "gzr", "g" + ZHEA + "r", "gvr", "g" + THAG + "r", "dgr", "dbr", "dzr", "d" + ZHEA + "r", "dvr", 
+        "d" + THAG + "r", "bgr", "bdr", "bzr", "b" + ZHEA + "r", "bvr", "b" + THAG + "r", "zgr", "zdr", "zbr", "zvr", 
+        "z" + THAG + "r", ZHEA + "gr", ZHEA + "dr", ZHEA + "br", ZHEA + "vr", ZHEA + THAG + "r", "vgr", "vdr", "vbr", 
+        "vzr", "v" + ZHEA + "r", "v" + THAG + "r", THAG + "gr", THAG + "dr", THAG + "br", THAG + "zr", THAG + ZHEA + "r", 
+        "gbl", "gzl", "g" + ZHEA + "l", "gvl", "dzl", "dvl", "bgl", "bzl", "b" + ZHEA + "l", "bvl", "zgl", "zdl", "zbl", 
+        "zvl", ZHEA + "gl", ZHEA + "dl", ZHEA + "vl", "vgl", "vdl", "vzl", "v" + ZHEA + "l", THAG + "gl", THAG + "zl" 
     };
     // all voiced midword consonant clusters
     private static final String[][] midword_voiced = {mv_s, mv_m, mv_l};
