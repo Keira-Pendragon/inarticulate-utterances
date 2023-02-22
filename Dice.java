@@ -43,5 +43,14 @@
     {
         return (rand(0, 10) % 2 == 0);
     }
+
+    public static int weight()
+    {
+        return rand(0, 100);
+    }
+    public static int weight(int max)
+    {
+        return rand(0, max);
+    }
  
  }
