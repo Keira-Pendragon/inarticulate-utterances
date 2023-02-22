@@ -12,11 +12,12 @@ public class SentenceHelper extends WordHelper
 
   private static final int[] word_count_range = {1, 15};
   // Range for sentence options, extends past necessity so that I won't have to increment for awhile if I add more options!
-  private static final int[] batch_set_range = {1, 20};
+  private static final int[] batch_set_range = {0, 20};
 
   private static final String sentence_count_prompt = "How many sentences of this type would you like?\n(limit 500)";
   private static final String word_count_prompt = "How many words should be in the sentence?\n(limit 15)";
   private static final String batch_set_prompt = "Choose a Sentence to imitate\n" 
+                                      + "0) Surprise Me!\n"
                                       + "1) The cat ran quickly up the tree.\n"
                                       + "2) I can hear you.\n" 
                                       + "3) Did your sister(s) go to the store for groceries?\n"
@@ -25,12 +26,8 @@ public class SentenceHelper extends WordHelper
                                       + "6) Did you want to go to the show later?\n"
                                       + "7) Hunting down dinner.\n"
                                       + "8) It is, perhaps, not as strange as you might think.\n"
-                                      + "#) Do you want to break your sister(s)' things?";
+                                      + "9) Do you want to break your sister(s)' things?";
 
-
-
-  private static final int[] RANDOMINTARRAY  = {-1, -1};
-  private static final int RANDOM = -1;
 
   
   public SentenceHelper()
@@ -174,7 +171,7 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(ADVERB);
         sayWhat.addWord(AddVerb(PASSIVELY, PRESENT));
         break;
-      default: // Do you want to break your sister(s)' things?
+      case 9:
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, NONPOSSESSIVE, YOU, RANDOM, 1));
         sayWhat.addWord(AddDoubt(true));
         sayWhat.addWord(AddVerb(WISH, TIMELESS));
@@ -183,9 +180,162 @@ public class SentenceHelper extends WordHelper
         sayWhat.addWord(AddPronoun(ENTITY, ENTITY, TENUOUSLYLINKED, WEBOTH, RANDOM, 1));
         sayWhat.addWord(AddNoun(RANDOM, RANDOM, RANDOM, PARTOF));
         sayWhat.addWord(AddNoun(RANDOM, RANDOM, RANDOM, NONPOSSESSIVE));
+      default: // Do you want to break your sister(s)' things?
+        sayWhat = weightedRandomSentence(sayWhat);
         break;
     }
     return sayWhat;
+  }
+
+  private static Sentence weightedRandomSentence(Sentence sayWhat)
+  {
+    int w = Dice.weight();
+    int wordCount = (w < 50)? (Dice.rand(3, 6)) : (w < 90)? ((Dice.coinToss())? 2 : 7) : (Dice.coinToss())? 1 : Dice.rand(8, 11);
+    for(int i = 0; i < wordCount; i++)
+    {
+      sayWhat.addWord(weightedRandomWord());
+    }
+    return sayWhat;
+  }
+
+  private static Word weightedRandomWord()
+  {
+    int weight = Dice.weight(144);
+    int selection = (weight < 5)? NUMBER : (weight < 20)? PRONOUN : (weight < 25)? NEGATION :
+                    (weight < 35)? QUERY : (weight < 50)? ADJECTIVE : (weight < 65)? ADVERB :
+                    (weight < 80)? ADHESIVE : (weight < 110)? VERB : NOUN;
+    Word w;
+    switch (selection) {
+      case NUMBER:        
+        w = weightedDigitCount();
+        break;
+      case PRONOUN:
+        w = weightedPronoun();
+        break;
+      case NOUN:
+        w = weightedNoun();
+        break;
+      case VERB:
+        w = weightedVerb();
+        break;
+      case ADJECTIVE:
+        w = new Word(ADJECTIVE, RANDOMINTARRAY, RANDOM, weightedStyle(Dice.weight()));
+        break;
+      case ADVERB:
+        w = new Word(ADVERB, RANDOMINTARRAY, RANDOM, weightedStyle(Dice.weight()));
+        break;
+      case ADHESIVE:
+        w = new Word(ADHESIVE, RANDOMINTARRAY, RANDOM, weightedStyle(Dice.weight()));
+        break;
+      case QUERY:
+        w = new Word(Dice.coinToss(), Dice.coinToss());
+        break;
+      case NEGATION:
+        w = new Word(Dice.coinToss(), weightedDegree());
+        break;
+      default:
+        w = weightedRandomWord();
+        break;
+    }
+    return w;
+  }
+
+  private static int weightedDegree()
+  {
+    int w = Dice.weight();
+    return (w < 95)? 1 : Dice.rand(1, 11);
+  }
+
+
+  private static Word weightedDigitCount()
+  {
+    int we = Dice.weight();
+        int dig = (we > 70) ? 1 : (we < 89)? 2 : (we < 99)? 3 : Dice.rand(0, 12);
+    return new Word("" + RANDOM, dig);
+  }
+
+  // int genus, int mod, int singularity, int possession, int mention, int role
+  private static Word weightedPronoun()
+  {
+    int g = weightedGenus(Dice.weight());
+    int gm = weightedMod(Dice.weight());
+    int s = weightedSingularity(Dice.weight());
+    int p = weightedPossession(Dice.weight());
+    int m = weightedMention(Dice.weight());
+    int r = weightedRole(Dice.weight());
+    return new Word(g, gm, s, p, m, r);
+  }
+
+  private static int weightedGenus(int w)
+  {
+    return (w < 50)? THING : (w < 70)? PLACE : (w < 90)? IDEA : ENTITY;    
+  }
+
+  private static int weightedMod(int w)
+  {
+    return (w < 40)? THING : (w < 60)? IDEA : (w < 70)? ENTITY : (w < 80)? PLACE : (w < 93)? TRAIT : FILLER;
+  }
+
+  private static int weightedSingularity(int w)
+  {
+    return (w < 90)? SINGULAR : PLURAL;
+  }
+
+  private static int weightedPossession(int w)
+  {
+    return (w < 70)? NONPOSSESSIVE : (w < 60)? OWNS : (w < 75)? PARTOF : (w < 86)? CLOSETO : (w < 98)? TENUOUSLYLINKED : DIMINUATIVETO;
+  }
+
+  private static int weightedMention(int w)
+  {
+    return (w < 90)? 1 : (w < 98)? 2 : Dice.rand(1, 11);
+  }
+
+  private static int weightedRole(int w)
+  {
+    return (w < 25) ? ITHIS : (w < 50) ? YOU :
+           (w < 75) ? WEBOTH : THEYTHAT;
+  }
+
+  
+  private static int weightedMood(int w)
+  {
+    return (w < 10) ? WISH : (w < 20) ? DIRECTIVE :
+           (w < 55) ? DELIBERATELY : (w < 85) ? PASSIVELY : INVOLUNTARILY;
+  }
+
+  private static int weightedTense(int w)
+  {
+    return (w < 25) ? TIMELESS : (w < 50) ? PAST :
+           (w < 75) ? PRESENT : FUTURE;
+  }
+
+  private static int weightedStyle(int w)
+  {
+    return (w < 50)? VOICELESS : (w < 70)? NEUTRAL : (w < 85)? VOICED : RANDOM;
+  }
+
+
+  // int primaryGenus, int genusMod, int[] nPattern, int cLength, int nSingular, int nPossessive, int style
+  private static Word weightedNoun()
+  {
+    int g = weightedGenus(Dice.weight());
+    int gm = weightedMod(Dice.weight());
+    int[] pa = RANDOMINTARRAY;
+    int l = RANDOM;
+    int sin = weightedSingularity(Dice.weight());
+    int po = weightedPossession(Dice.weight());
+    int st = weightedStyle(Dice.weight());
+    return new Word(g, gm, pa, l, sin, po, st);
+  }
+
+  // int mood, int tense, int[] vPattern, int cLength, int cStyle
+  private static Word weightedVerb()
+  {
+    int m = weightedMood(Dice.weight());
+    int t = weightedTense(Dice.weight());
+    int s = weightedStyle(Dice.weight());
+    return new Word(m, t, RANDOMINTARRAY, RANDOM, s);
   }
 
   private static Word AddNegation(boolean negativeConnotation, int degree)
@@ -197,6 +347,7 @@ public class SentenceHelper extends WordHelper
   {
     return new Word(true, wordPart);
   }
+  
   private static Word AddQuery(boolean wordPart)
   {
     return new Word(false, wordPart);
