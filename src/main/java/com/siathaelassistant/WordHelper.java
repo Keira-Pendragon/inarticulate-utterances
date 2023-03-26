@@ -5,7 +5,7 @@
  * 
  * 
  */
-
+package com.siathaelassistant;
 public class WordHelper extends SDef
 {
   private static final String word_count_prompt = "How many words of this type would you like?\n(Limit 1000)";

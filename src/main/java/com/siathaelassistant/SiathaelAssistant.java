@@ -5,7 +5,7 @@
  * 
  * 
  */
-
+package com.siathaelassistant;
 public class  SiathaelAssistant
 {
   // To ask the user what they want to generate

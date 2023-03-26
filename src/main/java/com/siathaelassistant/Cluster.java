@@ -6,7 +6,7 @@
  * An assortment of clusters and related accessors. 
  * ʥ
  */
-
+package com.siathaelassistant;
 
 public class Cluster extends SDef
 {  

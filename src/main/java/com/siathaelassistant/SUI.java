@@ -5,7 +5,7 @@
  * Author: Keira Pendragon
  * Author Date: 1/14/2023
  */
-
+package com.siathaelassistant;
 import java.util.Scanner;
 
 public class SUI extends SDef

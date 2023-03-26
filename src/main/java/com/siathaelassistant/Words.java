@@ -5,7 +5,7 @@
  * 
  * 
  */
-
+package com.siathaelassistant;
 public class Words extends Cluster
 {
     protected static final int[] v0_pattern = {KEYMID, MIDCONST, ENDKEY};

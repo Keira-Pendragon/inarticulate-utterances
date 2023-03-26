@@ -5,7 +5,7 @@
  * 
  * 
  */
-
+package com.siathaelassistant;
 public class SentenceHelper extends WordHelper
 {
   private static final int[] sentence_count_range = {1, 500};

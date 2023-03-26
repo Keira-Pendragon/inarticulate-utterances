@@ -1,7 +1,7 @@
 /**
  * Container for whatever word patterns or rules for making up, or translating, a word.
  */
-
+package com.siathaelassistant;
 public class Word extends Cluster
 {
     private int word_type;

@@ -3,7 +3,7 @@
  * so I don't have to worry about ending up with conflicting definitions if I make 
  * a clerical error while maintaining the dang thing.
  */
-
+package com.siathaelassistant;
 public class SDef 
 {
     /**
