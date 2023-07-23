@@ -9,19 +9,19 @@ public class Dice
 {
     private static Random random = new Random();
 
-    public Dice()
-    {
-
-    }
-
     /**
-     * returns a random within a range given by an array, inclusive.
-    * @param range an int array containing the min then the max inclusive values.
-    * @return the randomly chosen number
-    */
-    public static int rRand(int[] range)
+     * Returns a random number within a range given by an array, inclusive.
+     * @param range an int array containing the min then the max inclusive values.
+     * @return the randomly chosen number
+     * @throws IllegalArgumentException if the range array has less than two elements
+     */
+    public static int randInRange(int[] range) 
     {
-        return rand(range[0], range[1]);
+        if (range.length < 2) 
+        {
+            throw new IllegalArgumentException("Range array must have at least two elements");
+        }
+        return random(range[0], range[1]);
     }
     
 
@@ -37,21 +37,29 @@ public class Dice
     }
 
     /**
-     * flip a coin~
-    * @return heads or tails ie, true or false...
-    */
+     * Simulates flipping a coin
+     * @return true for heads, false for tails
+     */
     public static boolean coinToss()
     {
-        return (rand(0, 10) % 2 == 0);
+        return (rand(0, 1) == 0);
     }
 
+    /**
+     * Generates a random number between 0 and 100, simulating a roll of a weighted die.
+     * @return a random number between 0 and 100
+     */
     public static int weight()
     {
         return rand(0, 100);
     }
+
+    /**
+     * Generates a random number between 0 and a given max value, simulating a roll of a weighted die.
+     * @return a random number between 0 and max
+     */
     public static int weight(int max)
     {
         return rand(0, max);
     }
-
 }
