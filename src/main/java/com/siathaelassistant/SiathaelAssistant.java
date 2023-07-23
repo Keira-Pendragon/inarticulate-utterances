@@ -22,24 +22,21 @@ public class  SiathaelAssistant
     while(moreTime)
     {
       helperSelection = SUI.ValidateInt(helper_range, helper_prompt);
-      if(helperSelection == 0)
-      {
-        WordHelper.batchHelperLoop();
+      switch (helperSelection) {
+        case 0:
+          WordHelper.batchHelperLoop();
+          break;
+        case 1:
+          WordHelper.helperLoop();
+          break;
+        case 2:
+          SentenceHelper.helperLoop();
+          break;
+        default:
+          SentenceHelper.BatchBuild();
+          break;
       }
-      else if(helperSelection == 1)
-      {
-        WordHelper.helperLoop();
-      }
-      else if (helperSelection == 2)
-      {
-        SentenceHelper.helperLoop();
-      }
-      else
-      {
-        SentenceHelper.BatchBuild();
-      }
-
-      moreTime = SUI.ValidateAgreement(more_time_prompt);
+       moreTime = SUI.ValidateAgreement(more_time_prompt);
     }
   }
 }
