@@ -410,7 +410,7 @@ public class Cluster extends SDef
     }
 
     /**
-     * 
+     * returns a consonant indicating the 'role' of the pronoun, indicating, for example "I", "You", "We", or "They"
      * @param who
      * @return
      */
