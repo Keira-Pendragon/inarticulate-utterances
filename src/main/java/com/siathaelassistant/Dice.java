@@ -21,7 +21,7 @@ public class Dice
         {
             throw new IllegalArgumentException("Range array must have at least two elements");
         }
-        return random(range[0], range[1]);
+        return rand(range[0], range[1]);
     }
     
 
