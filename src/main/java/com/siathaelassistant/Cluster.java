@@ -399,9 +399,10 @@ public class Cluster extends SDef
     }
 
     /**
-     * 
-     * @param mine
-     * @return
+     * This function takes the numeric representation of the kind of possessiveness of a noun/pronoun
+     * and selects the appropriate coding vowel for said possessiveness to return.
+     * @param mine - type of possession for noun/pronoun
+     * @return appropriate representative symbol
      */
     protected static String possessivePrefix(int mine)
     {
@@ -419,7 +420,7 @@ public class Cluster extends SDef
     }
 
     /**
-     * 
+     * Simply returns the cluster that indicates a noun or pronoun is plural
      * @return
      */
     protected static String pluralSuffix()
@@ -428,7 +429,7 @@ public class Cluster extends SDef
     }
 
     /**
-     * 
+     * Selects a vowel cluster appropriate for an adverb or adjective.
      * @return
      */
     protected static String adVowel()
@@ -437,7 +438,7 @@ public class Cluster extends SDef
     }
     
     /**
-     * 
+     * Selects a vowel cluster appropriate for words that are not nouns, verbs, adjectives, numbers, pronouns or adverbs.
      * @return
      */
     protected static String spareVowel()
@@ -446,7 +447,8 @@ public class Cluster extends SDef
     }
     
     /**
-     * 
+     * Returns a randomly selected onset consonant cluster of a given length (1, 2, or 3 characters long) 
+     * and given 'style' (voiced/voiceless or neutral)
      * @param length
      * @param style
      * @return
@@ -455,8 +457,10 @@ public class Cluster extends SDef
     {
       return onset_clusters[style][length][Dice.rand(0, onset_clusters[style][length].length-1)];
     }
+
     /**
-     * 
+     * Returns a randomly selected mid-word consonant cluster of a given length (1, 2, or 3 characters long) 
+     * and given 'style' (voiced/voiceless or neutral)
      * @param length
      * @param style
      * @return
@@ -464,9 +468,11 @@ public class Cluster extends SDef
     protected static String MidWordCluster(int length, int style)
     {
       return midword_clusters[style][length][Dice.rand(0, midword_clusters[style][length].length-1)];
-    }    
+    } 
+
     /**
-     * 
+     * Returns a randomly selected coda consonant cluster of a given length (1, 2, or 3 characters long) 
+     * and given 'style' (voiced/voiceless or neutral)
      * @param length
      * @param style
      * @return

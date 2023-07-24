@@ -26,11 +26,6 @@ public class SUI extends SDef
     */
     private static String base10_error_message = "a digit value between 0 and 9";
 
-
-    public SUI()
-    {
-
-    }
     /**
      * 
      * @return
