@@ -10,9 +10,9 @@ package com.siathaelassistant;
 
 public class Cluster extends SDef
 {  
-    // work in codespaces for the symbols I want
+    // the codes work in codespaces for the symbols I want
     private static final String THEA = "\u03B8";
-    private static final String ZHEA = "\u0291";
+    private static final String ZHEA = "\u0292";
     private static final String SHEA = "\u0255";
     private static final String NGEA = "\u014B";
     private static final String THAG = "\u00F0";

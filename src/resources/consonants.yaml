@@ -1,0 +1,141 @@
+letters:
+  - letter: p
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", t, k, n, f, s, θ, ɕ, r, l]
+    canAppearBeforeInMidWord: [" ", t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", t, s, θ, ɕ,]
+  - letter: t
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", p, k, ŋ, f, v, s, ɕ, r]
+    canAppearBeforeInMidWord: [" ", p, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", k, f, s, θ, ɕ]
+  - letter: k
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", t, n, f, s, θ, ɕ, r, l, h]
+    canAppearBeforeInMidWord: [" ", p, t, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", t, s, θ, ɕ]
+  - letter: b
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", d, v, z]
+  - letter: d
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", v, z, ð, ʑ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", v, z, ð, ʑ]
+  - letter: g
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", m, v, z, ð, ʑ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", z, ð, ʑ]
+  - letter: m
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", n, θ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, b, d, g, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
+  - letter: n
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" "]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, b, d, g, m, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
+  - letter: ŋ
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" "]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", k, g, z, ð, ʑ]
+  - letter: f
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", p, k, n, ŋ, s, θ, ɕ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, s, θ, ɕ]
+  - letter: v
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", b, m, n, ŋ, z, ð, ʑ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, s, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", d, z, ð, ʑ]
+  - letter: s
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", p, t, k, m, n, ŋ, f, θ, ð, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, z, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, f, θ]
+  - letter: z
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", b, d, g, m, n, ŋ, v, ð, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, θ, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", d, g, v, ð]
+  - letter: θ
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", p, k, m, n, ŋ, f, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, ð, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, f, v, s, ɕ]
+  - letter: ð
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", ŋ, z, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ɕ, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", d, g, z, ʑ]
+  - letter: ɕ
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", p, t, k, m, n, ŋ, f, θ, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ʑ, r, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, f, θ]
+  - letter: ʑ
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" ", b, d, g, m, n, ŋ, v, ð, r, l]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, r, l, h]
+    canAppearBeforeInCoda: [" ", b, d, g, v, ð]
+  - letter: r
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" "]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, l, h]
+    canAppearBeforeInCoda: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, l]
+  - letter: l
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: true
+    canAppearBeforeInOnset: [" "]
+    canAppearBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, h]
+    canAppearBeforeInCoda: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
+  - letter: h
+    canAppearInOnset: true
+    canAppearInMidWord: true
+    canAppearInCoda: false
+    canAppearBeforeInOnset: [" "]
+    canAppearBeforeInMidWord: [" "]
+    canAppearBeforeInCoda: [" "]
