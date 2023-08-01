@@ -1,21 +1,57 @@
+/**
+ * Author: Keira Pendragon
+ * Date: 7/25/2023
+ * 
+ * An object class for storing information for generating clusters of consonants 
+ * based on their position within the word and their phonetic properties
+ */
+
 package com.siathaelassistant;
 
 public class Consonant 
 {
+    // What letter this actually is.
+    private String phenome;
+    // voiceless, voiced or 'neutral'
+    private int flavor;
+    // whether the letter can appear on its own in the 
+    // onset of a word
     private boolean allowed_in_onset;
+    // middle of a word
     private boolean allowed_in_mid;
+    // coda of a word
     private boolean allowed_in_coda;
+
+    // what letters are able to be used following this letter in the 
+    // onset of a word
     private String [] allowed_before_in_onset;
+    // middle of a word
     private String [] allowed_before_in_mid;
+    // coda of a word
     private String [] allowed_before_in_coda;
 
-    public Consonant(boolean [] allowed_clusters, String [] onset, String [] midWord, String [] coda)
+    
+    /**
+     * Constructor for consnants
+     * @param letter
+     * @param flavour
+     * @param allowed_clusters
+     * @param onset
+     * @param midWord
+     * @param coda
+     */
+    public Consonant(String letter, int flavour, boolean [] allowed_clusters, String [] onset, String [] midWord, String [] coda)
     {
-        if (allowed_clusters == null || allowed_clusters.length != 3) {
+        phenome = (letter.length() > 0)? letter : " ";
+        flavor = flavour;
+        if (allowed_clusters == null || allowed_clusters.length != 3) 
+        {
             allowed_in_onset = false;
             allowed_in_mid = false;
             allowed_in_coda = false;
-        } else {
+        } 
+        else 
+        {
             allowed_in_onset = allowed_clusters[0];
             allowed_in_mid = allowed_clusters[1];
             allowed_in_coda = allowed_clusters[2];
@@ -41,6 +77,21 @@ public class Consonant
         return allowed_in_coda;
     }
 
+    public String Phenome()
+    {
+        return phenome;
+    }
+
+    public int Flavor()
+    {
+        return flavor;
+    }
+
+/********************************************************************************************
+ * Randomly select one of the letters that can follow this letter in a word based on location
+ ********************************************************************************************/
+
+
     public String randomOnsetFollower()
     {
         int randomIndex = Dice.rand(0, allowed_before_in_onset.length - 1);
@@ -58,5 +109,4 @@ public class Consonant
         int randomIndex = Dice.rand(0, allowed_before_in_coda.length - 1);
         return allowed_before_in_coda[randomIndex];
     }
-
 }

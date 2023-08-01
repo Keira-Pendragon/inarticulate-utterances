@@ -30,7 +30,8 @@ public class  SiathaelAssistant
   {
     BATCH_BUILD_WORDS,
     BUILD_WORDS,
-    BUILD_SENTENCES
+    BUILD_SENTENCES,
+    BATCH_BUILD_SENTENCES
   }
   
   /**
@@ -43,33 +44,35 @@ public class  SiathaelAssistant
    */
   public static void main(String[] args) 
   {
-      int helperSelection;
-      boolean moreTime = true;
-      while(moreTime)
-      {
-          // Get the user's choice
-          helperSelection = SUI.ValidateInt(helper_range, helper_prompt);
-          // Execute the chosen functionality
-          while (true) {
-              switch (MenuOption.values()[helperSelection]) 
-              {
-                  case BATCH_BUILD_WORDS:
-                      WordHelper.batchHelperLoop();  // Batch build words
-                      break;
-                  case BUILD_WORDS:
-                      WordHelper.helperLoop();  // Build individual words
-                      break;
-                  case BUILD_SENTENCES:
-                      SentenceHelper.helperLoop();  // Build sentences
-                      break;
-                  default:
-                      SentenceHelper.BatchBuild();  // Batch build preset sentences
-                      break;
-              }
-              break;
-          }
-          // Ask the user if they want to continue
-          moreTime = SUI.ValidateAgreement(more_time_prompt);
-      }
+    Cluster cluster = new Cluster("src/main/java/com/siathaelassistant/resources/consonants.yaml");
+    SUI.displayTextLn(cluster.isReady());
+    int helperSelection;
+    boolean moreTime = true;
+    while(moreTime)
+    {
+        // Get the user's choice
+        helperSelection = SUI.ValidateInt(helper_range, helper_prompt);
+        // Execute the chosen functionality
+        while (true) {
+            switch (MenuOption.values()[helperSelection]) 
+            {
+                case BATCH_BUILD_WORDS:
+                    WordHelper.batchHelperLoop();  // Batch build words
+                    break;
+                case BUILD_WORDS:
+                    WordHelper.helperLoop();  // Build individual words
+                    break;
+                case BUILD_SENTENCES:
+                    SentenceHelper.helperLoop();  // Build sentences
+                    break;
+                default:
+                    SentenceHelper.BatchBuild();  // Batch build preset sentences
+                    break;
+            }
+            break;
+        }
+        // Ask the user if they want to continue
+        moreTime = SUI.ValidateAgreement(more_time_prompt);
+    }
   }
 }

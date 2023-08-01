@@ -1,5 +1,6 @@
 letters:
   - letter: p
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -7,6 +8,7 @@ letters:
     allowedBeforeInMidWord: [" ", t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", t, s, θ, ɕ,]
   - letter: t
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -14,6 +16,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", k, f, s, θ, ɕ]
   - letter: k
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -21,6 +24,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", t, s, θ, ɕ]
   - letter: b
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -28,6 +32,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", d, v, z]
   - letter: d
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -35,6 +40,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", v, z, ð, ʑ]
   - letter: g
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -42,6 +48,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", z, ð, ʑ]
   - letter: m
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -49,6 +56,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, b, d, g, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
   - letter: n
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -56,6 +64,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, b, d, g, m, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
   - letter: ŋ
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -63,6 +72,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, f, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", k, g, z, ð, ʑ]
   - letter: f
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -70,6 +80,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, v, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, s, θ, ɕ]
   - letter: v
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -77,6 +88,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, s, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", d, z, ð, ʑ]
   - letter: s
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -84,6 +96,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, z, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, f, θ]
   - letter: z
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -91,6 +104,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, θ, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", d, g, v, ð]
   - letter: θ
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -98,6 +112,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, ð, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, f, v, s, ɕ]
   - letter: ð
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -105,6 +120,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ɕ, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", d, g, z, ʑ]
   - letter: ɕ
+    flavor: 0
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -112,6 +128,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ʑ, r, l, h]
     allowedBeforeInCoda: [" ", p, t, k, f, θ]
   - letter: ʑ
+    flavor: 1
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -119,6 +136,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, r, l, h]
     allowedBeforeInCoda: [" ", b, d, g, v, ð]
   - letter: r
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -126,6 +144,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, l, h]
     allowedBeforeInCoda: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, l]
   - letter: l
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: true
@@ -133,6 +152,7 @@ letters:
     allowedBeforeInMidWord: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ, r, h]
     allowedBeforeInCoda: [" ", p, t, k, b, d, g, m, n, ŋ, f, v, s, z, θ, ð, ɕ, ʑ]
   - letter: h
+    flavor: 2
     canAppearInOnset: true
     canAppearInMidWord: true
     canAppearInCoda: false
