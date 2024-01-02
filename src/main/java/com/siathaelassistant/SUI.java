@@ -26,7 +26,31 @@ public class SUI extends SDef
     */
     private static String base10_error_message = "a digit value between 0 and 9";
 
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_DARK_ORANGE = "\u001B[38;5;166m"; // Closest to Dark Orange 1
+    private static final String ANSI_DARK_GREEN = "\u001B[32m"; // Dark Green 1
+    private static final String ANSI_DARK_CYAN = "\u001B[36m"; // Dark Cyan 1
+    private static final String ANSI_DARK_BLUE = "\u001B[34m"; // Dark Blue 1
+    private static final String ANSI_DARK_PURPLE = "\u001B[38;5;54m"; // Closest to Dark Purple 1
+    private static final String ANSI_DARK_MAGENTA = "\u001B[38;5;162m"; // Dark Magenta 1
+    private static final String ANSI_PINK = "\u001B[38;5;213m"; // Pink
+    private static final String ANSI_YELLOW = "\u001B[38;5;220m"; // Yellow
+  
+    private static final String[] Ansi_Colorizer = {ANSI_RESET, ANSI_DARK_PURPLE, ANSI_DARK_BLUE, ANSI_DARK_CYAN, ANSI_DARK_MAGENTA, ANSI_DARK_GREEN, ANSI_DARK_ORANGE, ANSI_PINK, ANSI_YELLOW};
 
+
+    private static final String HTML_RESET = "</span>";
+    private static final String BLACK_COLOR = "<span style=\"color:#000000\">";
+    private static final String ORANGE_COLOR = "<span style=\"color:#FF8C00\">";
+    private static final String GREEN_COLOR = "<span style=\"color:#6aa84f\">";
+    private static final String CYAN_COLOR = "<span style=\"color:#45818e\">";
+    private static final String BLUE_COLOR = "<span style=\"color:#3d85c6\">";
+    private static final String PURPLE_COLOR = "<span style=\"color:#674ea7\">";
+    private static final String MAGENTA_COLOR = "<span style=\"color:#a64d79\">";
+    private static final String PINK_COLOR = "<span style=\"color:#a64d79\">";
+    private static final String YELLOW_COLOR = "<span style=\"color:#ff00ce\">";
+
+    private static final String[] Colorizer = {BLACK_COLOR, PURPLE_COLOR, BLUE_COLOR, CYAN_COLOR, MAGENTA_COLOR, GREEN_COLOR, ORANGE_COLOR, PINK_COLOR, YELLOW_COLOR};
     public SUI()
     {
 
@@ -108,37 +132,26 @@ public class SUI extends SDef
         for(int i = 0; i < input.length(); i++)
         {
             c = input.charAt(i);
-            if(c >= '0' && c <= '9')
-            {
-                validatedB12 += c;
-                whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
-                spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
-            }
-            else if(c == 'A' || c == 'a')
-            {
-                validatedB12 += 'A';
-                whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
-                spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
-            }
-            else if(c == 'B' || c == 'b')
-            {
-                validatedB12 += 'B';
-                whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
-                spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
-            }
-            else if(c == '/' || c == '.' && !foundDel && (i != (input.length() -1)))
-            {
-                foundDel = true;
-                delLoc = i;
-                validatedB12 += c + "";
-            }
-            else if(c == ',')
-            {
-            }
-            else
-            {
-                errorMessage(base12_error_message, (c + ""), (c < 0) ? "0": "B");
-                validatedB12 += (c < 0) ? '0': 'B';
+            switch (c) {
+                case '0': case '1': case '2': case '3': case '4': 
+                case '5': case '6': case '7': case '8': case '9':
+                case 'A': case 'a': case 'B': case 'b':
+                    validatedB12 += Character.toUpperCase(c);
+                    whole += (!foundDel && whole < MAXDIGITS) ? 1 : 0;
+                    spare += (foundDel && spare < MAXDIGITS) ? 1 : 0;
+                    break;
+                case '/': case '.':
+                    if (!foundDel && (i != (input.length() - 1))) {
+                        foundDel = true;
+                        delLoc = i;
+                        validatedB12 += c;
+                    }
+                    break;
+                case ',':
+                    break;
+                default:
+                    errorMessage(base12_error_message, (c + ""), (c < 0) ? "0" : "B");
+                    validatedB12 += (c < 0) ? '0' : 'B';
             }
         }
         validatedB12 = snipErrantZeros(validatedB12, delLoc);
@@ -225,19 +238,9 @@ public class SUI extends SDef
      */
     private static boolean userAgrees(String input)
     {
-        return (match(input, "yes") || match(input, "y") || match(input, "1"));
+        return input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y") || input.equals("1");
     }
 
-    /**
-     * 
-     * @param input
-     * @param check
-     * @return
-     */
-    private static boolean match(String input, String check)
-    {
-        return input.compareToIgnoreCase(check) == 0;
-    }
 
     /**
      * 
@@ -266,5 +269,18 @@ public class SUI extends SDef
     public static void selectionPrompt(String display)
     {
         System.out.print("\n" + display + selection_prompt);
+    }
+
+    public static void colorizeWord(String word, int type, String delim)
+    {
+        System.out.print(Ansi_Colorizer[type] + word + ANSI_RESET + delim);
+    }
+
+    public static String colorizeWord(String word, int wordType) {
+        if (wordType >= 0 && wordType < Colorizer.length) {
+            return Colorizer[wordType] + word + HTML_RESET;
+        } else {
+            return word; // If the word type is out of the range of the Colorizer array, return the word without any color.
+        }
     }
 }

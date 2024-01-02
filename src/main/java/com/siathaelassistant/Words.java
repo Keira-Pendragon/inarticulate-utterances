@@ -73,6 +73,9 @@ public class Words extends Cluster
     protected static final int[] a12_pattern = {VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
     protected static final int[] a13_pattern = {ONSET, VOWEL, MIDCONST, VOWEL, MIDCONST, SPAREKEY, CODA};
 
+    protected static final int MAX_WEIGHT = 144;
+    protected static final int WEIGHT_THRESHOLD_1 = 90;
+    protected static final int WEIGHT_THRESHOLD_2 = 135;
 
     protected static final int[][] adhesive_pattern = 
     {
@@ -572,79 +575,70 @@ protected static final String adhesive_details =
 
 
     /**
-    * 
-    * @param digits
-    * @return
+     * 
+     * @param we
+     * @return
+     */
+    private static int getRandomWholeDigits(int we) {
+        if (we < WEIGHT_THRESHOLD_1) {
+            return 1;
+        } else if (we < WEIGHT_THRESHOLD_2) {
+            return 2;
+        } else if (we < WEIGHT_THRESHOLD_2 + 5) {
+            return 3;
+        } else {
+            return Dice.rand(1, 12);
+        }
+    }
     
-    private static String[] ocookedB12(int digits)
-    {
-        if(digits == RANDOM)
-        {
-            digits = Dice.rand(1, 9);
+    /**
+     * 
+     * @param we
+     * @return
+     */
+    private static int getRandomSpareDigits(int we) {
+        if (we < WEIGHT_THRESHOLD_1) {
+            return 0;
+        } else if (we < WEIGHT_THRESHOLD_1 + 30) {
+            return 1;
+        } else if (we < WEIGHT_THRESHOLD_2) {
+            return 2;
+        } else if (we < WEIGHT_THRESHOLD_2 + 5) {
+            return 3;
+        } else {
+            return Dice.rand(1, 12);
         }
-        String whole = "";
-        String spare = "";
-        // If the number is bigger than the maximum any one part of a mixed number can be, it Has to have a delimiter.
-        int numberType = (Dice.rand(((digits <= MAXDIGITS) ? WHOLENUMBER : DECIMALNUMBER), FRACTIONNUMBER));
-        // If the number of requested digits is more than the total maximum allowed, set it to the maximum instead.
-        digits = (digits > MAXCOOKEDDIGITS) ? MAXCOOKEDDIGITS : digits;
-        // determine the delimiter - whole numbers have none, decimals a '.' and fractions use '/'.
-        String delimiter = (numberType == WHOLENUMBER) ? " " : (numberType == DECIMALNUMBER) ? "." : "/";
-        // Initialize delimiterLoc for WholeNumber positioning.
-        int delimiterLoc = 0;
-        // If this isn't a whole number, determine the proper position (range) for the delimeter.
-        if(numberType != WHOLENUMBER)
-        {
-            // the minimum value should be 1 for any numbers less than 33 otherwise, offset as needed
-            int mindeloc = (digits - MAXDIGITS <= 0) ? 1 : (digits - MAXDIGITS);
-            // the maximum value should be at least one sooner than the last digit, but adjust if there are more than 33 digits
-            int maxdeloc = (digits - MAXDIGITS <= 0) ? digits - 1 : (digits -(digits - MAXDIGITS));
-            // the actual delimiter loc should be between the two extremes.. unless they're exactly at the limit, 
-            // then they should be one less than the minimum to avoid going out of range...
-            delimiterLoc = (mindeloc < maxdeloc) ? Dice.rand(mindeloc, maxdeloc) : mindeloc - 1;
-        }
-
-        // Assemble the digits!
-        for(int i = 0; i < digits; i++)
-        {
-            // the lazy way :D No really, no need to convert, just grab a representative from index 0 to 11 >:D!
-            whole += (i < delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
-            spare += (i > delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
-        }
-        return new String[] {whole, spare, delimiter};
-    }*/
-
-    private static String[] cookedB12(int digits)
-    {
+    }
+    
+    /**
+     * 
+     * @param digits
+     * @return
+     */
+    private static String[] cookedB12(int digits) {
         int wholeDigits;
         int spareDigits;
         String wholeValue = "";
         String spareValue = "";
         String delimiter;
         int delimiterLoc;
-        
-        if(digits == RANDOM)
-        {            
-            int we = Dice.weight(144);
-            wholeDigits = (we < 90) ? 1 : (we < 135)? 2 : (we < 140)? 3 : (we < 143) ? Dice.rand(1, 12) : Dice.rand(1, 36);
-            spareDigits = (we < 90)? 0: (we < 120) ? 1 : (we < 135)? 2 : (we < 140)? 3 : (we < 143) ? Dice.rand(1, 12) : Dice.rand(1, 36);
+    
+        if (digits == RANDOM) {
+            int we = Dice.weight(MAX_WEIGHT);
+            wholeDigits = getRandomWholeDigits(we);
+            spareDigits = getRandomSpareDigits(we);
             digits = wholeDigits + spareDigits;
-            
-        }
-        else
-        {
-            wholeDigits = Dice.rand(((digits < MAXDIGITS)? 1 : (digits - MAXDIGITS)), ((digits < MAXDIGITS)? digits : MAXDIGITS));
+        } else {
+            wholeDigits = Dice.rand(((digits < MAXDIGITS) ? 1 : (digits - MAXDIGITS)), ((digits < MAXDIGITS) ? digits : MAXDIGITS));
             spareDigits = digits - wholeDigits;
         }
-        delimiterLoc = (spareDigits > 0)? wholeDigits : MAXDIGITS + 1;
-        delimiter = (spareDigits < 1)? " " : (Dice.coinToss())? "." : "/";
-        for(int i = 0; i < digits; i++)
-        {
-            // the lazy way :D No really, no need to convert, just grab a representative from index 0 to 11 >:D!
+        delimiterLoc = (spareDigits > 0) ? wholeDigits : MAXDIGITS + 1;
+        delimiter = (spareDigits < 1) ? " " : (Dice.coinToss()) ? "." : "/";
+        for (int i = 0; i < digits; i++) {
             wholeValue += (i < delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
             spareValue += (i > delimiterLoc) ? lazyDigit(Dice.rand(((i != 0 && i != (digits - 1)) ? 0 : 1), 11)) : "";
         }
-        return new String[] {wholeValue, spareValue, delimiter};
+        return new String[]{wholeValue, spareValue, delimiter};
     }
 
     /**

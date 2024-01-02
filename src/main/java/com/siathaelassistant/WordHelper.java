@@ -30,7 +30,7 @@ public class WordHelper extends SDef
       wordCount = (aWord.OnlyOne())? 1 : SUI.ValidateInt(word_count_range, word_count_prompt);
       for(int i = 0; i < wordCount; i++)
       {
-        SUI.displayTextLn(fetchWord(aWord));
+        SUI.colorizeWord(fetchWord(aWord), aWord.Type(), "\n");
         aWord.refreshWord();
       }
       SUI.displayTextLn("\nWord Batch complete.");
@@ -48,7 +48,7 @@ public class WordHelper extends SDef
       aWord = detailWord();
       for(int i = 0; i < wordCount; i++)
       {
-        SUI.displayTextLn(fetchWord(aWord));
+        SUI.colorizeWord(fetchWord(aWord), aWord.Type(), "\n");
         aWord.refreshWord();
       }
       SUI.displayTextLn("\nWord Batch complete.");
