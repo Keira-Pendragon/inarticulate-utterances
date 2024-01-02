@@ -6,6 +6,11 @@
  * 
  */
 package com.siathaelassistant;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 public class SentenceHelper extends WordHelper
 {
   private static final int[] sentence_count_range = {1, 500};
@@ -35,26 +40,26 @@ public class SentenceHelper extends WordHelper
 
   }
 
-  /**
-   * 
-   */
-  public static void helperLoop()
-  {
+  public static void helperLoop() {
     boolean onceMore = true;
     int sentenceCount;
     Sentence sayWhat;
-    while(onceMore)
-    {
-      sayWhat = detailSentence();
-      sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
-      for(int i = 0; i < sentenceCount; i++)
-      {
-        SUI.displayTextLn(buildSentence(sayWhat) + ".\n");
-      }
-      SUI.displayTextLn("Sentence batch Complete.");
-      onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
+    List<String> generatedSentences = new ArrayList<>();
+    
+    while(onceMore) {
+        sayWhat = detailSentence();
+        sentenceCount = SUI.ValidateInt(sentence_count_range, sentence_count_prompt);
+        for(int i = 0; i < sentenceCount; i++) {
+            String sentence = buildSentence(sayWhat) + ".";
+            generatedSentences.add(sentence);
+            SUI.displayTextLn(sentence + "\n");
+        }
+        SUI.displayTextLn("Sentence batch Complete.");
+        onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
     }
-  }
+    
+    saveToHTMLFile(generatedSentences, "src/main/resources/output.html");
+}
 
   public static int getBatchType()
   {
@@ -62,25 +67,26 @@ public class SentenceHelper extends WordHelper
   }
 
 
-  public static void BatchBuild()
-  {
+  public static void BatchBuild() {
     int which;
     boolean onceMore = true;
     int sentenceCount = 500;
     Sentence sayWhat;
+    List<String> sentencesForHTML = new ArrayList<>();
 
-    while(onceMore)
-    {
-      which = SentenceHelper.getBatchType();
-      sayWhat = BatchSentence(which);
-      for(int i = 0; i < sentenceCount; i++)
-      {
-        SUI.displayTextLn(buildSentence(sayWhat) + ".");
-      }
-      SUI.displayTextLn("Sentence batch Complete.");
-      onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
+    while (onceMore) {
+        which = SentenceHelper.getBatchType();
+        sayWhat = BatchSentence(which);
+        for (int i = 0; i < sentenceCount; i++) {
+            String sentence = buildSentence(sayWhat) + ".";
+            SUI.displayTextLn(sentence);
+            sentencesForHTML.add(sentence);
+        }
+        SUI.displayTextLn("Sentence batch Complete.");
+        onceMore = SUI.ValidateAgreement("Would you like to build more sentences?\n1) yes\n2) No");
     }
-  }
+    saveToHTMLFile(sentencesForHTML, "src/main/resources/output.html");
+}
 
   /**
    * 
@@ -383,10 +389,26 @@ public class SentenceHelper extends WordHelper
     String sayThis = "";
     for(int i = 0; i < sayWhat.wordCount(); i++)
     {
-      sayThis+= fetchWord(sayWhat.fetchWord(i));
+      sayThis+= SUI.colorizeWord(fetchWord(sayWhat.fetchWord(i)), sayWhat.fetchWord(i).Type()) ;
       sayWhat.fetchWord(i).refreshWord();      
       sayThis+= (sayWhat.fetchWord(i).Type() == QUERY || (i + 1 == sayWhat.wordCount())) ? "" : " ";
     }
     return sayThis;
+  }
+
+  public static void saveToHTMLFile(List<String> sentences, String filename) {
+    try {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        writer.write("<html><body>");
+
+        for (String sentence : sentences) {
+            writer.write("<p>" + sentence + "</p>");
+        }
+
+        writer.write("</body></html>");
+        writer.close();
+    } catch (IOException e) {
+        System.err.println("Error writing to file: " + e.getMessage());
+    }
   }
 }
