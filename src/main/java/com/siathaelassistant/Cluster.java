@@ -269,9 +269,9 @@ public class Cluster extends SDef
     private static final String[] verb_tense = {"e", "i", "a", "u"};
 
     // key vowels for adjectives and adverbs.
-    private static final String[] ad_key = {"i" + ITHI, "e" + ITHI, "a" + ITHI, "u" + ITHI, "o" + ITHI, ITHI};
+    private static final String[] spare_key = {"i" + ITHI, "e" + ITHI, "a" + ITHI, "u" + ITHI, "o" + ITHI, ITHI};
     // key vowels for all other types of words
-    private static final String[] spare_key = {"io", "eo", "ao", "uo", "o", ITHI + "o"};
+    private static final String[]  ad_key = {"io", "eo", "ao", "uo", "o", ITHI + "o"};
     // the vowel key indicating if a digit is in the whole portion of a number, a denominator, 
     // or a decimal (or whatever a value between 0 and 1 is called in a base 12 system....
     private static final String[] digit_class = {ITHI, "ia", "o"};
